@@ -26,10 +26,6 @@ Open `nvim` and enter the following:
 :checkhealth
 ```
 
-Fix copy/paste
-
--   On mac `pbcopy` should be builtin
-
 Install python & node support
 
 -   Neovim python support
