@@ -45,7 +45,7 @@ Install `ripgrep` for Telescope to work:
 -   Ripgrep
 
     ```sh
-    sudo apt install ripgrep
+    brew install ripgrep
     ```
 
 ---
