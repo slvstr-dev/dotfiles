@@ -31,7 +31,7 @@ Install python & node support
 -   Neovim python support
 
     ```sh
-    pip install pynvim
+    pip3 install pynvim
     ```
 
 -   Neovim node support
