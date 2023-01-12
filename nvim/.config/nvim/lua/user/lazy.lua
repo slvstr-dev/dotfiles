@@ -52,13 +52,13 @@ lazy.setup({
   "rafamadriz/friendly-snippets", -- a bunch of snippets to use
 
   -- LSP
-  -- "williamboman/nvim-lsp-installer", -- simple to use language server installer
   "neovim/nvim-lspconfig", -- enable LSP
   "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",
   "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
   "RRethy/vim-illuminate",
-
+  "github/copilot.vim",
+  
   -- Telescope
   "nvim-telescope/telescope.nvim",
 
