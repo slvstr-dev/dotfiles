@@ -36,8 +36,8 @@ lazy.setup({
   "goolord/alpha-nvim",
   "folke/which-key.nvim",
 
-  -- Colorschemes
-  "catppuccin/nvim",
+  -- Colorscheme
+  "folke/tokyonight.nvim",
 
   -- cmp plugins
   "hrsh7th/nvim-cmp", -- The completion plugin
