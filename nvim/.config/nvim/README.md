@@ -91,7 +91,7 @@ Make sure the formatter or linter is installed and add it to this setup function
 
 ### Plugins
 
--   [packer](https://github.com/wbthomason/packer.nvim)
+-   [lazy](https://github.com/folke/lazy.nvim)
 -   [plenary](https://github.com/nvim-lua/plenary.nvim)
 -   [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
 -   [Comment.nvim](https://github.com/numToStr/Comment.nvim)
@@ -103,7 +103,6 @@ Make sure the formatter or linter is installed and add it to this setup function
 -   [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 -   [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
 -   [project.nvim](https://github.com/ahmedkhalf/project.nvim)
--   [impatient.nvim](https://github.com/lewis6991/impatient.nvim)
 -   [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
 -   [alpha-nvim](https://github.com/goolord/alpha-nvim)
 -   [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
@@ -124,6 +123,4 @@ Make sure the formatter or linter is installed and add it to this setup function
 -   [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 -   [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 -   [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
--   [nvim-dap](https://github.com/mfussenegger/nvim-dap)
--   [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
--   [DAPInstall.nvim](https://github.com/ravenxrz/DAPInstall.nvim)
+-   [whichkey.nvim](https://github.com/folke/which-key.nvim)
