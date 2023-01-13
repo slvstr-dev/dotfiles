@@ -1,0 +1,38 @@
+# Homebrew
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+
+# Productivity
+cask "arc"                  # Chromium based browser
+cask "raycast"              # Control your tools with a few keystrokes
+
+mas "Slack", id: 803453959  # Team communication and collaboration software
+
+# Entertainment
+cask "spotify"  # Music streaming service
+
+# Developer tools
+brew "automake"                         # Tool for generating GNU Standards-compliant Makefiles
+brew "cmake"                            # Cross-platform make
+brew "curl"                             # Get a file from an HTTP, HTTPS or FTP server
+brew "fzf"                              # Command-line fuzzy finder written in Go
+brew "gettext"                          # GNU internationalization (i18n) and localization (l10n) library
+brew "gh"                               # GitHub command-line tool
+brew "jesseduffield/lazygit/lazygit"    # Simple terminal UI for git commands
+brew "libtool"                          # Generic library support script
+brew "mas"                              # Mac App Store command-line interface
+brew "ninja"                            # Small build system for use with gyp or CMake
+brew "pkg-config"                       # Manage compile and link flags for libraries
+brew "python@3.10"                      # Interpreted, interactive, object-oriented programming language
+brew "ripgrep"                          # Search tool like grep and The Silver Searcher
+brew "stow"                             # Organize software neatly under a single directory tree (e.g. /usr/local)
+brew "tree"                             # Display directories as trees (with optional color/HTML output)
+
+cask "kitty"                # GPU-based terminal emulator
+cask "postman"              # Collaboration platform for API development
+cask "visual-studio-code"   # Open-source code editor
+cask "zeplin"               # Share, organize and collaborate on designs
+cask "hammerspoon"          # Desktop automation application
+
+mas "Xcode", id: 497799835  # Developer tools
