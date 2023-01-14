@@ -1,7 +1,8 @@
 return {
-  -- kanagawa
+    -- catppuccin
   {
-    "rebelot/kanagawa.nvim",
-    name = "kanagawa"
+    "catppuccin/nvim",
+    name = "catppuccin",
+    opts = { style = "mocha" },
   },
 }
