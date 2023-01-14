@@ -28,9 +28,17 @@ return {
       end
     end,
     opts = {
+      window = {
+        mappings = {
+          ["l"] = "open",
+          ["h"] = "close_node",
+        },
+      },
       filesystem = {
         filtered_items = {
           visible = true,
+          hide_dotfiles = false,
+          hide_gitignored = true,
         },
         follow_current_file = true,
       },
