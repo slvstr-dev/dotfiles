@@ -55,3 +55,9 @@ end
 
 -- fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+
+-- add - to the list of keywords
+vim.cmd([[set iskeyword+=-]])
+
+-- disable auto comment on new line
+vim.cmd([[set formatoptions-=cro]])

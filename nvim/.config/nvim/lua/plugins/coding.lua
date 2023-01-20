@@ -1,4 +1,5 @@
-return {
+---@type LazyPluginSpec[]
+local M = {
 
   -- snippets
   {
@@ -161,4 +162,17 @@ return {
       ai.setup(opts)
     end,
   },
+  --#region
+  {
+    "github/copilot.vim",
+    event = "InsertEnter",
+    init = function()
+      vim.g.copilot_no_tab_map = true
+    end,
+    keys = {
+      { "<C-CR>", "copilot#Accept('\\<CR>')", expr = true, mode = "i", desc = "Accept copilot suggestion" },
+    },
+  },
 }
+
+return M
