@@ -1,3 +1,3 @@
-require("config").init()
+require("config")
 
 return {}

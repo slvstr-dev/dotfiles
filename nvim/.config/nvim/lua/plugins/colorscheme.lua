@@ -1,5 +1,5 @@
 return {
-    -- catppuccin
+  -- catppuccin
   {
     "catppuccin/nvim",
     name = "catppuccin",
