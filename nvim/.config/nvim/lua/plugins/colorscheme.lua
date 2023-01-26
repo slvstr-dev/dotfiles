@@ -3,6 +3,6 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    opts = { style = "mocha" },
+    opts = { style = "latte" },
   },
 }
