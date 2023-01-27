@@ -2,8 +2,6 @@ require("config.options")
 require("config.autocmds")
 require("config.keymaps")
 
-require("catppuccin").load()
-
 local M = {
   icons = {
     diagnostics = {
