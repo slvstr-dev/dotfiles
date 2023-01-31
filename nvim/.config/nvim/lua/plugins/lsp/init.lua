@@ -57,13 +57,6 @@ return {
     },
     ---@param opts PluginLspOpts
     config = function(plugin, opts)
-      if plugin.servers then
-        require("util").deprecate("lspconfig.servers", "lspconfig.opts.servers")
-      end
-      if plugin.setup_server then
-        require("util").deprecate("lspconfig.setup_server", "lspconfig.opts.setup[SERVER]")
-      end
-
       -- setup formatting and keymaps
       require("util").on_attach(function(client, buffer)
         require("plugins.lsp.format").on_attach(client, buffer)
@@ -71,7 +64,7 @@ return {
       end)
 
       -- diagnostics
-      for name, icon in pairs(require("config").icons.diagnostics) do
+      for name, icon in pairs(require("config.icons").icons.diagnostics) do
         name = "DiagnosticSign" .. name
         vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
       end
@@ -107,6 +100,7 @@ return {
     dependencies = { "mason.nvim" },
     opts = function()
       local nls = require("null-ls")
+      
       return {
         sources = {
           -- nls.builtins.formatting.prettierd,
@@ -133,11 +127,10 @@ return {
     },
     ---@param opts MasonSettings | {ensure_installed: string[]}
     config = function(plugin, opts)
-      if plugin.ensure_installed then
-        require("util").deprecate("treesitter.ensure_installed", "treesitter.opts.ensure_installed")
-      end
       require("mason").setup(opts)
+
       local mr = require("mason-registry")
+
       for _, tool in ipairs(opts.ensure_installed) do
         local p = mr.get_package(tool)
         if not p:is_installed() then

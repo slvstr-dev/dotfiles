@@ -28,10 +28,7 @@ return {
       },
     },
     ---@param opts TSConfig
-    config = function(plugin, opts)
-      if plugin.ensure_installed then
-        require("util").deprecate("treesitter.ensure_installed", "treesitter.opts.ensure_installed")
-      end
+    config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
     end,
   },

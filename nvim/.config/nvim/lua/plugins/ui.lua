@@ -41,7 +41,7 @@ return {
 
   -- bufferline
   {
-    "akinsho/nvim-bufferline.lua",
+    "akinsho/bufferline.nvim",
     event = "VeryLazy",
     init = function()
       vim.keymap.set("n", "<s-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev Buffer" })
@@ -54,7 +54,7 @@ return {
         diagnostics = "nvim_lsp",
         always_show_bufferline = false,
         diagnostics_indicator = function(_, _, diag)
-          local icons = require("config").icons.diagnostics
+          local icons = require("config.icons").icons.diagnostics
           local ret = (diag.error and icons.Error .. diag.error .. " " or "")
             .. (diag.warning and icons.Warn .. diag.warning or "")
           return vim.trim(ret)
@@ -80,7 +80,7 @@ return {
         require("util").deprecate("lualine.override", "lualine.opts")
       end
 
-      local icons = require("config").icons
+      local icons = require("config.icons").icons
 
       local function fg(name)
         return function()
@@ -154,7 +154,7 @@ return {
             end,
           },
         },
-        extensions = { "nvim-tree" },
+        extensions = { "neo-tree" },
       }
     end,
   },

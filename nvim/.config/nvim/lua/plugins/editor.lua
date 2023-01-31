@@ -16,7 +16,13 @@ return {
       },
       { "<leader>fE", "<cmd>Neotree toggle<CR>", desc = "Explorer NeoTree (cwd)" },
       { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
-      { "<leader>E", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
+      {
+        "<leader>fE",
+        function()
+          require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+        end,
+        desc = "Explorer NeoTree (cwd)",
+      },
     },
     init = function()
       vim.g.neo_tree_remove_legacy_commands = 1
@@ -35,12 +41,18 @@ return {
         },
       },
       filesystem = {
+        bind_to_cwd = false,
         filtered_items = {
           visible = true,
           hide_dotfiles = false,
           hide_gitignored = true,
         },
         follow_current_file = true,
+        window = {
+          mappings = {
+            ["<space>"] = "none",
+          },
+        },
       },
     },
   },
@@ -220,6 +232,14 @@ return {
     opts = { delay = 200 },
     config = function(_, opts)
       require("illuminate").configure(opts)
+
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          local buffer = vim.api.nvim_get_current_buf()
+          pcall(vim.keymap.del, "n", "]]", { buffer = buffer })
+          pcall(vim.keymap.del, "n", "[[", { buffer = buffer })
+        end,
+      })
     end,
     -- stylua: ignore
     keys = {

@@ -19,7 +19,7 @@ vim.keymap.set("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 vim.keymap.set("i", "<A-k>", "<Esc>:m .-2<cr>==gi", { desc = "Move up" })
 
 -- buffers
-if not Util.has("nvim-bufferline.lua") then
+if not Util.has("bufferline.nvim") then
   vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
   vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 end
@@ -46,16 +46,16 @@ vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("n", "<leader>l", "<cmd>:Lazy<cr>", { desc = "Lazy" })
 
 -- new file
-vim.keymap.set("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+vim.keymap.set("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New file" })
 
 -- open lists
-vim.keymap.set("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Open Location List" })
-vim.keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Open Quickfix List" })
+vim.keymap.set("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Open location list" })
+vim.keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Open quickfix list" })
 
 -- toggle options
 vim.keymap.set("n", "<leader>uf", require("plugins.lsp.format").toggle, { desc = "Toggle format on Save" })
-vim.keymap.set("n", "<leader>uw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
-vim.keymap.set("n", "<leader>ud", Util.toggle_diagnostics, { desc = "Toggle Diagnostics" })
+vim.keymap.set("n", "<leader>uw", function() Util.toggle("wrap") end, { desc = "Toggle word wrap" })
+vim.keymap.set("n", "<leader>ud", Util.toggle_diagnostics, { desc = "Toggle diagnostics" })
 
 -- lazygit
 vim.keymap.set("n", "<leader>gg", function() Util.float_term({ "lazygit" }) end, { desc = "Lazygit (cwd)" })
@@ -66,24 +66,24 @@ vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 
 -- highlights under cursor
 if vim.fn.has("nvim-0.9.0") == 1 then
-  vim.keymap.set("n", "<leader>sH", vim.show_pos, { desc = "Highlight Groups at cursor" })
+  vim.keymap.set("n", "<leader>sH", vim.show_pos, { desc = "Highlight groups at cursor" })
 end
 
 -- floating terminal
 vim.keymap.set("n", "<leader>ft", function() Util.float_term() end, { desc = "Terminal (cwd)" })
 vim.keymap.set("n", "<leader>fT", function() Util.float_term(nil, { cwd = Util.get_root() }) end, { desc = "Terminal (root dir)" })
-vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", {desc = "Enter Normal Mode"})
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", {desc = "Enter normal mode"})
 
 -- windows
-vim.keymap.set("n", "<leader>ww", "<C-W>p", { desc = "other-window" })
-vim.keymap.set("n", "<leader>wd", "<C-W>c", { desc = "delete-window" })
-vim.keymap.set("n", "<leader>w-", "<C-W>s", { desc = "split-window-below" })
-vim.keymap.set("n", "<leader>w|", "<C-W>v", { desc = "split-window-right" })
+vim.keymap.set("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
+vim.keymap.set("n", "<leader>wd", "<C-W>c", { desc = "Delete window" })
+vim.keymap.set("n", "<leader>w-", "<C-W>s", { desc = "Split window below" })
+vim.keymap.set("n", "<leader>w|", "<C-W>v", { desc = "Split window right" })
 
 -- tabs
-vim.keymap.set("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last" })
-vim.keymap.set("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First" })
-vim.keymap.set("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
-vim.keymap.set("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next" })
-vim.keymap.set("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close" })
-vim.keymap.set("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous" })
+vim.keymap.set("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last tab" })
+vim.keymap.set("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First tab" })
+vim.keymap.set("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New tab" })
+vim.keymap.set("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next tab" })
+vim.keymap.set("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close tab" })
+vim.keymap.set("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
