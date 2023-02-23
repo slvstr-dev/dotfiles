@@ -19,7 +19,7 @@ brew "curl"                             # Get a file from an HTTP, HTTPS or FTP 
 brew "fzf"                              # Command-line fuzzy finder written in Go
 brew "gettext"                          # GNU internationalization (i18n) and localization (l10n) library
 brew "gh"                               # GitHub command-line tool
-brew "jesseduffield/lazygit/lazygit"    # Simple terminal UI for git commands
+brew "lazygit"                          # Simple terminal UI for git commands
 brew "libtool"                          # Generic library support script
 brew "mas"                              # Mac App Store command-line interface
 brew "ninja"                            # Small build system for use with gyp or CMake
@@ -28,6 +28,7 @@ brew "python@3.10"                      # Interpreted, interactive, object-orien
 brew "ripgrep"                          # Search tool like grep and The Silver Searcher
 brew "stow"                             # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "tree"                             # Display directories as trees (with optional color/HTML output)
+brew "vercel-cli"                       # Command-line interface for Vercel
 
 cask "kitty"                # GPU-based terminal emulator
 cask "postman"              # Collaboration platform for API development
