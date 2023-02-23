@@ -4,7 +4,9 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { "typescript", "tsx" })
+      if type(opts.ensure_installed) == "table" then
+        vim.list_extend(opts.ensure_installed, { "typescript", "tsx" })
+      end
     end,
   },
 
@@ -19,11 +21,11 @@ return {
       },
       setup = {
         tsserver = function(_, opts)
-          require("util").on_attach(function(client, buffer)
+          require("lazyvim.util").on_attach(function(client, buffer)
             if client.name == "tsserver" then
               -- stylua: ignore
-              vim.keymap.set( "n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize imports" })
-              vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename file", buffer = buffer })
+              vim.keymap.set("n", "<leader>co", "<cmd>TypescriptOrganizeImports<CR>", { buffer = buffer, desc = "Organize Imports" })
+              vim.keymap.set("n", "<leader>cR", "<cmd>TypescriptRenameFile<CR>", { desc = "Rename File", buffer = buffer })
             end
           end)
           require("typescript").setup({ server = opts })

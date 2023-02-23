@@ -1,5 +1,5 @@
 return {
-  -- better vim.notify
+  -- Better `vim.notify()`
   {
     "rcarriga/nvim-notify",
     keys = {
@@ -20,11 +20,21 @@ return {
         return math.floor(vim.o.columns * 0.75)
       end,
     },
+    init = function()
+      -- when noice is not enabled, install notify on VeryLazy
+      local Util = require("lazyvim.util")
+      if not Util.has("noice.nvim") then
+        Util.on_very_lazy(function()
+          vim.notify = require("notify")
+        end)
+      end
+    end,
   },
 
   -- better vim.ui
   {
     "stevearc/dressing.nvim",
+    lazy = true,
     init = function()
       ---@diagnostic disable-next-line: duplicate-set-field
       vim.ui.select = function(...)
@@ -43,18 +53,16 @@ return {
   {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
-    init = function()
-      vim.keymap.set("n", "<s-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev Buffer" })
-      vim.keymap.set("n", "<s-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
-      vim.keymap.set("n", "<leader>b[", "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous" })
-      vim.keymap.set("n", "<leader>b]", "<cmd>BufferLineCycleNext<cr>", { desc = "Next" })
-    end,
+    keys = {
+      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
+      { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
+    },
     opts = {
       options = {
         diagnostics = "nvim_lsp",
         always_show_bufferline = false,
         diagnostics_indicator = function(_, _, diag)
-          local icons = require("config.icons").icons.diagnostics
+          local icons = require("lazyvim.config").icons.diagnostics
           local ret = (diag.error and icons.Error .. diag.error .. " " or "")
             .. (diag.warning and icons.Warn .. diag.warning or "")
           return vim.trim(ret)
@@ -76,11 +84,7 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     opts = function(plugin)
-      if plugin.override then
-        require("util").deprecate("lualine.override", "lualine.opts")
-      end
-
-      local icons = require("config.icons").icons
+      local icons = require("lazyvim.config").icons
 
       local function fg(name)
         return function()
@@ -130,11 +134,7 @@ return {
               cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
               color = fg("Constant") ,
             },
-            {
-              require("lazy.status").updates,
-              cond = require("lazy.status").has_updates,
-              color = fg("Special"),
-            },
+            { require("lazy.status").updates, cond = require("lazy.status").has_updates, color = fg("Special") },
             {
               "diff",
               symbols = {
@@ -145,7 +145,7 @@ return {
             },
           },
           lualine_y = {
-            { "progress", separator = "", padding = { left = 1, right = 0 } },
+            { "progress", separator = " ", padding = { left = 1, right = 0 } },
             { "location", padding = { left = 0, right = 1 } },
           },
           lualine_z = {
@@ -162,7 +162,7 @@ return {
   -- indent guides for Neovim
   {
     "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPre",
+    event = { "BufReadPost", "BufNewFile" },
     opts = {
       -- char = "▏",
       char = "│",
@@ -176,7 +176,7 @@ return {
   {
     "echasnovski/mini.indentscope",
     version = false, -- wait till new 0.7.0 release to put it back on semver
-    event = "BufReadPre",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
       -- symbol = "▏",
       symbol = "│",
@@ -216,8 +216,8 @@ return {
       { "<leader>snl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
       { "<leader>snh", function() require("noice").cmd("history") end, desc = "Noice History" },
       { "<leader>sna", function() require("noice").cmd("all") end, desc = "Noice All" },
-      { "<c-f>", function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end, silent = true, expr = true, desc = "Scroll forward" },
-      { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll backward"},
+      { "<c-f>", function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end, silent = true, expr = true, desc = "Scroll forward", mode = {"i", "n", "s"} },
+      { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll backward", mode = {"i", "n", "s"}},
     },
   },
 
@@ -228,11 +228,12 @@ return {
     opts = function()
       local dashboard = require("alpha.themes.dashboard")
       local logo = [[
-███    ██ ███████  ██████  ██    ██ ██ ███    ███
-████   ██ ██      ██    ██ ██    ██ ██ ████  ████
-██ ██  ██ █████   ██    ██ ██    ██ ██ ██ ████ ██
-██  ██ ██ ██      ██    ██  ██  ██  ██ ██  ██  ██
-██   ████ ███████  ██████    ████   ██ ██      ██
+      ██╗      █████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z
+      ██║     ██╔══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║      Z    
+      ██║     ███████║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║   z       
+      ██║     ██╔══██║ ███╔╝    ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║ z         
+      ███████╗██║  ██║███████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║
+      ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝
       ]]
 
       dashboard.section.header.val = vim.split(logo, "\n")
@@ -240,32 +241,23 @@ return {
         dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
         dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
         dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
-        dashboard.button(
-          "g",
-          " " .. " Find text",
-          [[<cmd>lua require("which-key").show("g", {mode = "n", auto = true})<cr>]]
-        ),
-        dashboard.button(
-          "c",
-          " " .. " Config",
-          [[<cmd>lua require("which-key").show("c", {mode = "n", auto = true})<cr>]]
-        ),
+        dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
+        dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
         dashboard.button("s", "勒" .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
         dashboard.button("l", "鈴" .. " Lazy", ":Lazy<CR>"),
         dashboard.button("q", " " .. " Quit", ":qa<CR>"),
       }
       for _, button in ipairs(dashboard.section.buttons.val) do
-        button.opts.hl = "Normal"
-        button.opts.hl_shortcut = "String"
+        button.opts.hl = "AlphaButtons"
+        button.opts.hl_shortcut = "AlphaShortcut"
       end
-      dashboard.section.footer.opts.hl = "Comment"
-      dashboard.section.header.opts.hl = "String"
+      dashboard.section.footer.opts.hl = "Type"
+      dashboard.section.header.opts.hl = "AlphaHeader"
+      dashboard.section.buttons.opts.hl = "AlphaButtons"
       dashboard.opts.layout[1].val = 8
       return dashboard
     end,
     config = function(_, dashboard)
-      vim.b.miniindentscope_disable = true
-
       -- close Lazy and re-open when the dashboard is ready
       if vim.o.filetype == "lazy" then
         vim.cmd.close()
@@ -294,20 +286,28 @@ return {
   -- lsp symbol navigation for lualine
   {
     "SmiteshP/nvim-navic",
+    lazy = true,
     init = function()
       vim.g.navic_silence = true
-      require("util").on_attach(function(client, buffer)
+      require("lazyvim.util").on_attach(function(client, buffer)
         if client.server_capabilities.documentSymbolProvider then
           require("nvim-navic").attach(client, buffer)
         end
       end)
     end,
-    opts = { separator = " ", highlight = true, depth_limit = 5 },
+    opts = function()
+      return {
+        separator = " ",
+        highlight = true,
+        depth_limit = 5,
+        icons = require("lazyvim.config").icons.kinds,
+      }
+    end,
   },
 
   -- icons
-  "nvim-tree/nvim-web-devicons",
+  { "nvim-tree/nvim-web-devicons", lazy = true },
 
   -- ui components
-  "MunifTanjim/nui.nvim",
+  { "MunifTanjim/nui.nvim", lazy = true },
 }

@@ -1,3 +1,5 @@
+-- This file is automatically loaded by plugins.config
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -10,7 +12,6 @@ opt.conceallevel = 3 -- Hide * markup for bold and italic
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
 opt.expandtab = true -- Use spaces instead of tabs
-opt.formatoptions = "jcroqlnt" -- tcqj
 opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
 opt.ignorecase = true -- Ignore case
@@ -21,7 +22,7 @@ opt.mouse = "a" -- Enable mouse mode
 opt.number = true -- Print line number
 opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Maximum number of entries in a popup
-opt.relativenumber = true -- Relative line numbers
+opt.relativenumber = false -- Relative line numbers
 opt.scrolloff = 4 -- Lines of context
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 opt.shiftround = true -- Round indent
@@ -57,4 +58,4 @@ vim.g.markdown_recommended_style = 0
 vim.cmd([[set iskeyword+=-]])
 
 -- disable auto comment on new line
-vim.cmd([[set formatoptions-=cro]])
+vim.cmd([[autocmd FileType * set formatoptions-=cro]])
