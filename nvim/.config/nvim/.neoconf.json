@@ -7,9 +7,8 @@
   },
   "neoconf": {
     "plugins": {
-      "sumneko_lua": {
-        "enabled": true,
-        "enabled_for_neovim_config": true
+      "lua_ls": {
+        "enabled": true
       }
     }
   }
