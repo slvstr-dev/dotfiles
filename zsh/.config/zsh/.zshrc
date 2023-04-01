@@ -1,3 +1,14 @@
+export PATH="$PATH:/opt/homebrew/bin"
+
+if type brew &>/dev/null
+then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+    FPATH="${HOME}/.zsh:${FPATH}"
+
+    autoload -Uz compinit
+    compinit
+fi
+
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
@@ -44,3 +55,6 @@ zsh_add_file "zsh-prompt"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_completion "esc/conda-zsh-completion" false
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init - zsh)"
