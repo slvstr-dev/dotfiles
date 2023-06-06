@@ -14,7 +14,7 @@ cask "spotify"  # Music streaming service
 brew "curl"                             # Get a file from an HTTP, HTTPS or FTP server
 brew "fzf"                              # Command-line fuzzy finder written in Go
 brew "gh"                               # GitHub command-line tool
-brew "lazygit"                          # Simple terminal UI for git commands
+brew "jesseduffield/lazygit/lazygit"     # Simple terminal UI for git commands
 brew "mas"                              # Mac App Store command-line interface
 brew "stow"                             # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "tree"                             # Display directories as trees (with optional color/HTML output)
