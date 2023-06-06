@@ -1,1 +1,0 @@
-hs.loadSpoon('ControlEscape'):start()

@@ -21,7 +21,7 @@ brew bundle --file ~/dotfiles/homebrew/.config/homebrew/Brewfile
 Updating can be done by running this oneliner:
 
 ```
-sudo softwareupdate -ia --verbose && brew bundle --verbose && brew cleanup --verbose && brew doctor --verbose=
+sudo softwareupdate -ia --verbose && brew bundle --verbose && brew cleanup --verbose && brew doctor --verbose
 ```
 
 ## Stow
@@ -47,42 +47,7 @@ At this point Kitty, my terminal of choice, should be working and configurated. 
 
 **NOTE** If you're on a mac with an Intel chip you should see errors in your terminal about untracable `/opt/homebrew/bin/brew`-folders. You can resolve them by removing the contents of line one to five from the original `.zprofile` in the dotfiles-folder.
 
-# Neovim
-
-Next, install Neovim. The most reliable way of installing is doing it from source by running the following commands:
-
-```sh
-cd ~
-git clone https://github.com/neovim/neovim.git
-cd neovim
-git checkout release-0.8
-make CMAKE_BUILD_TYPE=Release
-sudo make install
-```
-
-**NOTE** Updating to newer versions is as easy as switching branches.
-
-Open `nvim` and check if you need to fix something in advance:
-
-```
-:checkhealth
-```
-
-Inside Neovim you should install & update the plugins with Lazy:
-
-```
-space + l
-```
-
-Language Server Providers (lsp's) should be managed manually through Mason to fit your needs:
-
-```
-space + c + m
-```
-
-# Optional setup
-
-## Vercel CLI (remove 'vercel-cli' from Brewfile when unused)
+## Vercel CLI
 
 The vercel login command allows you to login to your Vercel account through Vercel CLI.
 
@@ -115,14 +80,6 @@ Enable GitHub Copilot in your Neovim configuration, or with the Neovim command.
 ```
 :Copilot enable
 ```
-
-## Hammerspoon (remove "hammerspoon" from Brewfile when unused)
-
-For a better workflow I suggest using Hammerspoon to remap Caps Lock.
-
-Open System Preferences, navigate to `Keyboard` > `Modifier Keys`, and set the `Caps Lock key` to `Control`. After that you should set Hammerspoon to launch at login under `Preferences...`. Lastly, check the `Console...` to if the config loaded without any problems.
-
-**NOTE** If there is an error it's most likely an issue with the spoon. Try reïnstalling [ControlEscape](https://github.com/jasonrudolph/ControlEscape.spoon/releases/tag/v1.0.1) by downloading `ControlEscape.spoon.zip` and moving `ControlEscape.spoon` to `~/dotfiles/hammerspoon/.hammerspoon/Spoons`.
 
 ---
 
