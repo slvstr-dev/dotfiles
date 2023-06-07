@@ -27,4 +27,3 @@ cask "postman"              # Collaboration platform for API development
 cask "visual-studio-code"   # Open-source code editor
 
 mas "Xcode", id: 497799835  # Developer tools
-
