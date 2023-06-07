@@ -27,7 +27,7 @@ brew bundle --file ~/dotfiles/homebrew/.config/homebrew/Brewfile
 Updating can be done by running this oneliner:
 
 ```
-sudo softwareupdate -ia --verbose && brew bundle --verbose && brew cleanup --verbose && brew doctor --verbose
+sudo cd ~/dotfiles/homebrew/.config/homebrew softwareupdate -ia --verbose && brew bundle --verbose && brew cleanup --verbose && brew doctor --verbose
 ```
 
 ## Stow
