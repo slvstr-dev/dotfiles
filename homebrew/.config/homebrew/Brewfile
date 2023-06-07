@@ -3,6 +3,7 @@ tap "homebrew/bundle"
 
 # Productivity
 cask "arc"                  # Chromium based browser
+cask "firefox"               # Web browser
 cask "raycast"              # Control your tools with a few keystrokes
 
 mas "Slack", id: 803453959  # Team communication and collaboration software
@@ -16,6 +17,7 @@ brew "fzf"                              # Command-line fuzzy finder written in G
 brew "gh"                               # GitHub command-line tool
 brew "jesseduffield/lazygit/lazygit"     # Simple terminal UI for git commands
 brew "mas"                              # Mac App Store command-line interface
+brew "rbenv"                            # Ruby version manager
 brew "stow"                             # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "tree"                             # Display directories as trees (with optional color/HTML output)
 brew "vercel-cli"                       # Command-line interface for Vercel

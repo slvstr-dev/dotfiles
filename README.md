@@ -7,16 +7,22 @@ This repo contains all the dotfiles I use to setup my system. Take a look or rea
 I use Homebrew so I don't have to download, and update, the apps I use seperately.
 
 ```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+After Homebrew is finished installing you should run the script:
+
+```
 brew install wget
 ```
 
-After Homebrew is finished installing you are now able to install all the applications listed in the Brewfile.
-
-**NOTE** Downloading large applications, like Xcode, will take a while. Adjust the Brewfile by removing the line of the application you don't want to install.
+Next; install all the applications listed in the Brewfile.
 
 ```
 brew bundle --file ~/dotfiles/homebrew/.config/homebrew/Brewfile
 ```
+
+**NOTE** Downloading large applications, like Xcode, will take a while. Adjust the Brewfile by removing the line of the application you don't want to install.
 
 Updating can be done by running this oneliner:
 
@@ -66,20 +72,6 @@ gh auth login
 ```
 
 **NOTE** Additional information can be found in the [GitHub CLI manual](https://cli.github.com/manual/).
-
-## Github Copilot
-
-To configure GitHub Copilot, open Neovim and enter the following command.
-
-```
-:Copilot setup
-```
-
-Enable GitHub Copilot in your Neovim configuration, or with the Neovim command.
-
-```
-:Copilot enable
-```
 
 ---
 
