@@ -4,7 +4,7 @@ This repo contains all the dotfiles I use to setup my system. Take a look or rea
 
 ## Homebrew
 
-I use Homebrew so I don't have to download, and update, the apps I use seperately.
+I use Homebrew so I can automate downloading, and updating the apps I use commonly.
 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
