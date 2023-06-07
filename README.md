@@ -63,7 +63,7 @@ vercel login
 
 **NOTE** Additional information can be found in the [Vercel CLI Overview](https://vercel.com/docs/cli).
 
-## GitHub CLI (remove 'gh' from Brewfile when unused)
+## GitHub CLI
 
 To authenticate with a GitHub instance, run:
 
