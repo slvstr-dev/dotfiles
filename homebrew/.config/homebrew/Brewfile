@@ -17,6 +17,8 @@ brew "fzf"                              # Command-line fuzzy finder written in G
 brew "gh"                               # GitHub command-line tool
 brew "jesseduffield/lazygit/lazygit"    # Simple terminal UI for git commands
 brew "mas"                              # Mac App Store command-line interface
+brew "n"                                # Node.js version manager
+brew "pnpm"                             # Fast, disk space efficient package manager
 brew "rbenv"                            # Ruby version manager
 brew "stow"                             # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "tree"                             # Display directories as trees (with optional color/HTML output)
