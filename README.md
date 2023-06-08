@@ -76,3 +76,15 @@ gh auth login
 ---
 
 Congrats 🎉, you're done setting up your mac using my dotfiles! Have fun using/adjusting them!
+
+## Ni
+
+To assure I'm using the right package manager I use [ni](https://github.com/antfu/ni), which you can install running this script:
+
+```
+npm i -g @antfu/ni
+```
+
+---
+
+Congrats 🎉, you're done setting up your mac using my dotfiles! Have fun using/adjusting them!
