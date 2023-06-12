@@ -23,6 +23,7 @@ brew "rbenv"                            # Ruby version manager
 brew "stow"                             # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "tree"                             # Display directories as trees (with optional color/HTML output)
 brew "vercel-cli"                       # Command-line interface for Vercel
+brew 'watchman'                         # File watching service
 
 cask "kitty"                # GPU-based terminal emulator
 cask "postman"              # Collaboration platform for API development
