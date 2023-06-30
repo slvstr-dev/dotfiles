@@ -3,6 +3,7 @@ tap "homebrew/bundle"
 
 # Productivity
 cask "arc"                  # Chromium based browser
+cask "figma"                # Collaborative interface design tool
 cask "firefox"               # Web browser
 cask "raycast"              # Control your tools with a few keystrokes
 
