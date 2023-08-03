@@ -22,6 +22,12 @@ Next; install all the applications listed in the Brewfile.
 brew bundle --file ~/dotfiles/homebrew/.config/homebrew/Brewfile
 ```
 
+**NOTE** Currently the node version set through n isn't used when another version of node is already installed through Homebrew. If this is the case you should remove node from Homebrew:
+
+```
+brew uninstall --ignore-dependencies node
+```
+
 **NOTE** Downloading large applications, like Xcode, will take a while. Adjust the Brewfile by removing the line of the application you don't want to install.
 
 Updating can be done by running this oneliner:
