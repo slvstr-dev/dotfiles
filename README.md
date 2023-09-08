@@ -2,6 +2,8 @@
 
 This repo contains all the dotfiles I use to setup my system. Take a look or read through the steps, in order and before installing, to try them out yourself.
 
+![Screenshot of project](https://raw.githubusercontent.com/slvstr-dev/dotfiles/master/screenshot.png)
+
 ## Homebrew
 
 I use Homebrew so I can automate downloading, and updating the apps I use commonly.
