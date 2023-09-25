@@ -28,6 +28,7 @@ brew bundle --file ~/dotfiles/homebrew/.config/homebrew/Brewfile
 
 ```
 brew uninstall --ignore-dependencies node
+brew uninstall --force node
 ```
 
 **NOTE** Downloading large applications, like Xcode, will take a while. Adjust the Brewfile by removing the line of the application you don't want to install.
