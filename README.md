@@ -67,7 +67,7 @@ stow */
 
 At this point Kitty, my terminal of choice, should be working and configurated. The easiest way to check this is by determine if the [catppuccin](https://github.com/catppuccin/kitty) theme is being used.
 
-For better DX I like to make use a patched font, called [FiraCode Nerd Font](https://www.nerdfonts.com/font-downloads). After succesfully downloading the font you should drag the unzipped folder to an opened window of the preinstalled Font Book-app.
+For better DX I like to make use a patched font, called [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads). After succesfully downloading the font you should drag the unzipped folder to an opened window of the preinstalled Font Book-app.
 
 ### Vercel CLI
 
