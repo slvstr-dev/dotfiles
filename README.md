@@ -6,7 +6,7 @@ This repo contains all the dotfiles I use to setup my system. Take a look or rea
 
 ## Before starting
 
-- Clone this repository
+- Clone this repository to the root of your mac.
 - Install command line developer tools.
 
 ## Instructions
