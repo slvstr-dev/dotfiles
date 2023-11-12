@@ -48,7 +48,7 @@ cd ~/dotfiles/homebrew/.config/homebrew && sudo softwareupdate -ia --verbose && 
 
 ### Stow
 
-Stow will be used to create symlinks the configs inside the dotfiles folder. This might cause conficts at certain moments. Most of them can be resolved by running the commands below:
+Stow will be used to create symlinks the configs inside the dotfiles folder. This might cause conficts at certain moments. You might have to delete the `.zsh`-related files from your root folder first. Most of the other conflicts can be resolved by running the commands below:
 
 ```sh
 cd ~/dotfiles
