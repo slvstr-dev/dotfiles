@@ -91,11 +91,7 @@ gh auth login
 
 ### Ni
 
-To assure I'm using the right package manager I use [ni](https://github.com/antfu/ni), which you can install running this script:
-
-```
-npm i -g @antfu/ni
-```
+To assure I'm using the right package manager I use [ni](https://github.com/antfu/ni).
 
 ### Raycast
 
