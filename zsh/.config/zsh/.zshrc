@@ -1,3 +1,4 @@
+# homebrew
 export PATH="/opt/homebrew/bin:$PATH"
 
 if type brew &>/dev/null
@@ -9,6 +10,10 @@ then
     compinit
 fi
 
+# rtx
+eval "$(rtx activate zsh)"
+
+# android
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
@@ -18,9 +23,7 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # pnpm
 export PNPM_HOME="/Users/sylvesterhofstra/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
-# pnpm end
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #!/bin/sh
 
@@ -40,21 +43,18 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 
-# Colors
+# colors
 autoload -Uz colors && colors
 
-# Useful Functions
+# useful Functions
 source "$ZDOTDIR/zsh-functions"
 
-# Normal files to source
+# normal files to source
 zsh_add_file "zsh-exports"
 zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-prompt"
 
-# Plugins
+# plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_completion "esc/conda-zsh-completion" false
-
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - zsh)"
