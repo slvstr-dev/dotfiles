@@ -31,19 +31,18 @@ Next; install all the applications listed in the Brewfile.
 brew bundle --file ~/dotfiles/homebrew/.config/homebrew/Brewfile
 ```
 
-**NOTE** Currently the node version set through n isn't used when another version of node is already installed through Homebrew. If this is the case you should remove node from Homebrew:
-
-```
-brew uninstall --ignore-dependencies node
-brew uninstall --force node
-```
-
 **NOTE** Downloading large applications, like Xcode, will take a while. Adjust the Brewfile by removing the line of the application you don't want to install.
 
 Updating can be done by running this oneliner:
 
 ```
 cd ~/dotfiles/homebrew/.config/homebrew && sudo softwareupdate -ia --verbose && brew bundle --verbose && brew cleanup --verbose && brew doctor --verbose
+```
+
+Removing homebrew dependencies not listed in the brewfile by running:
+
+```
+~/dotfiles/homebrew/.config/homebrew && brew bundle --force cleanup
 ```
 
 ### Stow
@@ -89,9 +88,9 @@ gh auth login
 
 **NOTE** Additional information can be found in the [GitHub CLI manual](https://cli.github.com/manual/).
 
-### Ni
+### rtx
 
-To assure I'm using the right package manager I use [ni](https://github.com/antfu/ni).
+To assure I'm using the right tool versions I use [rtx](https://github.com/jdx/rtx#register-shell-hook).
 
 ### Raycast
 
