@@ -1,7 +1,6 @@
 # Homebrew
 tap "homebrew/bundle"       # Bundle Brewfile
 tap "jesseduffield/lazygit" # Simple terminal UI for git commands
-tap "xcodesorg/made" # Install and switch between multiple versions of Xcode
 
 # Productivity
 cask "arc"                  # Chromium based browser
@@ -29,7 +28,10 @@ brew "tree"                             # Display directories as trees (with opt
 brew "vercel-cli"                       # Command-line interface for Vercel
 brew 'watchman'                         # File watching service
 brew "aria2"                            # Lightweight multi-protocol & multi-source command-line download utility
+brew "xcodes"                           # Install and switch between multiple versions of Xcode
 
 cask "kitty"                # GPU-based terminal emulator
 cask "postman"              # Collaboration platform for API development
 cask "visual-studio-code"   # Open-source code editor
+
+mas "Xcode", id: 497799835  # Developer tools
