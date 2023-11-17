@@ -1,37 +1,29 @@
 # Homebrew
 tap "homebrew/bundle"       # Bundle Brewfile
-tap "jesseduffield/lazygit" # Simple terminal UI for git commands
 
 # Productivity
 cask "arc"                  # Chromium based browser
 cask "figma"                # Collaborative interface design tool
-cask "firefox"               # Web browser
+cask "firefox"              # Web browser
 cask "raycast"              # Control your tools with a few keystrokes
-
 mas "Slack", id: 803453959  # Team communication and collaboration software
 
 # Entertainment
-cask "spotify"  # Music streaming service
+cask "spotify"              # Music streaming service
 
 # Developer tools
-brew "curl"                             # Get a file from an HTTP, HTTPS or FTP server
-brew "fzf"                              # Command-line fuzzy finder written in Go
-brew "gh"                               # GitHub command-line tool
-brew "jesseduffield/lazygit/lazygit"    # Simple terminal UI for git commands
-brew "mas"                              # Mac App Store command-line interface
-brew "n"                                # Node.js version manager
-brew "yarn"                             # JavaScript package manager
-brew "pnpm"                             # Fast, disk space efficient package manager
-brew "rbenv"                            # Ruby version manager
-brew "stow"                             # Organize software neatly under a single directory tree (e.g. /usr/local)
-brew "tree"                             # Display directories as trees (with optional color/HTML output)
-brew "vercel-cli"                       # Command-line interface for Vercel
-brew 'watchman'                         # File watching service
-brew "aria2"                            # Lightweight multi-protocol & multi-source command-line download utility
-brew "xcodes"                           # Install and switch between multiple versions of Xcode
-
+brew "aria2"                # Download with resuming and segmented downloading
+brew "curl"                 # Get a file from an HTTP, HTTPS or FTP server
+brew "gh"                   # GitHub command-line tool
 cask "kitty"                # GPU-based terminal emulator
+brew "lazygit"              # Simple terminal UI for git commands
+brew "mas"                  # Mac App Store command-line interface
 cask "postman"              # Collaboration platform for API development
+brew "rtx"                  # Polyglot runtime manager (asdf rust clone)
+brew "stow"                 # Organize software neatly under a single directory tree (e.g. /usr/local)
+brew "tree"                 # Display directories as trees (with optional color/HTML output)
+brew "vercel-cli"           # Command-line interface for Vercel
 cask "visual-studio-code"   # Open-source code editor
-
+brew 'watchman'             # Watch files and take action when they change 
+brew "xcodes"               # Best command-line tool to install and switch between multiple versions of Xcode
 mas "Xcode", id: 497799835  # Developer tools
