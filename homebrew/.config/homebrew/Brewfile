@@ -28,7 +28,5 @@ brew "xcodes"               # Best command-line tool to install and switch betwe
 cask "kitty"                # GPU-based terminal emulator
 cask "postman"              # Collaboration platform for API development
 cask "visual-studio-code"   # Open-source code editor
-cask "zulu11"               # OpenJDK distribution from Azul
-cask "zeplin"               # Share, organize and collaborate on designs
 
 mas "Xcode", id: 497799835  # Developer tools
