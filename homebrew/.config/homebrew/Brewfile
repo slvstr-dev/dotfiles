@@ -28,5 +28,3 @@ brew "xcodes"               # Best command-line tool to install and switch betwe
 cask "kitty"                # GPU-based terminal emulator
 cask "postman"              # Collaboration platform for API development
 cask "visual-studio-code"   # Open-source code editor
-
-mas "Xcode", id: 497799835  # Developer tools
