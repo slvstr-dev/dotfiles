@@ -1,43 +1,84 @@
 # dotfiles
 
-Welcome to my dotfiles repository! This collection includes all the configuration files I use to set up and customize my system. Feel free to explore and follow the step-by-step instructions to apply these configurations to your own machine.
+Welcome to my dotfiles repository! This collection comprises all the configuration files I utilize to set up and customize my system. Feel free to explore and follow the step-by-step instructions to apply these configurations to your own machine.
 
 ![Screenshot of project](https://raw.githubusercontent.com/slvstr-dev/dotfiles/master/screenshot.png)
 
 ## Before You Start
 
-Before diving into the setup process, ensure you complete the following steps:
+Ensure a smooth setup by following these steps:
 
-1. Clone this repository to the root of your macOS system.
-2. Install the command line developer tools.
+1. **Clone Repository:**
+   Use the following command to clone the repository to the root of your macOS system:
+
+   ```bash
+   git clone https://github.com/slvstr-dev/dotfiles.git
+   ```
+
+2. **Install Developer Tools:**
+   Ensure the necessary developer tools are installed with:
+
+   ```bash
+   xcode-select --install
+   ```
+
+   Follow on-screen prompts to complete the installation.
+
+3. **Update System Software:**
+   Install available software updates with detailed information:
+
+   ```bash
+   sudo softwareupdate -ia --verbose
+   ```
+
+   Ensure your system is up-to-date before proceeding with the setup.
 
 ## Instructions
 
 ### Homebrew
 
-I leverage Homebrew to automate the download and update process for commonly used applications. Follow these commands:
+I leverage Homebrew to automate the download and update process for commonly used applications.
+
+#### Install
+
+Follow these commands:
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+cd ~/dotfiles/homebrew/.config/homebrew
 brew install wget
-brew bundle --file ~/dotfiles/homebrew/.config/homebrew/Brewfile
+brew bundle install
 ```
+
+#### Update
 
 To update, run:
 
 ```bash
 cd ~/dotfiles/homebrew/.config/homebrew
-sudo softwareupdate -ia --verbose
 brew bundle --verbose
 brew cleanup --verbose
 brew doctor --verbose
 ```
+
+#### Cleanup
 
 Remove Homebrew dependencies not listed in the Brewfile:
 
 ```bash
 cd ~/dotfiles/homebrew/.config/homebrew
 brew bundle --force cleanup
+```
+
+#### Reinstall
+
+Reinstall Homebrew dependencies from the Brewfile:
+
+```bash
+cd ~/dotfiles/homebrew/.config/homebrew
+brew uninstall --force $(brew list)
+brew autoremove
+brew bundle install
 ```
 
 ### Stow
@@ -50,13 +91,15 @@ find . -name ".DS_Store" -delete
 stow */
 ```
 
-If conflicts persist, manually merge contents of the zsh-folder.
+> [!NOTE]
+> If conflicts persist, manually merge contents of the zsh-folder.
 
 ### Kitty
 
 Ensure that Kitty, my terminal of choice, is working and configured. Confirm the usage of the [catppuccin](https://github.com/catppuccin/kitty) theme.
 
-For an enhanced experience, use the [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads) as a patched font.
+> [!TIP]
+> For an enhanced experience, use the [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads) as a patched font.
 
 ### Vercel CLI
 
@@ -66,7 +109,8 @@ Log in to your Vercel account through Vercel CLI:
 vercel login
 ```
 
-For additional information, refer to the [Vercel CLI Overview](https://vercel.com/docs/cli).
+> [!NOTE]
+> For additional information, refer to the [Vercel CLI Overview](https://vercel.com/docs/cli).
 
 ### GitHub CLI
 
@@ -76,7 +120,8 @@ Authenticate with a GitHub instance:
 gh auth login
 ```
 
-Explore further details in the [GitHub CLI manual](https://cli.github.com/manual/).
+> [!NOTE]
+> Explore further details in the [GitHub CLI manual](https://cli.github.com/manual/).
 
 ### mise
 
