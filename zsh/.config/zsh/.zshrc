@@ -1,8 +1,9 @@
-# homebrew
+# Homebrew Configurations
+# -----------------------
+
 export PATH="/opt/homebrew/bin:$PATH"
 
-if type brew &>/dev/null
-then
+if command -v brew &> /dev/null; then
     FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
     FPATH="${HOME}/.zsh:${FPATH}"
 
@@ -10,51 +11,47 @@ then
     compinit
 fi
 
-# rtx
-eval "$(rtx activate zsh)"
 
-# android
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+# Development Configurations
+# --------------------------
 
-# pnpm
+## Mise
+eval "$(mise activate zsh)"
+
+## PNPM
 export PNPM_HOME="/Users/sylvesterhofstra/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
 
-#!/bin/sh
+# Zsh Configurations
+# -------------------
 
-# some useful options (man zshoptions)
+## Options and Settings
 setopt autocd extendedglob nomatch menucomplete
 setopt interactive_comments
-stty stop undef		# Disable ctrl-s to freeze terminal.
+stty stop undef
 zle_highlight=('paste:none')
-
-# beeping is annoying
 unsetopt BEEP
 
-# completions
+## Completions
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 
-# colors
+## Colors
 autoload -Uz colors && colors
 
-# useful Functions
+## Useful Functions and Aliases
 source "$ZDOTDIR/zsh-functions"
+source "$ZDOTDIR/zsh-aliases"
 
-# normal files to source
+## Files to Source
 zsh_add_file "zsh-exports"
-zsh_add_file "zsh-aliases"
 zsh_add_file "zsh-prompt"
 
-# plugins
+## Zsh Plugins and Completions
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_completion "esc/conda-zsh-completion" false
