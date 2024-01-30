@@ -103,25 +103,19 @@ Ensure that Kitty, my terminal of choice, is working and configured. Confirm the
 
 ### Vercel CLI
 
-Log in to your Vercel account through Vercel CLI:
+Log in to your Vercel account through [Vercel CLI](https://vercel.com/docs/cli)]:
 
 ```bash
 vercel login
 ```
 
-> [!NOTE]
-> For additional information, refer to the [Vercel CLI Overview](https://vercel.com/docs/cli).
-
 ### GitHub CLI
 
-Authenticate with a GitHub instance:
+Authenticate with a [GitHub instance](https://cli.github.com/manual/):
 
 ```bash
 gh auth login
 ```
-
-> [!NOTE]
-> Explore further details in the [GitHub CLI manual](https://cli.github.com/manual/).
 
 ### mise
 
