@@ -1,101 +1,91 @@
 # dotfiles
 
-This repo contains all the dotfiles I use to setup my system. Take a look or read through the steps, in order and before installing, to try them out yourself.
+Welcome to my dotfiles repository! This collection includes all the configuration files I use to set up and customize my system. Feel free to explore and follow the step-by-step instructions to apply these configurations to your own machine.
 
 ![Screenshot of project](https://raw.githubusercontent.com/slvstr-dev/dotfiles/master/screenshot.png)
 
-## Before starting
+## Before You Start
 
-- Clone this repository to the root of your mac.
-- Install command line developer tools.
+Before diving into the setup process, ensure you complete the following steps:
+
+1. Clone this repository to the root of your macOS system.
+2. Install the command line developer tools.
 
 ## Instructions
 
 ### Homebrew
 
-I use Homebrew so I can automate downloading, and updating the apps I use commonly.
+I leverage Homebrew to automate the download and update process for commonly used applications. Follow these commands:
 
-```
+```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-After Homebrew is finished installing you should run the script:
-
-```
 brew install wget
-```
-
-Next; install all the applications listed in the Brewfile.
-
-```
 brew bundle --file ~/dotfiles/homebrew/.config/homebrew/Brewfile
 ```
 
-**NOTE** Downloading large applications, like Xcode, will take a while. Adjust the Brewfile by removing the line of the application you don't want to install.
+To update, run:
 
-Updating can be done by running this oneliner:
-
+```bash
+cd ~/dotfiles/homebrew/.config/homebrew
+sudo softwareupdate -ia --verbose
+brew bundle --verbose
+brew cleanup --verbose
+brew doctor --verbose
 ```
-cd ~/dotfiles/homebrew/.config/homebrew && sudo softwareupdate -ia --verbose && brew bundle --verbose && brew cleanup --verbose && brew doctor --verbose
-```
 
-Removing homebrew dependencies not listed in the brewfile by running:
+Remove Homebrew dependencies not listed in the Brewfile:
 
-```
-~/dotfiles/homebrew/.config/homebrew && brew bundle --force cleanup
+```bash
+cd ~/dotfiles/homebrew/.config/homebrew
+brew bundle --force cleanup
 ```
 
 ### Stow
 
-Stow will be used to create symlinks the configs inside the dotfiles folder. This might cause conficts at certain moments. You might have to delete the `.zsh`-related files from your root folder first. Most of the other conflicts can be resolved by running the commands below:
+Use Stow to create symlinks for the configs inside the dotfiles folder. Resolve conflicts by removing `.zsh`-related files from your root folder:
 
-```sh
+```bash
 cd ~/dotfiles
 find . -name ".DS_Store" -delete
-```
-
-Now you should be able to link the configs without any errors.
-
-```sh
 stow */
 ```
 
-**NOTE** If you do get errors it might be because of your zsh configuration. You might have some settings you don't want to override, so be sure to resolve these issues manually by merging the contents of the zsh-folder manually.
+If conflicts persist, manually merge contents of the zsh-folder.
 
 ### Kitty
 
-At this point Kitty, my terminal of choice, should be working and configurated. The easiest way to check this is by determine if the [catppuccin](https://github.com/catppuccin/kitty) theme is being used.
+Ensure that Kitty, my terminal of choice, is working and configured. Confirm the usage of the [catppuccin](https://github.com/catppuccin/kitty) theme.
 
-For better DX I like to make use a patched font, called [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads). After succesfully downloading the font you should drag the unzipped folder to an opened window of the preinstalled Font Book-app.
+For an enhanced experience, use the [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads) as a patched font.
 
 ### Vercel CLI
 
-The vercel login command allows you to login to your Vercel account through Vercel CLI.
+Log in to your Vercel account through Vercel CLI:
 
-```
+```bash
 vercel login
 ```
 
-**NOTE** Additional information can be found in the [Vercel CLI Overview](https://vercel.com/docs/cli).
+For additional information, refer to the [Vercel CLI Overview](https://vercel.com/docs/cli).
 
 ### GitHub CLI
 
-To authenticate with a GitHub instance, run:
+Authenticate with a GitHub instance:
 
-```
+```bash
 gh auth login
 ```
 
-**NOTE** Additional information can be found in the [GitHub CLI manual](https://cli.github.com/manual/).
+Explore further details in the [GitHub CLI manual](https://cli.github.com/manual/).
 
-### rtx
+### mise
 
-To assure I'm using the right tool versions I use [rtx](https://github.com/jdx/rtx#register-shell-hook).
+Ensure the right tool versions with [mise-en-place](https://github.com/jdx/mise).
 
 ### Raycast
 
-Disable Spotlight search hotkey and set this as the [default hotkey for Raycast](https://manual.raycast.com/hotkey).
+Disable Spotlight search hotkey and set it as the [default hotkey for Raycast](https://manual.raycast.com/hotkey).
 
 ---
 
-Congrats 🎉, you're done setting up your mac using my dotfiles! Have fun using/adjusting them!
+Congratulations 🎉, you've successfully set up your macOS using my dotfiles! Feel free to enjoy and customize them to suit your preferences!
