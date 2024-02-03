@@ -2,3 +2,4 @@
 node = "lts"
 pnpm = "latest"
 ruby = "latest"
+yarn = "latest"
