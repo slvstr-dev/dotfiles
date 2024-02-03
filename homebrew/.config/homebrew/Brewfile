@@ -24,7 +24,7 @@ brew "vercel-cli"           # Command-line interface for Vercel
 brew 'watchman'             # Watch files and take action when they change 
 brew "xcodes"               # Best command-line tool to install and switch between multiple versions of Xcode
 
-# Optional formulae
+# Optional
 # cask "figma"                # Collaborative interface design tool
 # mas "Slack", id: 803453959  # Team communication and collaboration software
 # mas "Xcode", id: 497799835  # Developer tools
