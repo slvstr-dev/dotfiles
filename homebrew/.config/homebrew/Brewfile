@@ -3,18 +3,20 @@ tap "homebrew/bundle"       # Bundle Brewfile
 
 # Development Tools
 brew "aria2"                # Download with resuming and segmented downloading
-brew "curl"                 # Get a file from an HTTP, HTTPS or FTP server
+brew "curl"                 # Retrieve files from HTTP, HTTPS, or FTP servers
 brew "gh"                   # GitHub command-line tool
-brew "lazygit"              # Simple terminal UI for git commands
-brew "mise"                 # Polyglot runtime manager (asdf rust clone)
-brew "stow"                 # Organize software neatly under a single directory tree (e.g. /usr/local)
+brew "gmp"                  # GNU Multiple Precision Arithmetic Library
+brew "lazygit"              # Simple terminal UI for Git commands
+brew "libyaml"              # YAML Parser and emitter library
+brew "mise"                 # Polyglot runtime manager (ASDF Rust clone)
+brew "openssl"              # Cryptography and SSL/TLS Toolkit
+brew "readline"             # Library for command-line editing
+brew "stow"                 # Organize software neatly under a single directory tree (e.g., /usr/local)
 brew "tree"                 # Display directories as trees (with optional color/HTML output)
 brew "vercel-cli"           # Command-line interface for Vercel
 brew "watchman"             # Watch files and take action when they change 
-brew "xcodes"               # Best command-line tool to install and switch between multiple versions of Xcode
-
-# Internet Tools
 brew "wget"                 # Internet file retriever
+brew "xcodes"               # Best command-line tool to install and switch between multiple versions of Xcode
 
 # Browsers
 cask "arc"                  # Chromium based browser

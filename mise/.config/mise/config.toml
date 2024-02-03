@@ -1,5 +1,6 @@
 [tools]
 node = "lts"
 pnpm = "latest"
-ruby = "latest"
-yarn = "latest"
+
+# Optional
+# ruby = "latest"
