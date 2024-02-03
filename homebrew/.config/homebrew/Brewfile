@@ -1,15 +1,17 @@
 # Homebrew
 tap "homebrew/bundle"       # Bundle Brewfile
 
-# Productivity applications
+# Applications
 cask "arc"                  # Chromium based browser
+cask "firefox"              # Web browse
+cask "google-chrome"        # Web browser
+cask "kitty"                # GPU-based terminal emulator
+cask "postman"              # Collaboration platform for API development
 cask "raycast"              # Control your tools with a few keystrokes
-cask "firefox"              # Web browser
-
-# Entertainment applications
 cask "spotify"              # Music streaming service
+cask "visual-studio-code"   # Open-source code editor
 
-# Developer tools
+# Tools
 brew "aria2"                # Download with resuming and segmented downloading
 brew "curl"                 # Get a file from an HTTP, HTTPS or FTP server
 brew "gh"                   # GitHub command-line tool
@@ -22,12 +24,7 @@ brew "vercel-cli"           # Command-line interface for Vercel
 brew 'watchman'             # Watch files and take action when they change 
 brew "xcodes"               # Best command-line tool to install and switch between multiple versions of Xcode
 
-# Developer applications
-cask "kitty"                # GPU-based terminal emulator
-cask "postman"              # Collaboration platform for API development
-cask "visual-studio-code"   # Open-source code editor
-
-# Optional formulae
+# Optional
 # cask "figma"                # Collaborative interface design tool
 # mas "Slack", id: 803453959  # Team communication and collaboration software
 # mas "Xcode", id: 497799835  # Developer tools
