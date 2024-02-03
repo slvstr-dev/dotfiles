@@ -1,15 +1,30 @@
 #!/bin/sh
-HISTFILE="$XDG_DATA_HOME"/zsh/history
-HISTSIZE=1000000
-SAVEHIST=1000000
-export PATH="$HOME/.local/bin":$PATH
+
+# Custom Binaries Directory
+export PATH="$HOME/.local/bin:$PATH"
+
+# Homebrew
+export PATH="/opt/homebrew/bin:$PATH"
+
+if command -v brew &> /dev/null; then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+    FPATH="${HOME}/.zsh:${FPATH}"
+
+    autoload -Uz compinit
+    compinit
+fi
+
+# Husky
+export HUSKY=0
+
+# Miniconda
+export PATH="$HOME/.miniconda/bin:$PATH"
+
+# Neovim Man Page
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
-export PATH=$HOME/.cargo/bin:$PATH
-export PATH=$HOME/.local/share/go/bin:$PATH
-export GOPATH=$HOME/.local/share/go
-export PATH=$HOME/.miniconda/bin:$PATH
-export HUSKY=0
-# eval "$(fnm env)"
-# eval "$(zoxide init zsh)"
-# eval "`pip completion --zsh`"
+
+# Zsh History
+HISTFILE="$XDG_DATA_HOME/zsh/history"
+HISTSIZE=1000000
+SAVEHIST=1000000

@@ -46,7 +46,6 @@ Follow these commands:
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 cd ~/dotfiles/homebrew/.config/homebrew
-brew install wget
 brew bundle install
 ```
 

@@ -1,4 +1,6 @@
 [tools]
 node = "lts"
 pnpm = "latest"
-ruby = "latest"
+
+# Optional
+# ruby = "latest"

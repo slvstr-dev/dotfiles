@@ -1,28 +1,37 @@
 # Homebrew
 tap "homebrew/bundle"       # Bundle Brewfile
 
-# Applications
+# Development Tools
+brew "aria2"                # Download with resuming and segmented downloading
+brew "curl"                 # Retrieve files from HTTP, HTTPS, or FTP servers
+brew "gh"                   # GitHub command-line tool
+brew "gmp"                  # GNU Multiple Precision Arithmetic Library
+brew "lazygit"              # Simple terminal UI for Git commands
+brew "libyaml"              # YAML Parser and emitter library
+brew "mise"                 # Polyglot runtime manager (ASDF Rust clone)
+brew "openssl"              # Cryptography and SSL/TLS Toolkit
+brew "readline"             # Library for command-line editing
+brew "stow"                 # Organize software neatly under a single directory tree (e.g., /usr/local)
+brew "tree"                 # Display directories as trees (with optional color/HTML output)
+brew "vercel-cli"           # Command-line interface for Vercel
+brew "watchman"             # Watch files and take action when they change 
+brew "wget"                 # Internet file retriever
+brew "xcodes"               # Best command-line tool to install and switch between multiple versions of Xcode
+
+# Browsers
 cask "arc"                  # Chromium based browser
-cask "firefox"              # Web browse
+cask "firefox"              # Web browser
 cask "google-chrome"        # Web browser
+
+# Productivity Tools
 cask "kitty"                # GPU-based terminal emulator
 cask "postman"              # Collaboration platform for API development
 cask "raycast"              # Control your tools with a few keystrokes
 cask "spotify"              # Music streaming service
 cask "visual-studio-code"   # Open-source code editor
 
-# Tools
-brew "aria2"                # Download with resuming and segmented downloading
-brew "curl"                 # Get a file from an HTTP, HTTPS or FTP server
-brew "gh"                   # GitHub command-line tool
-brew "lazygit"              # Simple terminal UI for git commands
+# Mac App Store CLI
 brew "mas"                  # Mac App Store command-line interface
-brew "mise"                 # Polyglot runtime manager (asdf rust clone)
-brew "stow"                 # Organize software neatly under a single directory tree (e.g. /usr/local)
-brew "tree"                 # Display directories as trees (with optional color/HTML output)
-brew "vercel-cli"           # Command-line interface for Vercel
-brew 'watchman'             # Watch files and take action when they change 
-brew "xcodes"               # Best command-line tool to install and switch between multiple versions of Xcode
 
 # Optional
 # cask "figma"                # Collaborative interface design tool
