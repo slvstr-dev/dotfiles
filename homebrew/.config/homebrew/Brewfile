@@ -36,6 +36,8 @@ cask "visual-studio-code"   # Open-source code editor
 brew "mas"                  # Mac App Store command-line interface
 
 # Optional
+# brew "yarn"                 # Bottle (binary package) installation support provided.
 # cask "figma"                # Collaborative interface design tool
+# cask "sequel-ace"           # MySQL/MariaDB database management
 # mas "Slack", id: 803453959  # Team communication and collaboration software
 # mas "Xcode", id: 497799835  # Developer tools
