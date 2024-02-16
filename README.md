@@ -8,12 +8,14 @@ Welcome to my dotfiles repository! This collection comprises all the configurati
 
 Ensure a smooth setup by following these steps:
 
-1. **Clone Repository:**
-   Use the following command to clone the repository to the root of your macOS system:
+1. **Update System Software:**
+   Install available software updates with detailed information:
 
    ```bash
-   git clone https://github.com/slvstr-dev/dotfiles.git
+   sudo softwareupdate -ia --verbose
    ```
+
+   Ensure your system is up-to-date before proceeding with the setup.
 
 2. **Install Developer Tools:**
    Ensure the necessary developer tools are installed with:
@@ -24,14 +26,13 @@ Ensure a smooth setup by following these steps:
 
    Follow on-screen prompts to complete the installation.
 
-3. **Update System Software:**
-   Install available software updates with detailed information:
+3. **Clone Repository:**
+   Use the following command to clone the repository to the root of your macOS system:
 
-   ```bash
-   sudo softwareupdate -ia --verbose
-   ```
-
-   Ensure your system is up-to-date before proceeding with the setup.
+```bash
+cd ~
+git clone https://github.com/slvstr-dev/dotfiles.git
+```
 
 ## Instructions
 
@@ -100,14 +101,6 @@ Ensure that Kitty, my terminal of choice, is working and configured. Confirm the
 > [!TIP]
 > For an enhanced experience, use the [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads) as a patched font.
 
-### Vercel CLI
-
-Log in to your Vercel account through [Vercel CLI](https://vercel.com/docs/cli)]:
-
-```bash
-vercel login
-```
-
 ### GitHub CLI
 
 Authenticate with a [GitHub instance](https://cli.github.com/manual/):
@@ -123,6 +116,22 @@ Ensure the right tool versions with [mise-en-place](https://github.com/jdx/mise)
 ### Raycast
 
 Disable Spotlight search hotkey and set it as the [default hotkey for Raycast](https://manual.raycast.com/hotkey).
+
+### Ni
+
+Detect the relevant package manager to use with [ni](https://github.com/antfu/ni) based on the lockfiles in your project. This tool also provides an usefull shorthand (e.g. `pnpm run` => `nr`).
+
+```bash
+npm i -g @antfu/ni
+```
+
+### Optional: Vercel CLI
+
+Log in to your Vercel account through [Vercel CLI](https://vercel.com/docs/cli)]:
+
+```bash
+vercel login
+```
 
 ---
 
