@@ -184,9 +184,10 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
--- Custom keymaps
+-- Custom keymaps (check if necessary and what nnoremap means)
 vim.keymap.set('n',  '<leader>fe', '<cmd>:Neotree toggle filesystem right<CR>', { desc = 'Explorer NeoTree (root dir)' })
-vim.keymap.set('n',  '<leader>fE', '<cmd>:Neotree current reveal_force_cwd right<CR>', { desc = 'Explorer NeoTree (cwd)' }) -- Necessary?
+vim.keymap.set('n',  '<leader>fE', '<cmd>:Neotree current reveal_force_cwd right<CR>', { desc = 'Explorer NeoTree (cwd)' })
+vim.keymap.set('n',  '<leader>gg', '<cmd>:LazyGit<CR>', { desc = 'Lazygit, silent: true' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
