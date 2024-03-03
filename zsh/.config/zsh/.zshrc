@@ -11,7 +11,6 @@ zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_completion "esc/conda-zsh-completion" false
 
-
 # 4. Options and Settings
 setopt autocd extendedglob nomatch menucomplete
 setopt interactive_comments
