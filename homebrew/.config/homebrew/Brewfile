@@ -10,8 +10,10 @@ brew "lazygit"              # Simple terminal UI for Git commands
 brew "libyaml"              # YAML Parser and emitter library
 brew "lsd"                  # Clone of ls with colorful output, file type icons, and more
 brew "mise"                 # Polyglot runtime manager (ASDF Rust clone)
+brew "neovim"               # Ambitious Vim-fork focused on extensibility and agility
 brew "openssl"              # Cryptography and SSL/TLS Toolkit
 brew "readline"             # Library for command-line editing
+brew "ripgrep"              # Search tool like grep and The Silver Searcher
 brew "stow"                 # Organize software neatly under a single directory tree (e.g., /usr/local)
 brew "tree"                 # Display directories as trees (with optional color/HTML output)
 brew "vercel-cli"           # Command-line interface for Vercel
