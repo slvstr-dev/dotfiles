@@ -2,11 +2,11 @@
 export PATH="/opt/homebrew/bin:$PATH"
 
 if command -v brew &> /dev/null; then
-    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-    FPATH="${HOME}/.zsh:${FPATH}"
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  FPATH="${HOME}/.zsh:${FPATH}"
 
-    autoload -Uz compinit
-    compinit
+  autoload -Uz compinit
+  compinit
 fi
 
 # Options
