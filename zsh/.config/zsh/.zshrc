@@ -1,32 +1,32 @@
-# 1. Functions
-source "$ZDOTDIR/zsh-functions"
+# Homebrew
+export PATH="/opt/homebrew/bin:$PATH"
 
-# 2. Files to Source
-zsh_add_file "zsh-exports"
-zsh_add_file "zsh-aliases"
-zsh_add_file "zsh-prompt"
+if command -v brew &> /dev/null; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  FPATH="${HOME}/.zsh:${FPATH}"
 
-# 3. Plugins
-zsh_add_plugin "zsh-users/zsh-autosuggestions"
-zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
-zsh_add_completion "esc/conda-zsh-completion" false
+  autoload -Uz compinit
+  compinit
+fi
 
-# 4. Options and Settings
-setopt autocd extendedglob nomatch menucomplete
-setopt interactive_comments
-stty stop undef
-zle_highlight=('paste:none')
+# Options
 unsetopt BEEP
 
-# 5. Completions
-autoload -Uz compinit && compinit
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' menu select
-zmodload zsh/complist
-compinit
+# Settings
+export EDITOR="nvim"
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
+export HISTSIZE=1000000000
+export HUSKY=0
+export SAVEHIST=$HISTSIZE
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
+export VISUAL=$EDITOR
+export XDG_CONFIG_HOME="$HOME/.config"
 
-# 6. Colors
-autoload -Uz colors && colors
+# Aliases
+alias ls='lsd'
 
-# 7. Mise
+# Plugins
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 eval "$(mise activate zsh)"
