@@ -19,7 +19,7 @@ export MANWIDTH=999
 export HISTSIZE=1000000000
 export HUSKY=0
 export SAVEHIST=$HISTSIZE
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export VISUAL=$EDITOR
 export XDG_CONFIG_HOME="$HOME/.config"
 
