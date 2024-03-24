@@ -1,0 +1,39 @@
+# Homebrew
+tap "homebrew/bundle"       # Bundle Brewfile
+
+# Formulae
+brew "aria2"                # Download with resuming and segmented downloading
+brew "curl"                 # Retrieve files from HTTP, HTTPS, or FTP servers
+brew "gh"                   # GitHub command-line tool
+brew "gmp"                  # GNU Multiple Precision Arithmetic Library
+brew "lazygit"              # Simple terminal UI for Git commands
+brew "libyaml"              # YAML Parser and emitter library
+brew "lsd"                  # Clone of ls with colorful output, file type icons, and more
+brew "mas"                  # Mac App Store command-line interface
+brew "mise"                 # Polyglot runtime manager (ASDF Rust clone)
+brew "neovim"               # Ambitious Vim-fork focused on extensibility and agility
+brew "openssl"              # Cryptography and SSL/TLS Toolkit
+brew "readline"             # Library for command-line editing
+brew "ripgrep"              # Search tool like grep and The Silver Searcher
+brew "starship"             # Cross-shell prompt for astronauts
+brew "stow"                 # Organize software neatly under a single directory tree (e.g., /usr/local)
+brew "tree"                 # Display directories as trees (with optional color/HTML output)
+# brew "vercel-cli"           # Command-line interface for Vercel
+# brew "watchman"             # Watch files and take action when they change 
+brew "wget"                 # Internet file retriever
+brew "xcodes"               # Best command-line tool to install and switch between multiple versions of Xcode
+# brew "yarn"                 # Bottle (binary package) installation support provided.
+brew "zoxide"               # Shell extension to navigate your filesystem faster
+
+# Casks
+cask "1password"            # Password manager that keeps all passwords secure behind one password
+cask "arc"                  # Chromium based browser
+# cask "figma"                # Collaborative interface design tool
+# cask "firefox"              # Web browser
+# cask "google-chrome"        # Web browser
+# cask "postman"              # Collaboration platform for API development
+cask "raycast"              # Control your tools with a few keystrokes
+# cask "sequel-ace"           # MySQL/MariaDB database management
+cask "spotify"              # Music streaming service
+cask "visual-studio-code"   # Open-source code editor
+cask "wezterm"              # GPU-accelerated cross-platform terminal emulator and multiplexer
