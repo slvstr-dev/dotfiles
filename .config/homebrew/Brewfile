@@ -4,6 +4,7 @@ tap "homebrew/bundle"       # Bundle Brewfile
 # Formulae
 brew "aria2"                # Download with resuming and segmented downloading
 brew "curl"                 # Retrieve files from HTTP, HTTPS, or FTP servers
+brew "fzf"                  # Command-line fuzzy finder written in Go
 brew "gh"                   # GitHub command-line tool
 brew "gmp"                  # GNU Multiple Precision Arithmetic Library
 brew "lazygit"              # Simple terminal UI for Git commands
