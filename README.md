@@ -46,7 +46,7 @@ Follow these commands:
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-cd ~/dotfiles/homebrew/.config/homebrew
+cd ~/dotfiles/.config/homebrew
 brew bundle install
 ```
 
@@ -55,7 +55,7 @@ brew bundle install
 To update, run:
 
 ```bash
-cd ~/dotfiles/homebrew/.config/homebrew
+cd ~/dotfiles/.config/homebrew
 brew bundle --verbose
 brew cleanup --verbose
 brew doctor --verbose
@@ -66,7 +66,7 @@ brew doctor --verbose
 Remove Homebrew dependencies not listed in the Brewfile:
 
 ```bash
-cd ~/dotfiles/homebrew/.config/homebrew
+cd ~/dotfiles/.config/homebrew
 brew bundle --force cleanup
 ```
 
@@ -75,7 +75,7 @@ brew bundle --force cleanup
 Reinstall Homebrew dependencies from the Brewfile:
 
 ```bash
-cd ~/dotfiles/homebrew/.config/homebrew
+cd ~/dotfiles/.config/homebrew
 brew uninstall --force $(brew list)
 brew autoremove
 brew bundle install
@@ -88,15 +88,12 @@ Use Stow to create symlinks for the configs inside the dotfiles folder. Resolve 
 ```bash
 cd ~/dotfiles
 find . -name ".DS_Store" -delete
-stow */
+stow . -v
 ```
 
-> [!NOTE]
-> If conflicts persist, manually merge contents of the zsh-folder.
+### WezTerm
 
-### Kitty
-
-Ensure that Kitty, my terminal of choice, is working and configured. Confirm the usage of the [catppuccin](https://github.com/catppuccin/kitty) theme.
+Ensure that WezTerm, my terminal of choice, is working and configured. Confirm the usage of the [catppuccin](https://github.com/catppuccin/wezterm) theme.
 
 > [!TIP]
 > For an enhanced experience, use the [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads) as a patched font.
@@ -125,13 +122,16 @@ Detect the relevant package manager to use with [ni](https://github.com/antfu/ni
 npm i -g @antfu/ni
 ```
 
-### Optional: Vercel CLI
+### Optional
 
-Log in to your Vercel account through [Vercel CLI](https://vercel.com/docs/cli)]:
-
-```bash
-vercel login
-```
+- [Figma](https://www.figma.com/)]
+- [Firefox](https://www.mozilla.org/en-US/firefox/)]
+- [Google Chrome](https://www.google.com/chrome/)]
+- [Postman](https://www.postman.com/)]
+- [Sequel Ace](https://sequel-ace.com/)]
+- [Vercel CLI](https://vercel.com/docs/cli)]
+- [Watchman](https://facebook.github.io/watchman/)]
+- [Yarn](https://yarnpkg.com/)]
 
 ---
 
