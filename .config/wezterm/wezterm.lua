@@ -12,7 +12,7 @@ config.color_scheme = "Catppuccin Mocha"
 
 -- Window appearance
 config.macos_window_background_blur = 40
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.4
 config.window_decorations = "RESIZE"
 
 -- Key bindings
