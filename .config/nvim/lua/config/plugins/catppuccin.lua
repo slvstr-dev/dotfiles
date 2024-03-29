@@ -10,6 +10,20 @@ return {
   init = function()
     require("catppuccin").setup {
       transparent_background = true,
+      custom_highlights = function(colors)
+        return {
+          DashboardShortCut = { fg = colors.green },
+          DashboardHeader = { fg = colors.green },
+          DashboardCenter = { fg = colors.green },
+          DashboardFooter = { fg = colors.green, style = { "italic" } },
+          DashboardMruTitle = { fg = colors.green },
+          DashboardProjectTitle = { fg = colors.green },
+          DashboardFiles = { fg = colors.green },
+          DashboardKey = { fg = colors.yellow },
+          DashboardDesc = { fg = colors.text },
+          DashboardIcon = { fg = colors.text, bold = true },
+        }
+      end
     }
 
     -- Load the colorscheme here.
