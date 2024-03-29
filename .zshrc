@@ -26,6 +26,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # Aliases
 alias ls='lsd'
 
+# Add new line between prompts
+precmd() { precmd() { echo "" } }
+
 # Plugins
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
