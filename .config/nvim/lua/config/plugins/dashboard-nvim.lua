@@ -34,13 +34,6 @@ return {
           action = "Telescope oldfiles",
       },
       {
-          desc = "Browse Files",
-          keymap = "",
-          key = ".",
-          icon = "  ",
-          action = "Telescope file_browser",
-      },
-      {
           desc = "Update Plugins",
           keymap = "",
           key = "u",
