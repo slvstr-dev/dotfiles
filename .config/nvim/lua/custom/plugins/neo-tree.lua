@@ -6,8 +6,17 @@ return {
     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
     "MunifTanjim/nui.nvim",
   },
-  config = function ()
-    require('neo-tree').setup {
+  config = function()
+    require("neo-tree").setup {
+      event_handlers = {
+        {
+          event = "file_opened",
+          handler = function()
+            require("neo-tree.command").execute({ action = "close" })
+          end
+        },
+      },
+
       filesystem = {
         filtered_items = {
           hide_dotfiles = false,
@@ -18,4 +27,3 @@ return {
     }
   end,
 }
--- vim: ts=2 sts=2 sw=2 et
