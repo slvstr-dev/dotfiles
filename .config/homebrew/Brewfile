@@ -1,5 +1,6 @@
 # Homebrew
 tap "homebrew/bundle"       # Bundle Brewfile
+tap "homebrew/cask-fonts"   # Casks of Ｆ🅾𝓝𝐓𝚂
 
 # Formulae
 brew "aria2"                # Download with resuming and segmented downloading
