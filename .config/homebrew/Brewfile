@@ -5,6 +5,7 @@ tap "homebrew/cask-fonts"   # Casks of Ｆ🅾𝓝𝐓𝚂
 # Formulae
 brew "aria2"                # Download with resuming and segmented downloading
 brew "curl"                 # Retrieve files from HTTP, HTTPS, or FTP servers
+brew "fd"                   # Simple, fast and user-friendly alternative to find
 brew "fzf"                  # Command-line fuzzy finder written in Go
 brew "gh"                   # GitHub command-line tool
 brew "gmp"                  # GNU Multiple Precision Arithmetic Library
