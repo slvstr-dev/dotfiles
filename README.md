@@ -42,12 +42,13 @@ I leverage Homebrew to automate the download and update process for commonly use
 
 #### Install
 
-Follow these commands:
+Follow these commands to install all packages listed in the Brewfile and the patched Caskaydia Cove font that I use in my setup:
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 cd ~/dotfiles/.config/homebrew
 brew bundle install
+brew install font-caskaydia-cove-nerd-font
 ```
 
 #### Update
@@ -104,9 +105,6 @@ rm /var/folders/*/*/*/com.apple.dock.iconcache
 rm -r /var/folders/*/*/*/com.apple.iconservices*
 killall Dock
 ```
-
-> [!TIP]
-> For an enhanced experience, use the [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/font-downloads) as a patched font.
 
 ### GitHub CLI
 

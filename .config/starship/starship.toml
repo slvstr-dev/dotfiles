@@ -2,7 +2,7 @@
 add_newline = false
 format = "$all$line_break$character"
 palette = "catppuccin_mocha"
-command_timeout = 1000
+command_timeout = 5000
 
 # Palette Colors
 [palettes.catppuccin_mocha]
