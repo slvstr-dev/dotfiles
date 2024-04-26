@@ -4,7 +4,7 @@ local config = wezterm.config_builder()
 -- Font settings
 config.font = wezterm.font "CaskaydiaCove Nerd Font"
 config.font_size = 16
-config.line_height = 1.2
+config.line_height = 1.5
 config.command_palette_font_size = 16
 
 -- Color scheme
