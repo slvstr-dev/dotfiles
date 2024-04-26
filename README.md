@@ -1,6 +1,9 @@
 # dotfiles
 
-Welcome to my dotfiles repository! This collection comprises all the configuration files I utilize to set up and customize my system. Feel free to explore and follow the step-by-step instructions to apply these configurations to your own machine.
+Welcome to my dotfiles repository! This collection comprises all the
+configuration files I utilize to set up and customize my system. Feel free tool
+explore and follow the step-by-step instructions to apply these configurations
+to your own machine.
 
 ![Screenshot of project](https://raw.githubusercontent.com/slvstr-dev/dotfiles/master/screenshot.png)
 
@@ -38,11 +41,13 @@ git clone https://github.com/slvstr-dev/dotfiles.git
 
 ### Homebrew
 
-I leverage Homebrew to automate the download and update process for commonly used applications.
+I leverage Homebrew to automate the download and update process for commonly
+used applications.
 
 #### Install
 
-Follow these commands to install all packages listed in the Brewfile and the patched Caskaydia Cove font that I use in my setup:
+Follow these commands to install all packages listed in the Brewfile and the
+patched Caskaydia Cove font that I use in my setup:
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -84,7 +89,8 @@ brew bundle install
 
 ### Stow
 
-Use Stow to create symlinks for the configs inside the dotfiles folder. Resolve conflicts by removing `.zsh`-related files from your root folder:
+Use Stow to create symlinks for the configs inside the dotfiles folder. Resolve
+conflicts by removing `.zsh`-related files from your root folder:
 
 ```bash
 cd ~/dotfiles
@@ -94,7 +100,9 @@ stow . -v
 
 ### WezTerm
 
-Ensure that WezTerm, my terminal of choice, is working and configured. Confirm the usage of the [catppuccin](https://github.com/catppuccin/wezterm) theme. Set an alternative application icon:
+Ensure that WezTerm, my terminal of choice, is working and configured. Confirm
+the usage of the [catppuccin](https://github.com/catppuccin/wezterm) theme. Set
+an alternative application icon:
 
 - Open the info pane of the WezTerm.app in the Applications folder.
 - Drag wezterm.icns onto the application icon in the info pane.
@@ -124,7 +132,9 @@ Disable Spotlight search hotkey and set it as the [default hotkey for Raycast](h
 
 ### Ni
 
-Detect the relevant package manager to use with [ni](https://github.com/antfu/ni) based on the lockfiles in your project. This tool also provides an usefull shorthand (e.g. `pnpm run` => `nr`).
+Detect the relevant package manager to use with
+[ni](https://github.com/antfu/ni) based on the lockfiles in your project. This
+tool also provides an usefull shorthand (e.g. `pnpm run` => `nr`).
 
 ```bash
 npm i -g @antfu/ni
@@ -132,15 +142,16 @@ npm i -g @antfu/ni
 
 ### Optional
 
-- [Figma](https://www.figma.com/)]
-- [Firefox](https://www.mozilla.org/en-US/firefox/)]
-- [Google Chrome](https://www.google.com/chrome/)]
-- [Postman](https://www.postman.com/)]
-- [Sequel Ace](https://sequel-ace.com/)]
-- [Vercel CLI](https://vercel.com/docs/cli)]
-- [Watchman](https://facebook.github.io/watchman/)]
-- [Yarn](https://yarnpkg.com/)]
+- [Figma](https://www.figma.com/)
+- [Firefox](https://www.mozilla.org/en-US/firefox/)
+- [Google Chrome](https://www.google.com/chrome/)
+- [Postman](https://www.postman.com/)
+- [Sequel Ace](https://sequel-ace.com/)
+- [Vercel CLI](https://vercel.com/docs/cli)
+- [Watchman](https://facebook.github.io/watchman/)
+- [Yarn](https://yarnpkg.com/)
 
 ---
 
-Congratulations 🎉, you've successfully set up your macOS using my dotfiles! Feel free to enjoy and customize them to suit your preferences!
+Congratulations 🎉, you've successfully set up your macOS using my
+dotfiles! Feel free to enjoy and customize them to suit your preferences!
