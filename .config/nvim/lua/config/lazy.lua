@@ -16,7 +16,7 @@ require("lazy").setup({
   spec = {
     {
       "LazyVim/LazyVim",
-      import = "lazyvim.plugins"
+      import = "lazyvim.plugins",
     },
 
     { import = "lazyvim.plugins.extras.coding.copilot" },
@@ -42,7 +42,8 @@ require("lazy").setup({
   },
   install = {
     colorscheme = {
-      "tokyonight", "habamax",
+      "tokyonight",
+      "habamax",
     },
   },
   checker = {
@@ -54,12 +55,12 @@ require("lazy").setup({
         "gzip",
         "tarPlugin",
         "tohtml",
-        "tutor",
+        -- "tutor",
         "zipPlugin",
       },
     },
   },
   ui = {
-    border = "rounded"
-  }
+    border = "rounded",
+  },
 })
