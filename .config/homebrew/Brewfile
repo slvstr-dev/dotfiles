@@ -1,6 +1,5 @@
 # Homebrew
 tap "homebrew/bundle"       # Bundle Brewfile
-tap "homebrew/cask-fonts"   # Casks of Ｆ🅾𝓝𝐓𝚂
 
 # Formulae
 brew "aria2"                # Download with resuming and segmented downloading
@@ -21,6 +20,7 @@ brew "ripgrep"              # Search tool like grep and The Silver Searcher
 brew "starship"             # Cross-shell prompt for astronauts
 brew "stow"                 # Organize software neatly under a single directory tree (e.g., /usr/local)
 brew "tree"                 # Display directories as trees (with optional color/HTML output)
+# brew "unison"               # File synchroniser
 # brew "vercel-cli"           # Command-line interface for Vercel
 # brew "watchman"             # Watch files and take action when they change 
 brew "wget"                 # Internet file retriever
@@ -31,6 +31,7 @@ brew "zoxide"               # Shell extension to navigate your filesystem faster
 # Casks
 cask "1password"            # Password manager that keeps all passwords secure behind one password
 cask "arc"                  # Chromium based browser
+# cask "docker"               # App to build and share containerised applications and microservices
 # cask "figma"                # Collaborative interface design tool
 # cask "firefox"              # Web browser
 # cask "google-chrome"        # Web browser

@@ -53,7 +53,7 @@ patched Caskaydia Cove font that I use in my setup:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 cd ~/dotfiles/.config/homebrew
 brew bundle install
-brew install font-caskaydia-cove-nerd-font
+brew install homebrew/cask/font-caskaydia-cove-nerd-font
 ```
 
 #### Update
