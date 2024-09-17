@@ -3,7 +3,7 @@ return {
   opts = function(_, opts)
     local cmp = require("cmp")
 
-    opts.window = {
+    opts.win = {
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     }

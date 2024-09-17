@@ -36,6 +36,10 @@ require("lazy").setup({
     { import = "plugins.lsp" },
     { import = "plugins.ui" },
   },
+  rocks = {
+    enabled = false,
+    hererocks = false
+  },
   defaults = {
     lazy = false,
     version = false,
