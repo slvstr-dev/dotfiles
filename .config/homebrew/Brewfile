@@ -35,7 +35,7 @@ cask "arc"                            # Chromium based browser
 cask "docker"                         # App to build and share containerised applications and microservices
 cask "font-caskaydia-cove-nerd-font"  # Nerd Font version of CaskaydiaCove
 cask "figma"                          # Collaborative interface design tool
-cask "firefox"                        # Web browser
+cask "firefox@developer-edition"      # Web browser
 cask "google-chrome"                  # Web browser
 cask "microsoft-edge"                 # Web browser
 cask "postman"                        # Collaboration platform for API development
