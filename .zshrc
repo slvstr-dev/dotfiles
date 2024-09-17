@@ -9,6 +9,18 @@ if command -v brew &> /dev/null; then
   compinit
 fi
 
+# Docker
+if which ruby >/dev/null && which gem >/dev/null; then
+  export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+
+# pnpm
+export PNPM_HOME="/Users/sylvester.hofstra/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
 # Options
 unsetopt BEEP
 

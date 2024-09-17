@@ -139,17 +139,6 @@ tool also provides an usefull shorthand (e.g. `pnpm run` => `nr`).
 npm i -g @antfu/ni
 ```
 
-### Optional
-
-- [Figma](https://www.figma.com/)
-- [Firefox](https://www.mozilla.org/en-US/firefox/)
-- [Google Chrome](https://www.google.com/chrome/)
-- [Postman](https://www.postman.com/)
-- [Sequel Ace](https://sequel-ace.com/)
-- [Vercel CLI](https://vercel.com/docs/cli)
-- [Watchman](https://facebook.github.io/watchman/)
-- [Yarn](https://yarnpkg.com/)
-
 ---
 
 Congratulations 🎉, you've successfully set up your macOS using my
