@@ -38,6 +38,8 @@ cask "figma"                          # Collaborative interface design tool
 cask "firefox@developer-edition"      # Web browser
 cask "google-chrome"                  # Web browser
 cask "microsoft-edge"                 # Web browser
+cask "mockoon"                        # Create mock APIs in seconds
+cask "obsidian"                       # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "postman"                        # Collaboration platform for API development
 cask "raycast"                        # Control your tools with a few keystrokes
 cask "sequel-ace"                     # MySQL/MariaDB database management
