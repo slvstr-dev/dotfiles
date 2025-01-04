@@ -23,6 +23,7 @@ esac
 
 # Options
 unsetopt BEEP
+touch ~/.hushlogin
 
 # Settings
 export EDITOR="nvim"

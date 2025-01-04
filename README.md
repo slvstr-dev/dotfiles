@@ -97,21 +97,9 @@ find . -name ".DS_Store" -delete
 stow . -v
 ```
 
-### WezTerm
+### Ghostty
 
-Ensure that WezTerm, my terminal of choice, is working and configured. Confirm
-the usage of the [catppuccin](https://github.com/catppuccin/wezterm) theme. Set
-an alternative application icon:
-
-- Open the info pane of the WezTerm.app in the Applications folder.
-- Drag wezterm.icns onto the application icon in the info pane.
-- Finally delete the icon cache:
-
-```bash
-rm /var/folders/*/*/*/com.apple.dock.iconcache
-rm -r /var/folders/*/*/*/com.apple.iconservices*
-killall Dock
-```
+Ensure that Ghostty, my terminal of choice, is working and configured.
 
 ### GitHub CLI
 
