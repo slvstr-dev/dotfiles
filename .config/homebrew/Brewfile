@@ -33,9 +33,10 @@ brew "zoxide"               # Shell extension to navigate your filesystem faster
 cask "1password"                      # Password manager that keeps all passwords secure behind one password
 cask "arc"                            # Chromium based browser
 cask "docker"                         # App to build and share containerised applications and microservices
-cask "font-caskaydia-cove-nerd-font"  # Nerd Font version of CaskaydiaCove
+cask "font-geist-mono-nerd-font"      # Nerd Font version of Geist Mono
 cask "figma"                          # Collaborative interface design tool
 cask "firefox@developer-edition"      # Web browser
+cask "ghostty"                        # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "google-chrome"                  # Web browser
 cask "microsoft-edge"                 # Web browser
 cask "mockoon"                        # Create mock APIs in seconds
@@ -45,4 +46,3 @@ cask "raycast"                        # Control your tools with a few keystrokes
 cask "sequel-ace"                     # MySQL/MariaDB database management
 cask "spotify"                        # Music streaming service
 cask "visual-studio-code"             # Open-source code editor
-cask "wezterm"                        # GPU-accelerated cross-platform terminal emulator and multiplexer
