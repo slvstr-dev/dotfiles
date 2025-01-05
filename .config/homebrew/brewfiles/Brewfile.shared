@@ -1,0 +1,33 @@
+# Formulae
+brew "aria2"              # Download with resuming and segmented downloading
+brew "curl"               # Retrieve files from HTTP, HTTPS, or FTP servers
+brew "fd"                 # Simple, fast and user-friendly alternative to find
+brew "fzf"                # Command-line fuzzy finder written in Go
+brew "gh"                 # GitHub command-line tool
+brew "gmp"                # GNU Multiple Precision Arithmetic Library
+brew "lazygit"            # Simple terminal UI for Git commands
+brew "libyaml"            # YAML Parser and emitter library
+brew "lsd"                # Clone of ls with colorful output, file type icons, and more
+brew "mise"               # Polyglot runtime manager (ASDF Rust clone)
+brew "neovim"             # Ambitious Vim-fork focused on extensibility and agility
+brew "openssl"            # Cryptography and SSL/TLS Toolkit
+brew "readline"           # Library for command-line editing
+brew "ripgrep"            # Search tool like grep and The Silver Searcher
+brew "starship"           # Cross-shell prompt for astronauts
+brew "stow"               # Organize software neatly under a single directory tree (e.g., /usr/local)
+brew "tree"               # Display directories as trees (with optional color/HTML output)
+brew "unison"             # File synchroniser
+brew "watchman"           # Watch files and take action when they change 
+brew "wget"               # Internet file retriever
+brew "xcodes"             # Best command-line tool to install and switch between multiple versions of Xcode
+brew "zoxide"             # Shell extension to navigate your filesystem faster
+
+# Casks
+cask "1password"                      # Password manager that keeps all passwords secure behind one password
+cask "arc"                            # Chromium based browser
+cask "font-geist-mono-nerd-font"      # Nerd Font version of Geist Mono
+cask "ghostty"                        # Terminal emulator that uses platform-native UI and GPU acceleration
+cask "raycast"                        # Control your tools with a few keystrokes
+cask "spotify"                        # Music streaming service
+cask "visual-studio-code"             # Open-source code editor
+cask "zen-browser"                    # Gecko based web browser

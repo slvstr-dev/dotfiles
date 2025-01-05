@@ -41,49 +41,25 @@ git clone https://github.com/slvstr-dev/dotfiles.git
 
 ### Homebrew
 
-I leverage Homebrew to automate the download and update process for commonly
-used applications.
+Homebrew automates the installation, updating, and management of commonly used applications and tools.
 
-#### Install
-
-Follow these commands to install all packages listed in the Brewfile (incl. the
-patched Caskaydia Cove nerd font that I use in my setup):
+To begin, run the script below, which will guide you through selecting the configuration (`home` or `work`) and then perform the requested action (`install`, `update`, `cleanup` or `uninstall`).
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 cd ~/dotfiles/.config/homebrew
-brew bundle install
+./manager.sh
 ```
 
-#### Update
+This will check if Homebrew is installed (installing it if necessary) and then apply the selected action to the tools in the chosen Brewfile.
 
-To update, run:
-
-```bash
-cd ~/dotfiles/.config/homebrew
-brew bundle --verbose
-brew cleanup --verbose
-brew doctor --verbose
-```
-
-#### Cleanup
-
-Remove Homebrew dependencies not listed in the Brewfile:
+**Note:** If you encounter a "permission denied" error, you'll need to make the script executable first. You can do this by running:
 
 ```bash
-cd ~/dotfiles/.config/homebrew
-brew bundle --force cleanup
-```
-
-#### Reinstall
-
-Reinstall Homebrew dependencies from the Brewfile:
-
-```bash
-cd ~/dotfiles/.config/homebrew
-brew uninstall --force $(brew list)
-brew autoremove
-brew bundle install
+chmod +x ~/dotfiles/.config/homebrew/manager.sh
+chmod +x ~/dotfiles/.config/homebrew/scripts/cleanup.sh
+chmod +x ~/dotfiles/.config/homebrew/scripts/install.sh
+chmod +x ~/dotfiles/.config/homebrew/scripts/uninstall.sh
+chmod +x ~/dotfiles/.config/homebrew/scripts/update.sh
 ```
 
 ### Stow
