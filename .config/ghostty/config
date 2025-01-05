@@ -1,6 +1,6 @@
 adjust-cell-height = 12
 background = #11111b
-font-family = GeistMono Nerd Font
+font-family = GeistMono Nerd Font Mono
 font-size = 14
 macos-titlebar-proxy-icon = hidden
 theme = catppuccin-mocha
