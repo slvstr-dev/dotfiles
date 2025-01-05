@@ -1,0 +1,8 @@
+# Homebrew
+tap "homebrew/bundle"     # Bundle Brewfile
+
+# Shared
+eval(File.read(File.expand_path("~/dotfiles/.config/homebrew/brewfiles/Brewfile.shared")))
+
+# Formulae
+brew "vercel-cli"         # Command-line interface for Vercel

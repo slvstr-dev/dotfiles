@@ -1,0 +1,22 @@
+# Homebrew
+tap "homebrew/bundle"     # Bundle Brewfile
+
+# Shared
+# eval(File.read(File.expand_path("~/dotfiles/.config/homebrew/brewfiles/Brewfile.shared")))
+
+# Formulae
+brew "azure-cli"          # Command-line tools for Azure  
+brew "docker-compose"     # Isolated development environments using Dockerversions of Xcode
+brew "yarn"               # Bottle (binary package) installation support provided.
+
+# Casks
+cask "docker"                         # App to build and share containerised applications and microservices
+cask "font-geist-mono-nerd-font"      # Nerd Font version of Geist Mono
+cask "figma"                           # Collaborative interface design tool
+cask "firefox@developer-edition"       # Web browser
+cask "google-chrome"                  # Web browser
+cask "microsoft-edge"                 # Web browser
+cask "mockoon"                        # Create mock APIs in seconds
+cask "obsidian"                       # Knowledge base that works on top of a local folder of plain text Markdown files
+cask "postman"                        # Collaboration platform for API development
+cask "sequel-ace"                     # MySQL/MariaDB database management
