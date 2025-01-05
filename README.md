@@ -43,7 +43,7 @@ git clone https://github.com/slvstr-dev/dotfiles.git
 
 Homebrew automates the installation, updating, and management of commonly used applications and tools.
 
-To begin, run the script below, which will guide you through selecting the configuration (`home` or `work`) and then perform the requested action (`install`, `update`, `cleanup` or `uninstall`).
+To begin, run the script below, which will guide you through selecting the configuration (`personal` or `work`) and then perform the requested action (`install`, `update`, `cleanup` or `uninstall`).
 
 ```bash
 cd ~/dotfiles/.config/homebrew
