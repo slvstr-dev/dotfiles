@@ -2,7 +2,7 @@
 tap "homebrew/bundle"     # Bundle Brewfile
 
 # Shared
-# eval(File.read(File.expand_path("~/dotfiles/.config/homebrew/brewfiles/Brewfile.shared")))
+eval(File.read(File.expand_path("~/dotfiles/.config/homebrew/brewfiles/Brewfile.shared")))
 
 # Formulae
 brew "azure-cli"          # Command-line tools for Azure  
