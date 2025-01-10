@@ -23,8 +23,8 @@ brew "xcodes"             # Best command-line tool to install and switch between
 brew "zoxide"             # Shell extension to navigate your filesystem faster
 
 # Casks
-cask "1password"                      # Password manager that keeps all passwords secure behind one password
 cask "arc"                            # Chromium based browser
+cask "bitwarden"                      # Desktop password and login vault
 cask "font-geist-mono-nerd-font"      # Nerd Font version of Geist Mono
 cask "ghostty"                        # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "raycast"                        # Control your tools with a few keystrokes
