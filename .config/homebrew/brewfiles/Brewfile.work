@@ -5,9 +5,10 @@ tap "homebrew/bundle"     # Bundle Brewfile
 eval(File.read(File.expand_path("~/dotfiles/.config/homebrew/brewfiles/Brewfile.shared")))
 
 # Formulae
-brew "azure-cli"          # Command-line tools for Azure  
-brew "docker-compose"     # Isolated development environments using Dockerversions of Xcode
-brew "yarn"               # Bottle (binary package) installation support provided.
+brew "azure-cli"              # Command-line tools for Azure  
+brew "docker-compose"         # Isolated development environments using Dockerversions of Xcode
+brew "python-setuptools"      # Easily download, build, install, upgrade, and uninstall Python packages
+brew "yarn"                   # Bottle (binary package) installation support provided.
 
 # Casks
 cask "docker"                         # App to build and share containerised applications and microservices
