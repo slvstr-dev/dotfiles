@@ -6,4 +6,4 @@ macos-titlebar-proxy-icon = hidden
 theme = catppuccin-mocha
 title = " "
 window-padding-x = 12
-window-padding-y = 8,12
+window-padding-y = 6,12
