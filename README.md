@@ -39,7 +39,7 @@ git clone https://github.com/slvstr-dev/dotfiles.git
 
 ## Instructions
 
-### Homebrew
+### 1. Homebrew
 
 Homebrew automates the installation, updating, and management of commonly used applications and tools.
 
@@ -62,7 +62,7 @@ chmod +x ~/dotfiles/.config/homebrew/scripts/uninstall.sh
 chmod +x ~/dotfiles/.config/homebrew/scripts/update.sh
 ```
 
-### Stow
+### 2. Stow
 
 Use Stow to create symlinks for the configs inside the dotfiles folder. Resolve
 conflicts by removing `.zsh`-related files from your root folder:
@@ -73,27 +73,15 @@ find . -name ".DS_Store" -delete
 stow . -v
 ```
 
-### Ghostty
+### 3. Ghostty
 
 Ensure that Ghostty, my terminal of choice, is working and configured.
 
-### GitHub CLI
-
-Authenticate with a [GitHub instance](https://cli.github.com/manual/):
-
-```bash
-gh auth login
-```
-
-### mise
+### 4. mise
 
 Ensure the right tool versions with [mise-en-place](https://github.com/jdx/mise).
 
-### Raycast
-
-Disable Spotlight search hotkey and set it as the [default hotkey for Raycast](https://manual.raycast.com/hotkey).
-
-### Ni
+### 5. Ni
 
 Detect the relevant package manager to use with
 [ni](https://github.com/antfu/ni) based on the lockfiles in your project. This
@@ -102,6 +90,18 @@ tool also provides an usefull shorthand (e.g. `pnpm run` => `nr`).
 ```bash
 npm i -g @antfu/ni
 ```
+
+### 6. GitHub CLI
+
+Authenticate with a [GitHub instance](https://cli.github.com/manual/):
+
+```bash
+gh auth login
+```
+
+### 7. Raycast
+
+Disable Spotlight search hotkey and set it as the [default hotkey for Raycast](https://manual.raycast.com/hotkey).
 
 ---
 

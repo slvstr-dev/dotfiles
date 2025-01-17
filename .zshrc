@@ -1,25 +1,28 @@
 # Homebrew
 export PATH="/opt/homebrew/bin:$PATH"
 
+# Add Homebrew and custom paths to FPATH once
 if command -v brew &> /dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-  FPATH="${HOME}/.zsh:${FPATH}"
-
-  autoload -Uz compinit
-  compinit
 fi
 
-# Docker
+# Add local zsh functions directory
+FPATH="${HOME}/.zsh:${FPATH}"
+
+# Initialize completion system only once
+autoload -Uz compinit
+compinit
+
+# Ruby
 if which ruby >/dev/null && which gem >/dev/null; then
   export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
-# pnpm
+# PNPM
 export PNPM_HOME="/Users/sylvester.hofstra/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+if [[ ":$PATH:" != *":$PNPM_HOME:"* ]]; then
+  export PATH="$PNPM_HOME:$PATH"
+fi
 
 # Options
 unsetopt BEEP
@@ -46,3 +49,10 @@ precmd() { precmd() { echo "" } }
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(mise activate zsh)"
+
+# Source local zsh files
+for file in "$HOME/.config/zsh/.zshrc."*(N); do
+  if [[ -f "$file" ]]; then
+    source "$file"
+  fi
+done

@@ -1,5 +1,5 @@
+.DS_Store
 .zcompdump
 .zsh_history
 .zsh_sessions
-
-.DS_Store
+.zshrc.*
