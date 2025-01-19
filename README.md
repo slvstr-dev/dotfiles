@@ -91,17 +91,21 @@ tool also provides an usefull shorthand (e.g. `pnpm run` => `nr`).
 npm i -g @antfu/ni
 ```
 
-### 6. GitHub CLI
+### 6. Raycast
+
+Disable Spotlight search hotkey and set it as the [default hotkey for Raycast](https://manual.raycast.com/hotkey).
+
+### 7. Bitwarden
+
+Install [Bitwarden](https://apps.apple.com/us/app/bitwarden-password-manager/id1352778147) through the Mac App Store instead of Homebrew as this enables biometric authentication on both the desktop app and browser extension.
+
+### 8. GitHub CLI
 
 Authenticate with a [GitHub instance](https://cli.github.com/manual/):
 
 ```bash
 gh auth login
 ```
-
-### 7. Raycast
-
-Disable Spotlight search hotkey and set it as the [default hotkey for Raycast](https://manual.raycast.com/hotkey).
 
 ---
 
