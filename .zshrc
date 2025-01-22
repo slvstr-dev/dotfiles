@@ -1,5 +1,5 @@
 # Homebrew
-export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
 # Add Homebrew and custom paths to FPATH once
 if command -v brew &> /dev/null; then
@@ -24,6 +24,9 @@ if [[ ":$PATH:" != *":$PNPM_HOME:"* ]]; then
   export PATH="$PNPM_HOME:$PATH"
 fi
 
+# Aliases
+alias ls='lsd'
+
 # Options
 unsetopt BEEP
 touch ~/.hushlogin
@@ -38,9 +41,6 @@ export SAVEHIST=$HISTSIZE
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export VISUAL=$EDITOR
 export XDG_CONFIG_HOME="$HOME/.config"
-
-# Aliases
-alias ls='lsd'
 
 # Add new line between prompts
 precmd() { precmd() { echo "" } }

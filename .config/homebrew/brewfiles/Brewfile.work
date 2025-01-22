@@ -7,6 +7,7 @@ eval(File.read(File.expand_path("~/dotfiles/.config/homebrew/brewfiles/Brewfile.
 # Formulae
 brew "azure-cli"              # Command-line tools for Azure  
 brew "docker-compose"         # Isolated development environments using Dockerversions of Xcode
+brew "gnupg"                  # GNU Pretty Good Privacy (PGP) package
 brew "python-setuptools"      # Easily download, build, install, upgrade, and uninstall Python packages
 brew "yarn"                   # Bottle (binary package) installation support provided.
 
