@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 BREWFILE_DIR=~/dotfiles/.config/homebrew/brewfiles
 
