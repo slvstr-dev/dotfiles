@@ -33,6 +33,7 @@ touch ~/.hushlogin
 
 # Settings
 export EDITOR="nvim"
+export GPG_TTY=$(tty)
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 export HISTSIZE=1000000000
