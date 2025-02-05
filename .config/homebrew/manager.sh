@@ -38,9 +38,9 @@ ask_for_configuration() {
 
 confirm_action() {
   while true; do
-    echo -n -e "\n⚠️ Are you sure you want to proceed (Y/n)? "
+    echo -n -e "\n⚠️ Are you sure you want to proceed (y/N)? "
     read confirm
-    confirm="${confirm:-yes}"
+    confirm="${confirm:-no}"
 
     case $confirm in
       [Yy] | yes | YES)
