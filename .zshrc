@@ -39,7 +39,6 @@ export MANWIDTH=999
 export HISTSIZE=1000000000
 export HUSKY=0
 export SAVEHIST=$HISTSIZE
-export SSH_AUTH_SOCK="$HOME/.bitwarden-ssh-agent.sock"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export VISUAL=$EDITOR
 export XDG_CONFIG_HOME="$HOME/.config"
