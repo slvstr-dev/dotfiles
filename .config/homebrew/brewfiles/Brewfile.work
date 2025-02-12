@@ -5,11 +5,13 @@ tap "homebrew/bundle"     # Bundle Brewfile
 eval(File.read(File.expand_path("~/dotfiles/.config/homebrew/brewfiles/Brewfile.shared")))
 
 # Formulae
-brew "azure-cli"              # Command-line tools for Azure  
-brew "docker-compose"         # Isolated development environments using Dockerversions of Xcode
-brew "lazydocker"             # Lazier way to manage everything docker
-brew "python-setuptools"      # Easily download, build, install, upgrade, and uninstall Python packages
-brew "yarn"                   # Bottle (binary package) installation support provided.
+brew "azure-cli"                      # Command-line tools for Azure  
+brew "docker-compose"                 # Isolated development environments using Dockerversions of Xcode
+brew "lazydocker"                     # Lazier way to manage everything docker
+brew "mkcert"                         # Simple tool to make locally trusted development certificates
+brew "mutagen-io/mutagen/mutagen"     # Cloud-based development using your local tools
+brew "python-setuptools"              # Easily download, build, install, upgrade, and uninstall Python packages
+brew "yarn"                           # Bottle (binary package) installation support provided.
 
 # Casks
 cask "font-geist-mono-nerd-font"      # Nerd Font version of Geist Mono
