@@ -6,3 +6,4 @@ eval(File.read(File.expand_path("~/dotfiles/.config/homebrew/brewfiles/Brewfile.
 
 # Formulae
 brew "vercel-cli"         # Command-line interface for Vercel
+brew "xcodes"             # Best command-line tool to install and switch between multiple versions of Xcode

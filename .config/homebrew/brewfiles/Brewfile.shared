@@ -20,7 +20,6 @@ brew "tree"               # Display directories as trees (with optional color/HT
 brew "unison"             # File synchroniser
 brew "watchman"           # Watch files and take action when they change 
 brew "wget"               # Internet file retriever
-brew "xcodes"             # Best command-line tool to install and switch between multiple versions of Xcode
 brew "zoxide"             # Shell extension to navigate your filesystem faster
 
 # Casks
