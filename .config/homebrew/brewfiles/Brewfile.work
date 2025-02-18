@@ -23,4 +23,4 @@ cask "mockoon"                        # Create mock APIs in seconds
 cask "obsidian"                       # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "orbstack"                       # Replacement for Docker Desktop
 cask "postman"                        # Collaboration platform for API development
-cask "sequel-ace"                     # MySQL/MariaDB database management
+cask "tableplus"                      # Native GUI tool for relational databases
