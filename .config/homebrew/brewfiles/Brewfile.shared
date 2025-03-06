@@ -5,7 +5,6 @@ brew "fd"                 # Simple, fast and user-friendly alternative to find
 brew "fzf"                # Command-line fuzzy finder written in Go
 brew "gh"                 # GitHub command-line tool
 brew "gmp"                # GNU Multiple Precision Arithmetic Library
-brew "gnupg"              # GNU Pretty Good Privacy (PGP) package
 brew "lazygit"            # Simple terminal UI for Git commands
 brew "libyaml"            # YAML Parser and emitter library
 brew "lsd"                # Clone of ls with colorful output, file type icons, and more
