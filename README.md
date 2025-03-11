@@ -12,7 +12,7 @@ to your own machine.
 Ensure a smooth setup by following these steps:
 
 1. **Update System Software:**
-   Install available software updates with detailed information:
+   Install software updates with detailed information:
 
    ```bash
    sudo softwareupdate -ia --verbose
