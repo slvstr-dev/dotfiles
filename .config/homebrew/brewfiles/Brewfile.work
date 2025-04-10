@@ -2,7 +2,8 @@
 eval(File.read(File.expand_path("~/dotfiles/.config/homebrew/brewfiles/Brewfile.shared")))
 
 # Formulae
-brew "azure-cli"                      # Command-line tools for Azure  
+brew "azure-cli"                      # Command-line tools for Azure
+brew "nss"                            # Libraries for security-enabled client and server applications
 brew "docker-compose"                 # Isolated development environments using Dockerversions of Xcode
 brew "lazydocker"                     # Lazier way to manage everything docker
 brew "mkcert"                         # Simple tool to make locally trusted development certificates
