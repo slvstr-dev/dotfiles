@@ -1,6 +1,8 @@
 #!/bin/bash
 
-BREWFILE_DIR=~/dotfiles/.config/homebrew/brewfiles
+BREWFILE_DIR=$HOME/dotfiles/.config/homebrew/brewfiles
+DEFAULT_BREW_CONFIG="personal"
+ENV_FILE=$HOME/dotfiles/.config/homebrew/.env
 
 ask_for_action() {
   local action_choice
@@ -15,22 +17,6 @@ ask_for_action() {
       2) action="update"; break ;;
       3) action="cleanup"; break ;;
       4) action="uninstall"; break ;;
-      *) echo "❌ Invalid choice." ;;
-    esac
-  done
-}
-
-ask_for_configuration() {
-  local config_choice
-
-  while true; do
-    echo -e "\n⚙️ Choose your configuration:\n1. Personal\n2. Work"
-    echo -n "Enter the number for your configuration (1-2): "
-    read config_choice
-
-    case $config_choice in
-      1) config="personal"; break ;;
-      2) config="work"; break ;;
       *) echo "❌ Invalid choice." ;;
     esac
   done
@@ -57,6 +43,31 @@ confirm_action() {
   done
 }
 
+# Set default configuration
+config=$DEFAULT_BREW_CONFIG
+
+# Load the .env file if it exists
+if [[ -f "$ENV_FILE" ]]; then
+  source "$ENV_FILE"
+
+  if [[ -n "$BREW_CONFIG" ]]; then
+
+    if [[ "$BREW_CONFIG" != "personal" && "$BREW_CONFIG" != "work" ]]; then
+      echo "⚠️ Error: Invalid BREW_CONFIG value: $BREW_CONFIG. Must be 'personal' or 'work'."
+      echo "Falling back to default configuration: $config"
+    else
+      config="$BREW_CONFIG"
+
+      echo "ℹ️ Loaded configuration from .env file: $config"
+    fi
+  else
+    echo "ℹ️ No BREW_CONFIG found in .env file, using default: $config"
+  fi
+else
+  echo "ℹ️ No .env file found, using default configuration: $config"
+fi
+
+# Execute the action based on user input
 ask_for_action
 
 if [[ "$action" == "uninstall" ]]; then
@@ -71,7 +82,6 @@ if [[ "$action" == "uninstall" ]]; then
     exit 1
   fi
 else
-  ask_for_configuration
   echo -e "\n🫵 You have selected to '$action' the Homebrew '$config' configuration."
 
   confirm_action

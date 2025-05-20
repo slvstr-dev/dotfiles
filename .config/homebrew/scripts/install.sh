@@ -17,7 +17,7 @@ install_brewfile() {
   local brewfile_dir="$1"
   local config="$2"
 
-  echo -e "\n📦 Installing dependencies from Brewfile.$config..."
+  echo -e "\n📦 Installing dependencies..."
 
   brew bundle --file="$brewfile_dir/Brewfile.$config" --verbose || {
     echo "❌ Error: Failed to set up $config configuration" >&2
@@ -28,9 +28,9 @@ install_brewfile() {
 brewfile_dir="$1"
 config="$2"
 
-echo -e "\n🚀 Starting installation of Homebrew '$config' configuration..."
+echo -e "\n🚀 Starting installation..."
 
 install_homebrew
 install_brewfile "$brewfile_dir" "$config"
 
-echo -e "\n🎉 Installation of Homebrew '$config' configuration is complete!"
+echo -e "\n🎉 Installation completed successfully!"
