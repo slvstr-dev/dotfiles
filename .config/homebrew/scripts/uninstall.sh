@@ -1,7 +1,7 @@
 #!/bin/bash
 
 uninstall_dependencies() {
-  echo -e "\n🧹 Uninstalling all currently installed Homebrew packages..."
+  echo -e "\n🧹 Uninstalling all installed Homebrew packages..."
 
   brew uninstall --force $(brew list) || {
     echo "❌ Error: Failed to uninstall Homebrew dependencies." >&2
@@ -16,7 +16,7 @@ uninstall_dependencies() {
   }
 }
 
-echo -e "\n🚨 Starting the uninstallation process for Homebrew configuration..."
+echo -e "\n🚨 Starting the uninstallation process..."
 
 uninstall_dependencies
 

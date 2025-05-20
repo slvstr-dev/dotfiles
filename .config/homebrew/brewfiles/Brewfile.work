@@ -14,7 +14,6 @@ brew "yarn"                           # Bottle (binary package) installation sup
 # Casks
 cask "font-geist-mono-nerd-font"      # Nerd Font version of Geist Mono
 cask "figma"                           # Collaborative interface design tool
-cask "firefox@developer-edition"       # Web browser
 cask "google-chrome"                  # Web browser
 cask "microsoft-edge"                 # Web browser
 cask "mockoon"                        # Create mock APIs in seconds

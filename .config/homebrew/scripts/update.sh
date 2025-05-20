@@ -4,7 +4,7 @@ update_brewfile() {
   local brewfile_dir="$1"
   local config="$2"
 
-  echo -e "\n🔄 Updating $config configuration..."
+  echo -e "\n🔄 Updating configuration..."
   
   brew bundle --file="$brewfile_dir/Brewfile.$config" --verbose || {
     echo "❌ Error: Failed to update $config configuration" >&2
@@ -24,9 +24,9 @@ check_homebrew_health() {
 brewfile_dir="$1"
 config="$2"
 
-echo -e "\n🛠️ Updating Homebrew dependencies from the selected Brewfile..."
+echo -e "\n🛠️ Starting the update process..."
 
 update_brewfile "$brewfile_dir" "$config"
 check_homebrew_health
 
-echo -e "\n🎉 Update process for '$config' configuration completed successfully!"
+echo -e "\n🎉 Update process completed successfully!"

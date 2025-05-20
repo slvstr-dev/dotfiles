@@ -25,6 +25,7 @@ if [[ ":$PATH:" != *":$PNPM_HOME:"* ]]; then
 fi
 
 # Aliases
+alias brew-manager='cd $HOME/dotfiles/.config/homebrew && ./manager.sh'
 alias ls='lsd'
 
 # Options
@@ -58,7 +59,7 @@ for file in "$HOME/.config/zsh/.zshrc."*(N); do
   fi
 done
 
-# -- This code ensures SSH agent is running
+# Ensures SSH agent is running
 if [ -z "$SSH_AUTH_SOCK" ] || [ ! -S "$SSH_AUTH_SOCK" ]; then
   eval "$(ssh-agent -s)"
 fi

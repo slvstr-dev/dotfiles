@@ -28,4 +28,4 @@ cask "ghostty"                        # Terminal emulator that uses platform-nat
 cask "raycast"                        # Control your tools with a few keystrokes
 cask "spotify"                        # Music streaming service
 cask "visual-studio-code"             # Open-source code editor
-cask "zen-browser"                    # Gecko based web browser
+cask "zen"                            # Gecko based web browser

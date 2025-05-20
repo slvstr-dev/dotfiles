@@ -1,0 +1,8 @@
+# ZSH Configuration Template
+# Copy this file to .zshrc.local to add custom configurations
+
+# Settings
+# export SETTING=42
+
+# Aliases
+# alias pseudonym="ls -la"
