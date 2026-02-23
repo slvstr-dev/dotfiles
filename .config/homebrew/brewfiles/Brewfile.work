@@ -12,7 +12,6 @@ brew "python-setuptools"              # Easily download, build, install, upgrade
 brew "yarn"                           # Bottle (binary package) installation support provided.
 
 # Casks
-cask "font-geist-mono-nerd-font"      # Nerd Font version of Geist Mono
 cask "figma"                           # Collaborative interface design tool
 cask "google-chrome"                  # Web browser
 cask "microsoft-edge"                 # Web browser
