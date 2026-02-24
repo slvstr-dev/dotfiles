@@ -8,5 +8,5 @@ brew "xcodes"             # Best command-line tool to install and switch between
 # Casks
 cask "proton-drive"       # Client for Proton Drive
 cask "proton-mail"        # Client for Proton Mail and Proton Calendar
-cask "proton-vpn"         # VPN client focusing on security
+cask "protonvpn"          # VPN client focusing on security
 cask "zwift"              # Indoor cycling game
