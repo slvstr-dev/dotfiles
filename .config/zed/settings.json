@@ -1,0 +1,39 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "buffer_line_height": "comfortable",
+  "ui_font_size": 14.0,
+  "current_line_highlight": "all",
+  "agent": {
+    "favorite_models": [],
+    "model_parameters": [],
+    "enable_feedback": false
+  },
+  "auto_indent_on_paste": true,
+  "base_keymap": "VSCode",
+  "buffer_font_family": ".ZedMono",
+  "buffer_font_size": 14.0,
+  "colorize_brackets": true,
+  "cursor_blink": false,
+  "icon_theme": "Catppuccin Mocha",
+  "linked_edits": true,
+  "show_edit_predictions": true,
+  "tab_size": 2,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "theme": {
+    "dark": "Catppuccin Mocha",
+    "light": "One Light",
+    "mode": "dark",
+  },
+  "ui_font_family": ".ZedMono",
+  "vim_mode": false,
+}
