@@ -13,7 +13,7 @@
   "agent": {
     "favorite_models": [],
     "model_parameters": [],
-    "enable_feedback": false
+    "enable_feedback": false,
   },
   "auto_indent_on_paste": true,
   "base_keymap": "VSCode",
@@ -31,8 +31,8 @@
   },
   "theme": {
     "dark": "Catppuccin Mocha",
-    "light": "One Light",
-    "mode": "dark",
+    "light": "Catppuccin Latte",
+    "mode": "system",
   },
   "ui_font_family": ".ZedMono",
   "vim_mode": false,
