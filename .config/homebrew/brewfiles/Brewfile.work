@@ -9,9 +9,11 @@ brew "lazydocker"                     # Lazier way to manage everything docker
 brew "mkcert"                         # Simple tool to make locally trusted development certificates
 brew "mutagen-io/mutagen/mutagen"     # Cloud-based development using your local tools
 brew "python-setuptools"              # Easily download, build, install, upgrade, and uninstall Python packages
+brew "sox"                            # SOund eXchange: universal sound sample translator
 brew "yarn"                           # Bottle (binary package) installation support provided.
 
 # Casks
+cask "claude-code"                    # Terminal-based AI coding assistant
 cask "figma"                           # Collaborative interface design tool
 cask "google-chrome"                  # Web browser
 cask "microsoft-edge"                 # Web browser
