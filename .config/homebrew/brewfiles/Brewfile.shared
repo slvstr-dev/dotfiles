@@ -22,7 +22,6 @@ brew "wget"               # Internet file retriever
 brew "zoxide"             # Shell extension to navigate your filesystem faster
 
 # Casks
-cask "claude-code"                    # Terminal-based AI coding assistant
 cask "font-geist-mono-nerd-font"      # Nerd Font version of Geist Mono
 cask "ghostty"                        # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "raycast"                        # Control your tools with a few keystrokes

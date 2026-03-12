@@ -13,6 +13,7 @@ brew "sox"                            # SOund eXchange: universal sound sample t
 brew "yarn"                           # Bottle (binary package) installation support provided.
 
 # Casks
+cask "claude-code"                    # Terminal-based AI coding assistant
 cask "figma"                           # Collaborative interface design tool
 cask "google-chrome"                  # Web browser
 cask "microsoft-edge"                 # Web browser
