@@ -1,6 +1,6 @@
 # dotfiles
 
-My macOS dotfiles, managed with GNU Stow.
+My macOS dotfiles, managed with chezmoi.
 
 ## Stack
 
@@ -13,29 +13,26 @@ My macOS dotfiles, managed with GNU Stow.
 
 ## Setup
 
-### 1. Prerequisites
+### Prerequisites
 
-```bash
-sudo softwareupdate -ia
-xcode-select --install
-git clone https://github.com/slvstr-dev/dotfiles.git ~/dotfiles
-```
+1. Update macOS: `sudo softwareupdate -ia`
+2. Install Xcode Command Line Tools: `xcode-select --install`
 
-### 2. Stow
+### Install
 
-```bash
-cd ~/dotfiles
-find . -name ".DS_Store" -delete
-stow */ -v
-```
+1. Install chezmoi: `brew install chezmoi` (or `sh -c "$(curl -fsLS get.chezmoi.io)"`)
+2. `chezmoi init https://github.com/slvstr-dev/dotfiles.git --apply`
+   - You'll be prompted for machine type (work/personal)
+3. Restart shell
 
-### 3. Homebrew
+### Day-to-day
 
-Brewfiles are split by config (`shared`, `personal`, `work`). The default is `shared`. Override by setting `BREW_CONFIG` in your `.zshrc.local`:
+- Edit configs: `chezmoi edit ~/.config/ghostty/config` (opens source file)
+- Apply changes: `chezmoi apply`
+- See pending changes: `chezmoi diff`
+- Pull & apply updates: `chezmoi update`
 
-```zsh
-export BREW_CONFIG="work"
-```
+### Homebrew
 
 ```bash
 brew-install
@@ -44,18 +41,18 @@ brew-cleanup
 brew-uninstall
 ```
 
-### 4. Zed
+### Zed
 
 Install manually via the Zed extensions panel:
 
 - Rosé Pine (or Catppuccin)
 
-### 5. GitHub
+### GitHub
 
 ```bash
 gh auth login
 ```
 
-### 6. Raycast
+### Raycast
 
 Disable Spotlight hotkey and assign it to Raycast using the [Raycast hotkey instructions](https://manual.raycast.com/hotkey).

@@ -8,7 +8,6 @@ fi
 FPATH="${HOME}/.zsh:${FPATH}"
 
 # Environment
-export BREW_CONFIG="${BREW_CONFIG:-shared}"
 export EDITOR="nvim"
 export EZA_CONFIG_DIR="$HOME/.config/eza"
 export GPG_TTY=$(tty)
@@ -35,45 +34,45 @@ alias ls='eza --icons=auto'
 # Homebrew
 _brewfile() {
   if ! command -v brew &> /dev/null; then
-    echo "🔨 Homebrew not found. Installing..."
+    echo "Homebrew not found. Installing..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || {
-      echo "❌ Failed to install Homebrew" >&2
+      echo "Failed to install Homebrew" >&2
       return 1
     }
     eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
-  brew bundle "${@}" --file="$HOME/dotfiles/homebrew/Brewfile.$BREW_CONFIG" --verbose
+  brew bundle "${@}" --file="$HOME/Brewfile" --verbose
 }
 _brew_doctor() {
-  echo "🩺 Running brew doctor..."
+  echo "Running brew doctor..."
   brew doctor --verbose
 }
 brew-install() {
-  echo "📦 Installing Brewfile.$BREW_CONFIG..."
+  echo "Installing Brewfile..."
   _brewfile install && _brew_doctor
-  echo "✅ Done!"
+  echo "Done!"
 }
 brew-update() {
-  echo "🔄 Updating Brewfile.$BREW_CONFIG..."
+  echo "Updating Brewfile..."
   _brewfile install --upgrade && _brew_doctor
-  echo "✅ Done!"
+  echo "Done!"
 }
 brew-cleanup() {
-  echo "🧹 Cleaning up Brewfile.$BREW_CONFIG..."
+  echo "Cleaning up Brewfile..."
   _brewfile cleanup --force && brew autoremove && _brew_doctor
-  echo "✅ Done!"
+  echo "Done!"
 }
 brew-uninstall() {
-  echo "⚠️  This will uninstall ALL brew packages. Continue? (y/N)"
+  echo "This will uninstall ALL brew packages. Continue? (y/N)"
   read -r confirm
   [[ "$confirm" =~ ^[Yy]$ ]] || return 0
-  echo "🧹 Uninstalling..."
+  echo "Uninstalling..."
   local formulae=($(brew list --formula))
   [[ ${#formulae[@]} -gt 0 ]] && brew uninstall --force "${formulae[@]}"
   local casks=($(brew list --cask))
   [[ ${#casks[@]} -gt 0 ]] && brew uninstall --cask --force "${casks[@]}"
   brew autoremove
-  echo "✅ Done!"
+  echo "Done!"
 }
 
 # Options
