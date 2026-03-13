@@ -1,0 +1,5 @@
+{{- if eq .machine_type "work" }}
+export BREW_CONFIG="work"
+{{- else }}
+export BREW_CONFIG="personal"
+{{- end }}

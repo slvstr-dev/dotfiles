@@ -30,9 +30,9 @@
     "metrics": false,
   },
   "theme": {
-    "dark": "Catppuccin Mocha",
-    "light": "Catppuccin Latte",
     "mode": "system",
+    "dark": "Rosé Pine",
+    "light": "Rosé Pine Dawn",
   },
   "ui_font_family": ".ZedMono",
   "vim_mode": false,

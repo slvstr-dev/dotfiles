@@ -1,0 +1,10 @@
+#!/bin/bash
+# Brewfile hash: {{ include "Brewfile.tmpl" | sha256sum }}
+
+if ! command -v brew &> /dev/null; then
+  echo "Homebrew not found. Installing..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || exit 1
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+brew bundle --file="{{ .chezmoi.homeDir }}/Brewfile" --verbose
