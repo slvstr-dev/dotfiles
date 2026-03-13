@@ -27,10 +27,12 @@ My macOS dotfiles, managed with chezmoi.
 
 ### Day-to-day
 
-- Edit configs: `chezmoi edit ~/.config/ghostty/config` (opens source file)
+- Edit configs: `chezmoi edit ~/.config/ghostty/config`
 - Apply changes: `chezmoi apply`
 - See pending changes: `chezmoi diff`
 - Pull & apply updates: `chezmoi update`
+- Check out of sync: `chezmoi status`
+- Sync live changed back: `chezmoi re-add`
 
 ### Homebrew
 
