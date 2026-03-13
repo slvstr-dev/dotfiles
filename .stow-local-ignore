@@ -1,7 +1,13 @@
-README.md
-screenshot.png
-stylua.toml
+# Docs
+README.*
+LICENSE.*
+CHANGELOG.*
 
-.git
-.gitignore
-.DS_Store
+# Git
+\.git
+\.gitignore
+\.gitmodules
+
+# OS
+\.DS_Store
+Thumbs\.db

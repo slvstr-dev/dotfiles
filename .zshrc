@@ -1,66 +1,103 @@
-# Homebrew
+# PATH
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
-# Add Homebrew and custom paths to FPATH once
+# FPATH
 if command -v brew &> /dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
-
-# Add local zsh functions directory
 FPATH="${HOME}/.zsh:${FPATH}"
 
-# Initialize completion system only once
+# Environment
+export BREW_CONFIG="${BREW_CONFIG:-shared}"
+export EDITOR="nvim"
+export EZA_CONFIG_DIR="$HOME/.config/eza"
+export GPG_TTY=$(tty)
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=1000000000
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
+export SAVEHIST=$HISTSIZE
+export VISUAL="$EDITOR"
+export XDG_CONFIG_HOME="$HOME/.config"
+
+# Completions
 autoload -Uz compinit
-compinit
-
-# Ruby
-if which ruby >/dev/null && which gem >/dev/null; then
-  export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
-
-# PNPM
-export PNPM_HOME="/Users/sylvester.hofstra/Library/pnpm"
-if [[ ":$PATH:" != *":$PNPM_HOME:"* ]]; then
-  export PATH="$PNPM_HOME:$PATH"
+if [[ ! -f "$HOME/.zcompdump" ]] || [[ $(find "$HOME/.zcompdump" -mtime +1 2>/dev/null) ]]; then
+  compinit
+else
+  compinit -C
 fi
 
 # Aliases
-alias brew-manager='cd $HOME/dotfiles/.config/homebrew && ./manager.sh'
-alias ls='lsd'
+alias lg='lazygit'
+alias ls='eza --icons=auto'
+
+# Homebrew
+_brewfile() {
+  if ! command -v brew &> /dev/null; then
+    echo "🔨 Homebrew not found. Installing..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || {
+      echo "❌ Failed to install Homebrew" >&2
+      return 1
+    }
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
+  brew bundle "${@}" --file="$HOME/dotfiles/homebrew/Brewfile.$BREW_CONFIG" --verbose
+}
+_brew_doctor() {
+  echo "🩺 Running brew doctor..."
+  brew doctor --verbose
+}
+brew-install() {
+  echo "📦 Installing Brewfile.$BREW_CONFIG..."
+  _brewfile install && _brew_doctor
+  echo "✅ Done!"
+}
+brew-update() {
+  echo "🔄 Updating Brewfile.$BREW_CONFIG..."
+  _brewfile install --upgrade && _brew_doctor
+  echo "✅ Done!"
+}
+brew-cleanup() {
+  echo "🧹 Cleaning up Brewfile.$BREW_CONFIG..."
+  _brewfile cleanup --force && brew autoremove && _brew_doctor
+  echo "✅ Done!"
+}
+brew-uninstall() {
+  echo "⚠️  This will uninstall ALL brew packages. Continue? (y/N)"
+  read -r confirm
+  [[ "$confirm" =~ ^[Yy]$ ]] || return 0
+  echo "🧹 Uninstalling..."
+  local formulae=($(brew list --formula))
+  [[ ${#formulae[@]} -gt 0 ]] && brew uninstall --force "${formulae[@]}"
+  local casks=($(brew list --cask))
+  [[ ${#casks[@]} -gt 0 ]] && brew uninstall --cask --force "${casks[@]}"
+  brew autoremove
+  echo "✅ Done!"
+}
 
 # Options
 unsetopt BEEP
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt SHARE_HISTORY
 touch ~/.hushlogin
 
-# Settings
-export EDITOR="nvim"
-export GPG_TTY=$(tty)
-export MANPAGER='nvim +Man!'
-export MANWIDTH=999
-export HISTSIZE=1000000000
-export HUSKY=0
-export SAVEHIST=$HISTSIZE
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
-export VISUAL=$EDITOR
-export XDG_CONFIG_HOME="$HOME/.config"
-
-# Add new line between prompts
+# Prompt
 precmd() { precmd() { echo "" } }
 
-# Plugins
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
-eval "$(mise activate zsh)"
-
-# Source local zsh files
-for file in "$HOME/.config/zsh/.zshrc."*(N); do
-  if [[ -f "$file" ]]; then
-    source "$file"
-  fi
-done
-
-# Ensures SSH agent is running
-if [ -z "$SSH_AUTH_SOCK" ] || [ ! -S "$SSH_AUTH_SOCK" ]; then
+# SSH
+if [[ -z "$SSH_AUTH_SOCK" || ! -S "$SSH_AUTH_SOCK" ]]; then
   eval "$(ssh-agent -s)"
 fi
-ssh-add -l > /dev/null || ssh-add
+ssh-add -l &> /dev/null || ssh-add
+
+# Tools
+eval "$(mise activate zsh)"
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+
+# Zsh
+for file in "$HOME/.config/zsh/.zshrc."*~*.example(N); do
+  [[ -f "$file" ]] && source "$file"
+done

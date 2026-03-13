@@ -1,5 +1,5 @@
 # Shared
-eval(File.read(File.expand_path("~/dotfiles/.config/homebrew/brewfiles/Brewfile.shared")))
+eval(File.read(File.expand_path("~/dotfiles/homebrew/Brewfile.shared")))
 
 # Formulae
 brew "vercel-cli"         # Command-line interface for Vercel
