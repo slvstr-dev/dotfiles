@@ -7,5 +7,6 @@
     "code-review@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true,
-  "showTurnDuration": true
+  "showTurnDuration": true,
+  "voiceEnabled": true
 }
