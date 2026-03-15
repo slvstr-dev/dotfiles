@@ -7,19 +7,23 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "buffer_line_height": "comfortable",
-  "ui_font_size": 14.0,
-  "current_line_highlight": "all",
   "agent": {
+    "enable_feedback": false,
     "favorite_models": [],
     "model_parameters": [],
-    "enable_feedback": false,
+  },
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry",
+    },
   },
   "auto_indent_on_paste": true,
   "base_keymap": "VSCode",
   "buffer_font_family": ".ZedMono",
   "buffer_font_size": 14.0,
+  "buffer_line_height": "comfortable",
   "colorize_brackets": true,
+  "current_line_highlight": "all",
   "cursor_blink": false,
   "icon_theme": "Catppuccin Mocha",
   "linked_edits": true,
@@ -30,10 +34,11 @@
     "metrics": false,
   },
   "theme": {
-    "mode": "system",
     "dark": "Rosé Pine",
     "light": "Rosé Pine Dawn",
+    "mode": "system",
   },
   "ui_font_family": ".ZedMono",
+  "ui_font_size": 14.0,
   "vim_mode": false,
 }
