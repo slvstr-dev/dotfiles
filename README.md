@@ -14,9 +14,9 @@ My macOS dotfiles, managed with chezmoi.
 ## Setup
 
 ### Prerequisites
-
 1. Update macOS: `sudo softwareupdate -ia`
 2. Install Xcode Command Line Tools: `xcode-select --install`
+3. Install Homebrew: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
 ### Install
 
