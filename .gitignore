@@ -29,8 +29,7 @@ token.json
 
 # Claude
 dot_claude/*
-!dot_claude/settings.json
-!dot_claude/settings.local.example.json
+!dot_claude/settings.example.json
 
 # Lazyvim
 lazy-lock.json

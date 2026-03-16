@@ -1,8 +1,8 @@
 adjust-cell-height = 12
-font-family = GeistMono Nerd Font Mono
+font-family = FiraCode Nerd Font
 font-size = 14
 macos-titlebar-style = tabs
-theme = dark:Rose Pine,light:Rose Pine Dawn
+theme = dark:Catppuccin Mocha,light:Catppuccin Latte
 title = " "
 window-padding-x = 12
 window-padding-y = 6,12
