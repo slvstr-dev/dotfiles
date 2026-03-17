@@ -9,36 +9,7 @@
   "current_line_highlight": "all",
   "cursor_blink": false,
   "icon_theme": "Catppuccin Mocha",
-  "languages": {
-    "JavaScript": {
-      "formatter": [
-        {
-          "code_action": "source.fixAll.eslint",
-        },
-        {
-          "external": {
-            "command": "prettier",
-            "arguments": ["--stdin-filepath", "{buffer_path}"],
-          },
-        },
-      ],
-      "format_on_save": "on",
-    },
-  },
   "linked_edits": true,
-  "lsp": {
-    "eslint": {
-      "settings": {
-        "nodePath": ".yarn/sdks",
-        "workingDirectory": {
-          "mode": "auto",
-        },
-        "experimental": {
-          "useFlatConfig": true,
-        },
-      },
-    },
-  },
   "show_edit_predictions": true,
   "tab_size": 2,
   "telemetry": {
