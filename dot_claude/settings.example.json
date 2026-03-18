@@ -59,7 +59,6 @@
       "WebFetch"
     ],
     "ask": [
-      "Bash(*)",
       "Bash(cat *)",
       "Bash(head *)",
       "Bash(tail *)",
