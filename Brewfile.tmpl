@@ -56,11 +56,10 @@ cask "orbstack"
 cask "postman"
 cask "sequel-ace"
 
-{{- else }}
+{{- else if eq .machine_type "personal" }}
 
 # Personal formulae
 brew "vercel-cli"
-brew "xcodes"
 
 # Personal casks
 cask "proton-drive"
