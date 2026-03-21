@@ -21,7 +21,7 @@ My macOS dotfiles, managed with chezmoi.
 ### Install
 
 1. Install chezmoi: `brew install chezmoi` (or `sh -c "$(curl -fsLS get.chezmoi.io)"`)
-2. `chezmoi init https://github.com/slvstr-dev/dotfiles.git --apply`
+2. `chezmoi init git@github.com:slvstr-dev/dotfiles.git --apply`
    - You'll be prompted for machine type (work/personal)
 3. Restart shell
 
