@@ -6,7 +6,7 @@ My macOS dotfiles, managed with chezmoi.
 
 - **Shell** — Zsh + Starship
 - **Terminal** — Ghostty
-- **Editor** — Neovim + Zed
+- **Editor** — Zed
 - **Runtime manager** — mise
 - **Package manager** — Homebrew + Bun
 - **Package shortcuts** — ni
@@ -37,10 +37,10 @@ My macOS dotfiles, managed with chezmoi.
 ### Homebrew
 
 ```bash
-brew-install
-brew-update
-brew-cleanup
-brew-uninstall
+brew:install
+brew:update
+brew:cleanup
+brew:uninstall
 ```
 
 ### Zed
