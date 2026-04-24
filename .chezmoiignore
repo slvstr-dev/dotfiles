@@ -1,3 +1,6 @@
+{{ if ne .machine_type "work" }}
+.claude/
+{{ end }}
 .github/
 LICENSE
 README.md
