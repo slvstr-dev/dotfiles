@@ -27,9 +27,18 @@ token.json
 *.swp
 *.tmp
 
-# Claude
-dot_claude/*
-!dot_claude/settings.example.json
+# Agents
+*-workspace/
+.agents/
+.claude/
+.codex/
+.config/
+.copilot/
+.cursor/
+.gemini/
+AGENTS.md
+CLAUDE.md
+skills-lock.json
 
 # Lazyvim
 lazy-lock.json

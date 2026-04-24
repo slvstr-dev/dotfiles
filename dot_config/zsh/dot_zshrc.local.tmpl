@@ -1,5 +1,4 @@
 {{- if eq .machine_type "work" }}
-export BREW_CONFIG="work"
-{{- else }}
-export BREW_CONFIG="personal"
+alias install:be="git pull && make install-backend && make build-frontend-dojo && make run-migrations && make install-assets"
+alias install:fe="yarn install && yarn nx reset && yarn cache clean && yarn install && yarn build:dev --exclude @medicore/mc-app && yarn start"
 {{- end }}
