@@ -47,7 +47,7 @@ brew:uninstall
 
 Install manually via the Zed extensions panel:
 
-- Rosé Pine (or Catppuccin)
+- Catppuccin
 
 ### GitHub
 

@@ -1,0 +1,10 @@
+[settings]
+install_before = "7d"
+
+[tools]
+{{- if eq .machine_type "work" }}
+bun = "latest"
+node = "24.14.1"
+{{- else }}
+node = "latest"
+{{- end }}

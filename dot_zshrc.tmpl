@@ -2,9 +2,7 @@
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
 # FPATH
-if command -v brew &> /dev/null; then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-fi
+FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
 FPATH="${HOME}/.zsh:${FPATH}"
 
 # Environment
@@ -26,7 +24,7 @@ else
 fi
 
 # Aliases
-alias dotfiles='cd ~/.local/share/chezmoi && zed .'
+alias df='cd ~/.local/share/chezmoi'
 alias lg='lazygit'
 alias ls='eza --icons=auto'
 
@@ -96,6 +94,4 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 # Zsh
-for file in "$HOME/.config/zsh/.zshrc."*~*.example(N); do
-  [[ -f "$file" ]] && source "$file"
-done
+[[ -f "$HOME/.config/zsh/.zshrc.local" ]] && source "$HOME/.config/zsh/.zshrc.local"
