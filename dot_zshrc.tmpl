@@ -29,6 +29,8 @@ alias lg='lazygit'
 alias ls='eza --icons=auto'
 
 # Homebrew
+export HOMEBREW_NO_ENV_HINTS=1
+
 _brewfile() {
   if ! command -v brew &> /dev/null; then
     echo "🍺 Homebrew not found. Installing..."
