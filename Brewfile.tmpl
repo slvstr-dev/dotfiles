@@ -24,6 +24,10 @@ cask "zen"
 
 {{- if eq .machine_type "work" }}
 
+# Work taps
+tap "docker/tap", trusted: { casks: ["sbx", "sbx@nightly"] }
+tap "mutagen-io/mutagen", trusted: { formulae: ["mutagen", "mutagen-beta", "mutagen-edge"] }
+
 # Work formulae
 brew "azure-cli"
 brew "nss"
