@@ -6,6 +6,8 @@ FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
 FPATH="${HOME}/.zsh:${FPATH}"
 
 # Environment
+export EDITOR="zed --wait"
+export VISUAL="zed --wait"
 export EZA_CONFIG_DIR="$HOME/.config/eza"
 export GPG_TTY=$(tty)
 export HISTFILE="$HOME/.zsh_history"
@@ -14,6 +16,9 @@ export MANWIDTH=999
 export SAVEHIST=$HISTSIZE
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 export XDG_CONFIG_HOME="$HOME/.config"
+{{- if eq .machine_type "work" }}
+export SBX_NO_TELEMETRY=1
+{{- end }}
 
 # Completions
 autoload -Uz compinit
@@ -27,6 +32,11 @@ fi
 alias df='cd ~/.local/share/chezmoi'
 alias lg='lazygit'
 alias ls='eza --icons=auto'
+{{- if eq .machine_type "work" }}
+alias oc='opencode'
+alias sbx-cc='sbx run claude   --kit ~/repos/mcai-sbx-kits/claude   --kit ~/repos/mcai-sbx-kits/mcai-skills'
+alias sbx-oc='sbx run opencode --kit ~/repos/mcai-sbx-kits/opencode --kit ~/repos/mcai-sbx-kits/mcai-skills'
+{{- end }}
 
 # Homebrew
 export HOMEBREW_NO_ENV_HINTS=1
