@@ -35,9 +35,8 @@ alias ls='eza --icons=auto'
 {{- if eq .machine_type "work" }}
 alias cc='claude'
 alias oc='opencode'
-# TODO: adjust when new sbx support ssh for commands
-alias sbx-cc='sbx run claude . --kit ~/repos/mcai-sbx-kits/mixins/network-policy'
-alias sbx-oc='sbx run opencode . ~/.agents/skills:ro --kit ~/repos/mcai-sbx-kits/mixins/network-policy'
+alias sbx:cc='n=claude-$(basename "$PWD"); sbx create claude . --kit ~/repos/mcai-sbx-kits/mixins/network-policy --name $n; sbx exec $n -- mkdir -p /home/agent/.claude; sbx cp ~/.agents/skills $n:/home/agent/.claude/; sbx cp ~/.claude/settings.json $n:/home/agent/.claude/; sbx run --name $n'
+alias sbx:oc='n=opencode-$(basename "$PWD"); sbx create opencode . --kit ~/repos/mcai-sbx-kits/mixins/network-policy --name $n; sbx exec $n -- mkdir -p /home/agent/.agents /home/agent/.config/opencode; sbx cp ~/.agents/skills $n:/home/agent/.agents/; sbx cp ~/.config/opencode/opencode.json $n:/home/agent/.config/opencode/; sbx cp ~/.config/opencode/tui.json $n:/home/agent/.config/opencode/; sbx run --name $n'
 {{- end }}
 
 # Homebrew
