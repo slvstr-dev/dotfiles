@@ -33,10 +33,13 @@ alias df='cd ~/.local/share/chezmoi'
 alias lg='lazygit'
 alias ls='eza --icons=auto'
 {{- if eq .machine_type "work" }}
+alias install:be="git pull && make install-backend && make build-frontend-dojo && make run-migrations && make install-assets"
+alias install:fe="yarn install && yarn nx reset && yarn cache clean && yarn install && yarn build:dev --exclude @medicore/mc-app && yarn start"
+
 alias cc='claude'
 alias oc='opencode'
 alias sbx:cc='n=claude-$(basename "$PWD"); sbx create claude . --kit ~/repos/mcai-sbx-kits/mixins/network-policy --name $n; sbx exec $n -- mkdir -p /home/agent/.claude; sbx cp ~/.agents/skills $n:/home/agent/.claude/; sbx cp ~/.claude/settings.json $n:/home/agent/.claude/; sbx run --name $n'
-alias sbx:oc='n=opencode-$(basename "$PWD"); sbx create opencode . --kit ~/repos/mcai-sbx-kits/mixins/network-policy --name $n; sbx exec $n -- mkdir -p /home/agent/.agents /home/agent/.config/opencode; sbx cp ~/.agents/skills $n:/home/agent/.agents/; sbx cp ~/.config/opencode/opencode.json $n:/home/agent/.config/opencode/; sbx cp ~/.config/opencode/tui.json $n:/home/agent/.config/opencode/; sbx run --name $n'
+alias sbx:oc='n=opencode-$(basename "$PWD"); sbx create opencode . --kit ~/repos/mcai-sbx-kits/m
 {{- end }}
 
 # Homebrew
