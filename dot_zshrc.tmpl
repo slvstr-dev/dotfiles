@@ -33,9 +33,11 @@ alias df='cd ~/.local/share/chezmoi'
 alias lg='lazygit'
 alias ls='eza --icons=auto'
 {{- if eq .machine_type "work" }}
+alias cc='claude'
 alias oc='opencode'
-alias sbx-cc='sbx run claude   --kit ~/repos/mcai-sbx-kits/claude   --kit ~/repos/mcai-sbx-kits/mcai-skills'
-alias sbx-oc='sbx run opencode --kit ~/repos/mcai-sbx-kits/opencode --kit ~/repos/mcai-sbx-kits/mcai-skills'
+# TODO: adjust when new sbx support ssh for commands
+alias sbx-cc='sbx run claude . --kit ~/repos/mcai-sbx-kits/mixins/network-policy'
+alias sbx-oc='sbx run opencode . ~/.agents/skills:ro --kit ~/repos/mcai-sbx-kits/mixins/network-policy'
 {{- end }}
 
 # Homebrew
