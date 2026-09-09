@@ -1,40 +1,33 @@
 # dotfiles
 
-My macOS dotfiles, managed with chezmoi.
+My macOS dotfiles, managed by chezmoi.
 
 ## Stack
 
 - **Shell** — Zsh + Starship
-- **Terminal** — Ghostty
+- **Terminal** — Ghostty + Fira Code Nerd Font
 - **Editor** — Zed
-- **Runtime manager** — mise
-- **Package manager** — Homebrew + Bun
+- **Launcher** — Raycast
+- **Runtime manager** — mise (Node, Bun)
+- **Package manager** — Homebrew
 - **Package shortcuts** — ni
+- **Directory tools** — zoxide + eza
+- **Git** — lazygit + hunk
+- **AI agents** — Claude Code + opencode *(work)*
+- **Agent sandboxing** — Docker Sandboxes *(work)*
+- **Agent workspaces** — Herdr *(work)*
 
 ## Setup
 
 ### Prerequisites
+
 1. Update macOS: `sudo softwareupdate -ia`
 2. Install Xcode Command Line Tools: `xcode-select --install`
 3. Install Homebrew: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
-### Install
+### General
 
-1. Install chezmoi: `brew install chezmoi` (or `sh -c "$(curl -fsLS get.chezmoi.io)"`)
-2. `chezmoi init git@github.com:slvstr-dev/dotfiles.git --apply`
-   - You'll be prompted for machine type (work/personal)
-3. Restart shell
-
-### Day-to-day
-
-- Edit configs: `chezmoi edit ~/.config/ghostty/config`
-- Apply changes: `chezmoi apply`
-- See pending changes: `chezmoi diff`
-- Pull & apply updates: `chezmoi update`
-- Check out of sync: `chezmoi status`
-- Sync live changed back: `chezmoi re-add`
-
-### Homebrew
+#### 1. Homebrew
 
 ```bash
 brew:install
@@ -43,18 +36,45 @@ brew:cleanup
 brew:uninstall
 ```
 
-### Zed
+#### 2. chezmoi
 
-Install manually via the Zed extensions panel:
+1. Install chezmoi: `brew install chezmoi`
+2. `chezmoi init git@github.com:slvstr-dev/dotfiles.git --apply`
+3. You'll be prompted for machine type (work/personal)
+4. Restart terminal
 
-- Catppuccin
+#### 3.Raycast
 
-### GitHub
+Disable Spotlight hotkey and assign it to Raycast using the [Raycast hotkey instructions](https://manual.raycast.com/hotkey).
+
+#### 4. Zed
+
+Install 'Catppuccin' manually via the Zed extensions panel.
+
+### Personal
+
+#### GitHub
 
 ```bash
 gh auth login
 ```
 
-### Raycast
+### Work
 
-Disable Spotlight hotkey and assign it to Raycast using the [Raycast hotkey instructions](https://manual.raycast.com/hotkey).
+#### Docker Sandboxes
+
+```bash
+sbx login
+sbx policy init deny-all
+sbx:skills
+sbx:run <claude|opencode>
+```
+
+#### Herdr
+
+```bash
+herdr:setup
+herdr:setup --client
+herdr:setup --client ABC-12345
+herdr:setup --app 1.404 --client
+```

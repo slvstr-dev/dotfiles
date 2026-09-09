@@ -1,0 +1,7 @@
+[keys]
+prefix = "ctrl+a"
+navigate_workspace_up = "k"
+navigate_workspace_down = "j"
+split_vertical = "prefix+%"
+split_horizontal = "prefix+\""
+rename_tab = "prefix+,"

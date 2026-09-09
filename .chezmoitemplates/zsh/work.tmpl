@@ -1,0 +1,98 @@
+# Work
+## General
+alias cc='claude'
+alias oc='opencode'
+alias setup:app='make start && git pull && make install && make run-migrations && make install-assets'
+alias setup:client='yarn install && yarn nx reset && yarn cache clean && yarn install && yarn build:dev --exclude @medicore/mc-app'
+
+## Docker Sandbox
+export SBX_NO_TELEMETRY=1
+
+sbx:run() {
+  local a=${1:-claude}
+
+  sbx:skills >/dev/null
+
+  HERDR_AGENT=$a sbx run "$a" --name "$a-${PWD:t}${2:+-$2}" \
+    --kit ~/.config/sbx/kits/network-policy \
+    --kit ~/.config/sbx/kits/$a
+}
+
+sbx:skills() { sbx skills import --force }
+
+## Herdr
+_herdr_panes() {
+  local res=$1 cwd=$2 spec
+  local ws=$(jq -r '.result.workspace.workspace_id' <<<$res)
+  shift 2
+
+  herdr tab rename $(jq -r '.result.tab.tab_id' <<<$res) lazygit >/dev/null
+  herdr pane run $(jq -r '.result.root_pane.pane_id' <<<$res) lg >/dev/null
+
+  for spec in $@; do
+    herdr pane run $(herdr tab create --workspace $ws --cwd $cwd --label ${spec%%=*} --no-focus \
+      | jq -r '.result.root_pane.pane_id') ${spec#*=} >/dev/null
+  done
+}
+
+_herdr_branch() {
+  local repo=$1 branch=$2
+  git -C $repo fetch --quiet origin $branch 2>/dev/null
+  git -C $repo show-ref --quiet --verify refs/heads/$branch && return
+  git -C $repo show-ref --quiet --verify refs/remotes/origin/$branch && return
+  print -u2 "${repo:t}: branch $branch not found locally or on origin"
+  return 1
+}
+
+_herdr_checkout() {
+  local label=$1 repo=$2 branch=$3 cmd=$4 cur res
+  local ws=$(herdr workspace list | jq -r --arg l $label \
+    '.result.workspaces[] | select(.label == $l) | .workspace_id' | head -1)
+
+  if [[ -n $ws ]]; then
+    herdr workspace focus $ws >/dev/null
+    cur=$(git -C $repo symbolic-ref --short HEAD 2>/dev/null)
+    [[ $cur == $branch ]] || print -u2 "$label already open on $cur; ignoring $branch"
+    return
+  fi
+
+  _herdr_branch $repo $branch || return 1
+  res=$(herdr workspace create --cwd $repo --label $label --focus)
+  _herdr_panes $res $repo "scripts=git switch $branch && $cmd"
+}
+
+_herdr_client() {
+  local branch=$1 repo=~/repos/mcepd-client res
+  local -a base
+
+  _herdr_branch $repo $branch || return 1
+  git -C $repo show-ref --quiet --verify refs/heads/$branch || base=(--base origin/$branch)
+
+  res=$(herdr worktree open --cwd $repo --branch $branch --label $branch --focus 2>/dev/null) ||
+    res=$(herdr worktree create --cwd $repo --branch $branch $base --label $branch --focus) || return 1
+
+  [[ $(jq -r '.result.already_open // false' <<<$res) == true ]] && return
+  _herdr_panes $res $(jq -r '.result.worktree.path' <<<$res) 'scripts=setup:client' 'sbx=sbx:run'
+}
+
+herdr:setup() {
+  local -A default=(shared main app develop client develop)
+  local -A want
+  local t
+
+  while (( $# )); do
+    t=${1#--}
+    [[ $1 == --* && -n ${default[$t]} ]] || { print -u2 "herdr:setup: unknown option $1"; return 1 }
+    if [[ -n $2 && $2 != --* ]]; then want[$t]=$2; shift 2; else want[$t]=${default[$t]}; shift; fi
+  done
+  (( $#want )) || want=(${(kv)default})
+
+  for t in shared app client; do
+    [[ -n ${want[$t]} ]] || continue
+    case $t in
+      shared) _herdr_checkout medicore-shared-services ~/medicore-shared-services ${want[$t]} 'make start' ;;
+      app)    _herdr_checkout mcepd-app ~/shared-repos/mcepd-app ${want[$t]} 'setup:app && make tool-vecozo-mock-start' ;;
+      client) _herdr_client ${want[$t]} ;;
+    esac
+  done
+}

@@ -1,10 +1,21 @@
+# Agents
+*-workspace/
+.agents/
+.claude/
+.codex/
+.config/
+.copilot/
+.cursor/
+.gemini/
+AGENTS.md
+CLAUDE.md
+skills-lock.json
+
+# Mise
+.mise.local.toml
+
 # OS
 .DS_Store
-
-# Zsh
-.zcompdump
-.zsh_*
-.zshrc.*
 
 # Secrets
 *.jks
@@ -21,30 +32,7 @@ id_rsa
 keyfile.json
 token.json
 
-# Artifacts
-*.bak
-*.log
-*.swp
-*.tmp
-
-# Agents
-*-workspace/
-.agents/
-.claude/
-.codex/
-.config/
-.copilot/
-.cursor/
-.gemini/
-AGENTS.md
-CLAUDE.md
-skills-lock.json
-
-# Lazyvim
-lazy-lock.json
-
-# Mise
-.mise.local.toml
-
-# Templates
-!*.local.example
+# Zsh
+.zcompdump
+.zsh_*
+.zshrc.*

@@ -3,11 +3,6 @@
   "default_agent": "plan",
   "enabled_providers": ["openai"],
   "mcp": {
-    "atlassian": {
-      "type": "remote",
-      "url": "https://mcp.atlassian.com/v1/mcp",
-      "enabled": false
-    },
     "mui": {
       "type": "local",
       "command": [
@@ -20,6 +15,37 @@
       "enabled": false
     }
   },
-  "model": "openai/gpt-5.6-sol",
+  "permission": {
+    "bash": {
+      "*": "allow",
+      {{ includeTemplate "opencode/bash-deny.tmpl" | indent 6 | trim }},
+      "curl *": "deny",
+      "wget *": "deny",
+      "sudo *": "deny",
+      "su *": "deny"
+    },
+    "read": {
+      "*": "allow",
+      {{ includeTemplate "opencode/path-deny.tmpl" | indent 6 | trim }}
+    },
+    "edit": {
+      "*": "allow",
+      {{ includeTemplate "opencode/path-deny.tmpl" | indent 6 | trim }},
+      "**/.claude/settings.json": "deny",
+      "**/.config/opencode/opencode.json": "deny"
+    },
+    "webfetch": {
+      "*": "ask",
+      "https://bun.sh/*": "allow",
+      "https://developer.mozilla.org/*": "allow",
+      "https://mui.com/*": "allow",
+      "https://nodejs.org/*": "allow",
+      "https://opencode.ai/*": "allow",
+      "https://react.dev/*": "allow",
+      "https://www.npmjs.com/*": "allow",
+      "https://yarnpkg.com/*": "allow"
+    },
+    "external_directory": "ask"
+  },
   "share": "disabled"
 }

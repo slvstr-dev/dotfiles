@@ -1,117 +1,40 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "autoMemoryEnabled": false,
-  "enabledMcpjsonServers": [
-    "atlassian"
+  "allowedMcpServers": [
+    {{ includeTemplate "claude/mcp-servers.tmpl" | indent 4 | trim }}
   ],
+  "autoMemoryEnabled": false,
+  "env": {
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
+  },
+  "outputStyle": "Concise",
   "permissions": {
-    "defaultMode": "acceptEdits",
+    "defaultMode": "auto",
     "allow": [
-      "Bash(bun run *)",
-      "Bash(yarn run *)",
-
-      "Bash(git *)",
-
-      "Read(~/.claude/skills/**)",
-
       "WebSearch",
-      "WebFetch(domain:docs.claude.com)",
-      "WebFetch(domain:code.claude.com)",
-      "WebFetch(domain:docs.anthropic.com)",
-      "WebFetch(domain:developer.mozilla.org)",
-      "WebFetch(domain:nodejs.org)",
-      "WebFetch(domain:react.dev)",
-      "WebFetch(domain:mui.com)",
       "WebFetch(domain:bun.sh)",
-      "WebFetch(domain:yarnpkg.com)",
+      "WebFetch(domain:code.claude.com)",
+      "WebFetch(domain:developer.mozilla.org)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:docs.claude.com)",
+      "WebFetch(domain:mui.com)",
+      "WebFetch(domain:nodejs.org)",
       "WebFetch(domain:npmjs.com)",
-
-      "mcp__atlassian__searchConfluenceUsingCql",
-      "mcp__atlassian__searchJiraIssuesUsingJql",
-      "mcp__atlassian__getConfluencePage",
-      "mcp__atlassian__getJiraIssue"
-    ],
-    "ask": [
-      "Bash(* install *)",
-      "Bash(bun a *)",
-      "Bash(bun add *)",
-      "Bash(bun i *)",
-      "Bash(bun x *)",
-      "Bash(bunx *)",
-      "Bash(npm add *)",
-      "Bash(npm i *)",
-      "Bash(npx *)",
-      "Bash(pnpm i *)",
-      "Bash(pnpm dlx *)",
-      "Bash(pnpm add *)",
-      "Bash(yarn)",
-      "Bash(yarn dlx *)",
-      "Bash(yarn add *)",
-
-      "Bash(git push *)"
+      "WebFetch(domain:react.dev)",
+      "WebFetch(domain:yarnpkg.com)"
     ],
     "deny": [
-      "Bash(crontab *)",
+      {{ includeTemplate "claude/permissions.tmpl" | indent 6 | trim }},
       "Bash(curl *)",
-      "Bash(launchctl *)",
-      "Bash(nc *)",
-      "Bash(ncat *)",
-      "Bash(scp *)",
-      "Bash(sftp *)",
-      "Bash(ssh *)",
-      "Bash(su *)",
-      "Bash(sudo *)",
       "Bash(wget *)",
-
-      "Write(//**/.claude/settings.json)",
-      "Edit(//**/.claude/settings.json)",
-
-      "Read(//**/secrets/**)",
-      "Write(//**/secrets/**)",
-      "Edit(//**/secrets/**)",
-      "Read(//**/*.key)",
-      "Write(//**/*.key)",
-      "Edit(//**/*.key)",
-      "Read(//**/*.pem)",
-      "Write(//**/*.pem)",
-      "Edit(//**/*.pem)",
-      "Read(//**/.env*)",
-      "Write(//**/.env*)",
-      "Edit(//**/.env*)",
-      "Read(//**/.npmrc)",
-      "Write(//**/.npmrc)",
-      "Edit(//**/.npmrc)",
-      "Read(//**/.ssh/**)",
-      "Write(//**/.ssh/**)",
-      "Edit(//**/.ssh/**)",
-      "Read(//**/.azure/**)",
-      "Write(//**/.azure/**)",
-      "Edit(//**/.azure/**)",
-      "Read(//**/.docker/**)",
-      "Write(//**/.docker/**)",
-      "Edit(//**/.docker/**)",
-
-      "Read(~/.bashrc)",
-      "Write(~/.bashrc)",
-      "Edit(~/.bashrc)",
-      "Read(~/.bash_profile)",
-      "Write(~/.bash_profile)",
-      "Edit(~/.bash_profile)",
-      "Read(~/.profile)",
-      "Write(~/.profile)",
-      "Edit(~/.profile)",
-      "Read(~/.zprofile)",
-      "Write(~/.zprofile)",
-      "Edit(~/.zprofile)",
-      "Read(~/.zshrc)",
-      "Write(~/.zshrc)",
-      "Edit(~/.zshrc)"
+      "Bash(sudo *)",
+      "Bash(su *)"
     ]
   },
   "sandbox": {
     "enabled": true,
     "failIfUnavailable": true,
-    "autoAllowBashIfSandboxed": false,
+    "autoAllowBashIfSandboxed": true,
     "allowUnsandboxedCommands": false,
     "excludedCommands": ["docker *"],
     "network": {
@@ -126,7 +49,11 @@
         "~/.azure",
         "~/.docker",
         "~/.npmrc",
-        "~/.ssh"
+        "~/.ssh",
+        "**/.env*",
+        "**/*.key",
+        "**/*.pem",
+        "**/secrets"
       ],
       "allowWrite": [
         "~/.bun/install/cache",
@@ -137,6 +64,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "jq -r '\"Context window usage: \\(.context_window.total_input_tokens // 0) of \\(.context_window.context_window_size) tokens (\\(.context_window.used_percentage // 0)%)\"'"  },
+    "command": "jq -r '\"Context window usage: \\(.context_window.total_input_tokens // 0) of \\(.context_window.context_window_size) tokens (\\(.context_window.used_percentage // 0)%)\"'"
+  },
   "tui": "fullscreen"
 }
