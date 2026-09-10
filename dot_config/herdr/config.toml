@@ -1,7 +1,16 @@
+onboarding = false
+
 [keys]
-prefix = "ctrl+a"
-navigate_workspace_up = "k"
 navigate_workspace_down = "j"
+navigate_workspace_up = "k"
+prefix = "ctrl+a"
+rename_tab = "prefix+,"
 split_vertical = "prefix+%"
 split_horizontal = "prefix+\""
-rename_tab = "prefix+,"
+
+[ui]
+agent_panel_sort = "priority"
+show_agent_labels_on_pane_borders = true
+
+[ui.toast]
+delivery = "system"

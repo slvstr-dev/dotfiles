@@ -15,14 +15,14 @@
   "tab_size": 2,
   "telemetry": {
     "diagnostics": false,
-    "metrics": false,
+    "metrics": false
   },
   "theme": {
     "dark": "Catppuccin Mocha",
     "light": "Catppuccin Latte",
-    "mode": "system",
+    "mode": "system"
   },
   "ui_font_family": "FiraCode Nerd Font",
   "ui_font_size": 14.0,
-  "vim_mode": false,
+  "vim_mode": false
 }

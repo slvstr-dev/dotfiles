@@ -1,0 +1,83 @@
+schemaVersion: "2"
+kind: mixin
+name: claude-config
+displayName: Claude Code
+description: Sandbox policy
+requires:
+  agent: claude
+environment:
+  variables:
+    CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC: "1"
+setup:
+  files:
+    - path: /etc/claude-code/managed-settings.json
+      mode: "0644"
+      description: Claude Code managed settings
+      content: |
+        {
+          "allowManagedPermissionRulesOnly": true,
+          "autoMemoryEnabled": false,
+          "effortLevel": "xhigh",
+          "outputStyle": "Concise",
+          "permissions": {
+            "deny": [
+              "Bash(su *)",
+              "Bash(sudo *)",
+              "Bash(git branch -D*)",
+              "Bash(git checkout -f*)",
+              "Bash(git checkout --force*)",
+              "Bash(git clean *)",
+              "Bash(git rebase)",
+              "Bash(git rebase *)",
+              "Bash(git reset --hard)",
+              "Bash(git reset --hard *)",
+              "Bash(git restore *)",
+              "Bash(git worktree prune*)",
+              "Bash(git worktree remove*)",
+              "Bash(rm -- *)",
+              "Bash(rm -f*)",
+              "Bash(rm -r*)",
+              "Bash(bun add *)",
+              "Bash(bun i*)",
+              "Bash(bun install*)",
+              "Bash(corepack *)",
+              "Bash(ni)",
+              "Bash(ni *)",
+              "Bash(npm add *)",
+              "Bash(npm ci*)",
+              "Bash(npm i*)",
+              "Bash(npm install*)",
+              "Bash(pnpm add *)",
+              "Bash(pnpm i*)",
+              "Bash(pnpm install*)",
+              "Bash(yarn)",
+              "Bash(yarn add *)",
+              "Bash(yarn install*)",
+              "Bash(*nx build*)",
+              "Bash(*nx run*)",
+              "Edit(//**/.claude.json)",
+              "Edit(//**/.claude/settings.json)",
+              "Edit(//**/.claude/settings.local.json)",
+              "Edit(//**/.mcp.json)",
+              "Read(//**/.env*)",
+              "Edit(//**/.env*)",
+              "Read(//**/*.key)",
+              "Edit(//**/*.key)",
+              "Read(//**/*.p12)",
+              "Edit(//**/*.p12)",
+              "Read(//**/*.pem)",
+              "Edit(//**/*.pem)",
+              "Read(//**/id_ed25519*)",
+              "Edit(//**/id_ed25519*)",
+              "Read(//**/id_rsa*)",
+              "Edit(//**/id_rsa*)",
+              "Read(//**/secrets/**)",
+              "Edit(//**/secrets/**)"
+            ]
+          },
+          "statusLine": {
+            "type": "command",
+            "command": "jq -r --arg s \"$SANDBOX_NAME\" '\"[\\($s)] Context window usage: \\(.context_window.total_input_tokens // 0) of \\(.context_window.context_window_size) tokens (\\(.context_window.used_percentage // 0)%)\"'"
+          },
+          "tui": "fullscreen"
+        }

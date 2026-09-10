@@ -1,26 +1,84 @@
-# Work
-## General
-alias cc='claude'
-alias oc='opencode'
+# Misc
+precmd() { precmd() { echo "" } }
+
+eval "$(mise activate zsh)"
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+
+# Homebrew
+export HOMEBREW_NO_ENV_HINTS=1
+
+_brewfile() {
+  if ! command -v brew &> /dev/null; then
+    echo "🍺 Homebrew not found. Installing..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || {
+      echo "🚫 Failed to install Homebrew" >&2
+      return 1
+    }
+    eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+  fi
+  brew bundle "${@}" --file="$HOME/Brewfile"
+}
+
+_brew_doctor() {
+  echo "🩺 Running brew doctor..."
+  brew doctor
+}
+
+brew:install() {
+  echo "📦 Installing Brewfile..."
+  _brewfile install && _brew_doctor
+  echo "✅ Done!"
+}
+
+brew:update() {
+  echo "🔄 Updating Brewfile..."
+  _brewfile install --upgrade && _brew_doctor
+  echo "✅ Done!"
+}
+
+brew:cleanup() {
+  echo "🧹 Cleaning up Brewfile..."
+  _brewfile cleanup --force && brew autoremove && _brew_doctor
+  echo "✅ Done!"
+}
+
+brew:uninstall() {
+  echo "⚠️ This will uninstall ALL brew packages. Continue? (y/N)"
+  read -r confirm
+  [[ "$confirm" =~ ^[Yy]$ ]] || return 0
+  echo "🗑️ Uninstalling..."
+  local formulae=($(brew list --formula))
+  [[ ${#formulae[@]} -gt 0 ]] && brew uninstall --force "${formulae[@]}"
+  local casks=($(brew list --cask))
+  [[ ${#casks[@]} -gt 0 ]] && brew uninstall --cask --force "${casks[@]}"
+  brew autoremove
+  echo "✅ Done!"
+}
+
+{{ if eq .setup_type "work" }}
+# Docker Sandbox
+alias cc='sbx:run'
 alias setup:app='make start && git pull && make install && make run-migrations && make install-assets'
 alias setup:client='yarn install && yarn nx reset && yarn cache clean && yarn install && yarn build:dev --exclude @medicore/mc-app'
 
-## Docker Sandbox
 export SBX_NO_TELEMETRY=1
 
 sbx:run() {
-  local a=${1:-claude}
+  case ${PWD:A} in
+    $HOME|/) print -u2 "sbx:run: refusing to mount ${PWD:A}; cd into a project first"; return 1 ;;
+  esac
 
   sbx:skills >/dev/null
 
-  HERDR_AGENT=$a sbx run "$a" --name "$a-${PWD:t}${2:+-$2}" \
-    --kit ~/.config/sbx/kits/network-policy \
-    --kit ~/.config/sbx/kits/$a
+  HERDR_AGENT=claude sbx run claude --name "claude-${PWD:t}${1:+-$1}" \
+    --kit ~/.config/sbx/kits/network \
+    --kit ~/.config/sbx/kits/claude
 }
 
 sbx:skills() { sbx skills import --force }
 
-## Herdr
+# Herdr
 _herdr_panes() {
   local res=$1 cwd=$2 spec
   local ws=$(jq -r '.result.workspace.workspace_id' <<<$res)
@@ -96,3 +154,4 @@ herdr:setup() {
     esac
   done
 }
+{{ end -}}

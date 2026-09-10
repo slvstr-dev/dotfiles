@@ -23,7 +23,7 @@ cask "zed"
 cask "zen"
 
 ## Personal
-{{- if eq .machine_type "personal" }}
+{{- if eq .setup_type "personal" }}
 
 ## Casks
 cask "proton-drive"
@@ -34,15 +34,13 @@ cask "zwift"
 {{- end }}
 
 # Work
-{{- if eq .machine_type "work" }}
+{{- if eq .setup_type "work" }}
 
 ## Taps
-tap "anomalyco/tap", trusted: { formulae: ["opencode"] }
 tap "docker/tap", trusted: { casks: ["sbx", "sbx@nightly"] }
 tap "mutagen-io/mutagen", trusted: { formulae: ["mutagen", "mutagen-beta", "mutagen-edge"] }
 
 ## Formulae
-brew "anomalyco/tap/opencode"
 brew "azure-cli"
 brew "docker-compose"
 brew "herdr"

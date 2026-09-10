@@ -1,8 +1,6 @@
-{{ if ne .machine_type "work" }}
-.agents/
+{{ if ne .setup_type "work" }}
 .claude/
 .config/herdr/
-.config/opencode/
 .config/sbx/
 {{ end }}
 .github/

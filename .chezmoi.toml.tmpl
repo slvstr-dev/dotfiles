@@ -1,2 +1,3 @@
 [data]
-    machine_type = {{ promptStringOnce . "machine_type" "Machine type (work/personal)" | quote }}
+setup_type = {{ promptStringOnce . "setup_type" "Setup type (work/personal)" | quote }}
+mcp_url = {{ promptStringOnce . "mcp_url" "MCP url (optional)" "" | quote }}
