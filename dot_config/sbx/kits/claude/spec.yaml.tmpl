@@ -1,0 +1,34 @@
+schemaVersion: "2"
+kind: mixin
+name: claude-code
+displayName: Claude Code
+description: Sandbox policy
+requires:
+  agent: claude
+environment:
+  variables:
+{{- range $k, $v := .base.env }}
+    {{ $k }}: {{ $v | quote }}
+{{- end }}
+setup:
+  install:
+    - user: "agent"
+      description: Settings
+      command: |
+        set -e
+        mkdir -p /home/agent/.claude
+        cat > /home/agent/.claude/settings.json <<'JSON'
+        {
+          {{- with dig "mcp_url" "" . }}
+          "allowedMcpServers": [{ "serverUrl": {{ . | quote }} }],
+          {{- end }}
+          "autoMemoryEnabled": {{ .base.autoMemoryEnabled }},
+          "effortLevel": {{ .base.effortLevel | quote }},
+          "outputStyle": {{ .base.outputStyle | quote }},
+          "permissions": {
+            "deny": {{ concat .base.permissions.deny .sbx.permissions.deny | toPrettyJson | indent 12 | trim }}
+          },
+          "statusLine": {{ .base.statusLine | toPrettyJson | indent 10 | trim }},
+          "tui": {{ .base.tui | quote }}
+        }
+        JSON

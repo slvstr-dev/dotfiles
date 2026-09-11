@@ -58,23 +58,7 @@ brew:uninstall() {
 
 {{ if eq .setup_type "work" }}
 # Docker Sandbox
-alias cc='sbx:run'
-alias setup:app='make start && git pull && make install && make run-migrations && make install-assets'
-alias setup:client='yarn install && yarn nx reset && yarn cache clean && yarn install && yarn build:dev --exclude @medicore/mc-app'
-
 export SBX_NO_TELEMETRY=1
-
-sbx:run() {
-  case ${PWD:A} in
-    $HOME|/) print -u2 "sbx:run: refusing to mount ${PWD:A}; cd into a project first"; return 1 ;;
-  esac
-
-  sbx:skills >/dev/null
-
-  HERDR_AGENT=claude sbx run claude --name "claude-${PWD:t}${1:+-$1}" \
-    --kit ~/.config/sbx/kits/network \
-    --kit ~/.config/sbx/kits/claude
-}
 
 sbx:skills() { sbx skills import --force }
 
@@ -130,7 +114,19 @@ _herdr_client() {
     res=$(herdr worktree create --cwd $repo --branch $branch $base --label $branch --focus) || return 1
 
   [[ $(jq -r '.result.already_open // false' <<<$res) == true ]] && return
-  _herdr_panes $res $(jq -r '.result.worktree.path' <<<$res) 'scripts=setup:client' 'sbx=sbx:run'
+  _herdr_panes $res $(jq -r '.result.worktree.path' <<<$res) 'scripts=setup:client' 'sbx=sbx:claude'
+}
+
+sbx:claude() {
+  case ${PWD:A} in
+    $HOME|/) print -u2 "sbx:claude: refusing to mount ${PWD:A}; cd into a project first"; return 1 ;;
+  esac
+
+  sbx:skills >/dev/null
+
+  HERDR_AGENT=claude sbx run claude --name "claude-${PWD:t}${1:+-$1}" \
+    --kit ~/.config/sbx/kits/network \
+    --kit ~/.config/sbx/kits/claude
 }
 
 herdr:setup() {

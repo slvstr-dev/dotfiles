@@ -1,0 +1,196 @@
+base:
+  autoMemoryEnabled: false
+  effortLevel: xhigh
+  env:
+    CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC: "1"
+  outputStyle: Concise
+  permissions:
+    deny:
+      - "Bash(git branch -D*)"
+      - "Bash(git checkout --force*)"
+      - "Bash(git checkout -f*)"
+      - "Bash(git clean *)"
+      - "Bash(git rebase *)"
+      - "Bash(git rebase)"
+      - "Bash(git reset --hard *)"
+      - "Bash(git reset --hard)"
+      - "Bash(git restore *)"
+      - "Bash(git worktree prune*)"
+      - "Bash(git worktree remove*)"
+      - "Bash(rm -- *)"
+      - "Bash(rm -f*)"
+      - "Bash(rm -r*)"
+      - "Bash(su *)"
+      - "Bash(sudo *)"
+      - "Edit(//**/.claude.json)"
+      - "Edit(//**/.claude/agents/**)"
+      - "Edit(//**/.claude/commands/**)"
+      - "Edit(//**/.claude/hooks/**)"
+      - "Edit(//**/.claude/plugins/**)"
+      - "Edit(//**/.claude/settings.json)"
+      - "Edit(//**/.claude/settings.local.json)"
+      - "Edit(//**/.claude/skills/**)"
+      - "Edit(//**/.mcp.json)"
+  statusLine:
+    command: 'jq -r ''"Context: \(.context_window.total_input_tokens // 0)\/\(.context_window.context_window_size) tokens (\(.context_window.used_percentage // 0)%)"'''
+    type: command
+  tui: fullscreen
+host:
+  permissions:
+    allow:
+      - "WebSearch"
+      - "WebFetch(domain:bun.sh)"
+      - "WebFetch(domain:code.claude.com)"
+      - "WebFetch(domain:developer.mozilla.org)"
+      - "WebFetch(domain:docs.anthropic.com)"
+      - "WebFetch(domain:docs.claude.com)"
+      - "WebFetch(domain:mui.com)"
+      - "WebFetch(domain:nodejs.org)"
+      - "WebFetch(domain:npmjs.com)"
+      - "WebFetch(domain:react.dev)"
+      - "WebFetch(domain:www.npmjs.com)"
+      - "WebFetch(domain:yarnpkg.com)"
+    ask:
+      - "Bash(docker *)"
+      - "Bash(docker-compose *)"
+    deny:
+      - "Bash(crontab *)"
+      - "Bash(launchctl *)"
+      - "Edit(**/*.key)"
+      - "Edit(**/*.p12)"
+      - "Edit(**/*.pem)"
+      - "Edit(**/.env*)"
+      - "Edit(**/id_ed25519*)"
+      - "Edit(**/id_rsa*)"
+      - "Edit(**/secrets/**)"
+      - "Edit(~/.aws/**)"
+      - "Edit(~/.azure/**)"
+      - "Edit(~/.bash_profile)"
+      - "Edit(~/.bashrc)"
+      - "Edit(~/.claude/.config.json)"
+      - "Edit(~/.claude/.credentials.json)"
+      - "Edit(~/.config/gh/hosts.yml)"
+      - "Edit(~/.docker/**)"
+      - "Edit(~/.git-credentials)"
+      - "Edit(~/.gnupg/**)"
+      - "Edit(~/.kube/**)"
+      - "Edit(~/.netrc)"
+      - "Edit(~/.npmrc)"
+      - "Edit(~/.profile)"
+      - "Edit(~/.ssh/**)"
+      - "Edit(~/.zprofile)"
+      - "Edit(~/.zshrc)"
+      - "Read(**/*.key)"
+      - "Read(**/*.p12)"
+      - "Read(**/*.pem)"
+      - "Read(**/.env*)"
+      - "Read(**/id_ed25519*)"
+      - "Read(**/id_rsa*)"
+      - "Read(**/secrets/**)"
+      - "Read(~/.aws/**)"
+      - "Read(~/.azure/**)"
+      - "Read(~/.bash_profile)"
+      - "Read(~/.bashrc)"
+      - "Read(~/.claude/.config.json)"
+      - "Read(~/.claude/.credentials.json)"
+      - "Read(~/.config/gh/hosts.yml)"
+      - "Read(~/.docker/**)"
+      - "Read(~/.git-credentials)"
+      - "Read(~/.gnupg/**)"
+      - "Read(~/.kube/**)"
+      - "Read(~/.netrc)"
+      - "Read(~/.npmrc)"
+      - "Read(~/.profile)"
+      - "Read(~/.ssh/**)"
+      - "Read(~/.zprofile)"
+      - "Read(~/.zshrc)"
+    defaultMode: default
+  sandbox:
+    autoAllowBashIfSandboxed: true
+    allowUnsandboxedCommands: false
+    credentials:
+      envVars:
+        - { name: ANTHROPIC_API_KEY, mode: deny }
+        - { name: AWS_ACCESS_KEY_ID, mode: deny }
+        - { name: AWS_SECRET_ACCESS_KEY, mode: deny }
+        - { name: AWS_SESSION_TOKEN, mode: deny }
+        - { name: GH_TOKEN, mode: deny }
+        - { name: GITHUB_TOKEN, mode: deny }
+        - { name: NPM_TOKEN, mode: deny }
+        - { name: OPENAI_API_KEY, mode: deny }
+    enabled: true
+    excludedCommands:
+      - "docker *"
+      - "docker-compose *"
+    failIfUnavailable: true
+    filesystem:
+      allowWrite:
+        - "~/.bun/install/cache"
+        - "~/.cache"
+        - "~/.npm"
+      denyRead:
+        - "~/.aws"
+        - "~/.azure"
+        - "~/.docker"
+        - "~/.gnupg"
+        - "~/.kube"
+        - "~/.ssh"
+        - "~/.bash_profile"
+        - "~/.bashrc"
+        - "~/.claude/.config.json"
+        - "~/.claude/.credentials.json"
+        - "~/.config/gh/hosts.yml"
+        - "~/.git-credentials"
+        - "~/.netrc"
+        - "~/.npmrc"
+        - "~/.profile"
+        - "~/.zprofile"
+        - "~/.zshrc"
+        - "**/.env*"
+        - "**/*.key"
+        - "**/*.p12"
+        - "**/*.pem"
+        - "**/id_ed25519*"
+        - "**/id_rsa*"
+        - "**/secrets/**"
+    network:
+      allowLocalBinding: true
+      allowedDomains:
+        - "registry.npmjs.org"
+        - "registry.yarnpkg.com"
+      strictAllowlist: true
+sbx:
+  permissions:
+    deny:
+      - "Bash(*nx build*)"
+      - "Bash(*nx run*)"
+      - "Bash(bun add *)"
+      - "Bash(bun i*)"
+      - "Bash(bun install*)"
+      - "Bash(corepack *)"
+      - "Bash(ni *)"
+      - "Bash(ni)"
+      - "Bash(npm add *)"
+      - "Bash(npm ci*)"
+      - "Bash(npm i*)"
+      - "Bash(npm install*)"
+      - "Bash(pnpm add *)"
+      - "Bash(pnpm i*)"
+      - "Bash(pnpm install*)"
+      - "Bash(yarn add *)"
+      - "Bash(yarn install*)"
+      - "Bash(yarn)"
+      - "Edit(//**/*.key)"
+      - "Edit(//**/*.p12)"
+      - "Edit(//**/*.pem)"
+      - "Edit(//**/.env*)"
+      - "Edit(//**/id_ed25519*)"
+      - "Edit(//**/id_rsa*)"
+      - "Edit(//**/secrets/**)"
+      - "Read(//**/*.key)"
+      - "Read(//**/*.p12)"
+      - "Read(//**/*.pem)"
+      - "Read(//**/.env*)"
+      - "Read(//**/id_ed25519*)"
+      - "Read(//**/id_rsa*)"
+      - "Read(//**/secrets/**)"

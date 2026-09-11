@@ -18,9 +18,6 @@ permissions:
       - "**.npmjs.com:443"
       - "react.dev:443"
       - "yarnpkg.com:443"
-      {{- with dig "mcp_url" "" . }}
-      - {{ printf "%s:443" (urlParse .).hostname | quote }}
-      {{- end }}
     deny:
       - "bridge.claudeusercontent.com:443"
       - "claude.com:443"

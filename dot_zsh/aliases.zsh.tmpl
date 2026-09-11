@@ -1,0 +1,8 @@
+alias df='cd ~/.local/share/chezmoi'
+alias lg='lazygit'
+alias ls='eza --icons=auto'
+
+{{ if eq .setup_type "work" }}
+alias setup:app='make start && git pull && make install && make run-migrations && make install-assets'
+alias setup:client='yarn install && yarn nx reset && yarn cache clean && yarn install && yarn build:dev --exclude @medicore/mc-app'
+{{ end -}}
