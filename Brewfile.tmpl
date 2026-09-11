@@ -1,4 +1,5 @@
-# Shared formulae
+# Shared
+# Formulae
 brew "chezmoi"
 brew "eza"
 brew "gh"
@@ -7,14 +8,13 @@ brew "lazygit"
 brew "mise"
 brew "ni"
 brew "openssl"
-brew "playwright-cli"
 brew "starship"
 brew "unison"
 brew "watchman"
 brew "wget"
 brew "zoxide"
 
-# Shared casks
+## Casks
 cask "font-fira-code-nerd-font"
 cask "ghostty"
 cask "raycast"
@@ -22,25 +22,37 @@ cask "spotify"
 cask "zed"
 cask "zen"
 
-{{- if eq .machine_type "work" }}
+## Personal
+{{- if eq .setup_type "personal" }}
 
-# Work taps
-tap "anomalyco/tap", trusted: { formulae: ["opencode"] }
+## Casks
+cask "proton-drive"
+cask "proton-mail"
+cask "protonvpn"
+cask "zwift"
+
+{{- end }}
+
+# Work
+{{- if eq .setup_type "work" }}
+
+## Taps
 tap "docker/tap", trusted: { casks: ["sbx", "sbx@nightly"] }
 tap "mutagen-io/mutagen", trusted: { formulae: ["mutagen", "mutagen-beta", "mutagen-edge"] }
 
-# Work formulae
-brew "anomalyco/tap/opencode"
+## Formulae
 brew "azure-cli"
 brew "docker-compose"
+brew "herdr"
 brew "hunk"
 brew "mkcert"
 brew "mutagen-io/mutagen/mutagen"
 brew "nss"
+brew "playwright-cli"
 brew "python-setuptools"
 brew "yarn"
 
-# Work casks
+## Casks
 cask "claude-code"
 cask "docker/tap/sbx"
 cask "figma"
@@ -52,13 +64,5 @@ cask "obsidian"
 cask "orbstack"
 cask "postman"
 cask "sequel-ace"
-
-{{- else if eq .machine_type "personal" }}
-
-# Personal casks
-cask "proton-drive"
-cask "proton-mail"
-cask "protonvpn"
-cask "zwift"
 
 {{- end }}

@@ -1,7 +1,7 @@
-{{ if ne .machine_type "work" }}
-.agents/
+{{ if ne .setup_type "work" }}
 .claude/
-.config/opencode/
+.config/herdr/
+.config/sbx/
 {{ end }}
 .github/
 LICENSE

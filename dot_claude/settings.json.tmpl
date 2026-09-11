@@ -1,142 +1,19 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "autoMemoryEnabled": false,
-  "enabledMcpjsonServers": [
-    "atlassian"
-  ],
+  {{- with dig "mcp_url" "" . }}
+  "allowedMcpServers": [{ "serverUrl": {{ . | quote }} }],
+  {{- end }}
+  "autoMemoryEnabled": {{ .base.autoMemoryEnabled }},
+  "effortLevel": {{ .base.effortLevel | quote }},
+  "env": {{ .base.env | toPrettyJson | indent 2 | trim }},
+  "outputStyle": {{ .base.outputStyle | quote }},
   "permissions": {
-    "defaultMode": "acceptEdits",
-    "allow": [
-      "Bash(bun run *)",
-      "Bash(yarn run *)",
-
-      "Bash(git *)",
-
-      "Read(~/.claude/skills/**)",
-
-      "WebSearch",
-      "WebFetch(domain:docs.claude.com)",
-      "WebFetch(domain:code.claude.com)",
-      "WebFetch(domain:docs.anthropic.com)",
-      "WebFetch(domain:developer.mozilla.org)",
-      "WebFetch(domain:nodejs.org)",
-      "WebFetch(domain:react.dev)",
-      "WebFetch(domain:mui.com)",
-      "WebFetch(domain:bun.sh)",
-      "WebFetch(domain:yarnpkg.com)",
-      "WebFetch(domain:npmjs.com)",
-
-      "mcp__atlassian__searchConfluenceUsingCql",
-      "mcp__atlassian__searchJiraIssuesUsingJql",
-      "mcp__atlassian__getConfluencePage",
-      "mcp__atlassian__getJiraIssue"
-    ],
-    "ask": [
-      "Bash(* install *)",
-      "Bash(bun a *)",
-      "Bash(bun add *)",
-      "Bash(bun i *)",
-      "Bash(bun x *)",
-      "Bash(bunx *)",
-      "Bash(npm add *)",
-      "Bash(npm i *)",
-      "Bash(npx *)",
-      "Bash(pnpm i *)",
-      "Bash(pnpm dlx *)",
-      "Bash(pnpm add *)",
-      "Bash(yarn)",
-      "Bash(yarn dlx *)",
-      "Bash(yarn add *)",
-
-      "Bash(git push *)"
-    ],
-    "deny": [
-      "Bash(crontab *)",
-      "Bash(curl *)",
-      "Bash(launchctl *)",
-      "Bash(nc *)",
-      "Bash(ncat *)",
-      "Bash(scp *)",
-      "Bash(sftp *)",
-      "Bash(ssh *)",
-      "Bash(su *)",
-      "Bash(sudo *)",
-      "Bash(wget *)",
-
-      "Write(//**/.claude/settings.json)",
-      "Edit(//**/.claude/settings.json)",
-
-      "Read(//**/secrets/**)",
-      "Write(//**/secrets/**)",
-      "Edit(//**/secrets/**)",
-      "Read(//**/*.key)",
-      "Write(//**/*.key)",
-      "Edit(//**/*.key)",
-      "Read(//**/*.pem)",
-      "Write(//**/*.pem)",
-      "Edit(//**/*.pem)",
-      "Read(//**/.env*)",
-      "Write(//**/.env*)",
-      "Edit(//**/.env*)",
-      "Read(//**/.npmrc)",
-      "Write(//**/.npmrc)",
-      "Edit(//**/.npmrc)",
-      "Read(//**/.ssh/**)",
-      "Write(//**/.ssh/**)",
-      "Edit(//**/.ssh/**)",
-      "Read(//**/.azure/**)",
-      "Write(//**/.azure/**)",
-      "Edit(//**/.azure/**)",
-      "Read(//**/.docker/**)",
-      "Write(//**/.docker/**)",
-      "Edit(//**/.docker/**)",
-
-      "Read(~/.bashrc)",
-      "Write(~/.bashrc)",
-      "Edit(~/.bashrc)",
-      "Read(~/.bash_profile)",
-      "Write(~/.bash_profile)",
-      "Edit(~/.bash_profile)",
-      "Read(~/.profile)",
-      "Write(~/.profile)",
-      "Edit(~/.profile)",
-      "Read(~/.zprofile)",
-      "Write(~/.zprofile)",
-      "Edit(~/.zprofile)",
-      "Read(~/.zshrc)",
-      "Write(~/.zshrc)",
-      "Edit(~/.zshrc)"
-    ]
+    "allow": {{ .host.permissions.allow | toPrettyJson | indent 4 | trim }},
+    "ask": {{ .host.permissions.ask | toPrettyJson | indent 4 | trim }},
+    "defaultMode": {{ .host.permissions.defaultMode | quote }},
+    "deny": {{ concat .base.permissions.deny .host.permissions.deny | toPrettyJson | indent 4 | trim }}
   },
-  "sandbox": {
-    "enabled": true,
-    "failIfUnavailable": true,
-    "autoAllowBashIfSandboxed": false,
-    "allowUnsandboxedCommands": false,
-    "excludedCommands": ["docker *"],
-    "network": {
-      "allowLocalBinding": true,
-      "allowedDomains": [
-        "registry.npmjs.org",
-        "registry.yarnpkg.com"
-      ]
-    },
-    "filesystem": {
-      "denyRead": [
-        "~/.azure",
-        "~/.docker",
-        "~/.npmrc",
-        "~/.ssh"
-      ],
-      "allowWrite": [
-        "~/.bun/install/cache",
-        "~/.cache",
-        "~/.npm"
-      ]
-    }
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "jq -r '\"Context window usage: \\(.context_window.total_input_tokens // 0) of \\(.context_window.context_window_size) tokens (\\(.context_window.used_percentage // 0)%)\"'"  },
-  "tui": "fullscreen"
+  "sandbox": {{ .host.sandbox | toPrettyJson | indent 2 | trim }},
+  "statusLine": {{ .base.statusLine | toPrettyJson | indent 2 | trim }},
+  "tui": {{ .base.tui | quote }}
 }

@@ -1,24 +1,5 @@
 colourful: true
 
-# Colors are in format of:
-# color/paletteRef (Description) #color code
-
-# Gold (Terminal Yellow) #f6c177
-# Love (Terminal Red) #eb6f92
-# Rose (Terminal Cyan) #ebbcba
-# Base (Primary Background) #191724
-# Iris (Terminal Magenta) #c4a7e7
-# Foam (Terminal Blue) #9ccfd8
-# Pine (Terminal Green)  #31748f
-# Muted (Low Contrast Foreground) #6e6a86
-# Surface (Secondary Background Atop Base) #1f1d2e
-# Overlay (Tertiary Background Atop Surface) #26233a
-# Subtle (Medium Contrast Foreground) #908caa
-# Text (High Contrast Foreground) #e0def4
-# Highlight Low (Low Contrast Highlight) #21202e
-# Highlight Med (Medium Contrast Highlight) #403d52
-# Highlight High (High Contrast Highlight) #524f67
-
 filekinds:
   normal: { foreground: "#e0def4" }
   directory: { foreground: "#9ccfd8" }

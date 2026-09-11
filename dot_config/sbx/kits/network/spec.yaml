@@ -1,0 +1,26 @@
+schemaVersion: "2"
+kind: mixin
+name: network
+displayName: Network policy
+description: Sandbox egress policy
+permissions:
+  network:
+    allow:
+      - "bun.sh:443"
+      - "claude.ai:443"
+      - "code.claude.com:443"
+      - "developer.mozilla.org:443"
+      - "docs.anthropic.com:443"
+      - "docs.claude.com:443"
+      - "host.docker.internal:9000"
+      - "mui.com:443"
+      - "nodejs.org:443"
+      - "**.npmjs.com:443"
+      - "react.dev:443"
+      - "yarnpkg.com:443"
+    deny:
+      - "bridge.claudeusercontent.com:443"
+      - "claude.com:443"
+      - "downloads.claude.ai:443"
+      - "registry.npmjs.org:443"
+      - "registry.yarnpkg.com:443"
