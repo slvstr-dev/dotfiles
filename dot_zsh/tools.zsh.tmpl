@@ -104,7 +104,7 @@ _herdr_checkout() {
 }
 
 _herdr_client() {
-  local branch=$1 repo=~/repos/mcepd-client res
+  local branch=$1 repo={{ .client_repo_path }} res
   local -a base
 
   _herdr_branch $repo $branch || return 1
@@ -114,15 +114,46 @@ _herdr_client() {
     res=$(herdr worktree create --cwd $repo --branch $branch $base --label $branch --focus) || return 1
 
   [[ $(jq -r '.result.already_open // false' <<<$res) == true ]] && return
-  _herdr_panes $res $(jq -r '.result.worktree.path' <<<$res) 'scripts=setup:client' 'sbx=sbx:claude'
+  _herdr_panes $res $(jq -r '.result.worktree.path' <<<$res) 'scripts=setup:client' 'agent=herdr:claude'
 }
 
-sbx:claude() {
+_herdr_repo() {
+  local label=$1 repo=$2 res ws
+  ws=$(herdr workspace list | jq -r --arg l $label \
+    '.result.workspaces[] | select(.label == $l) | .workspace_id' | head -1)
+
+  if [[ -n $ws ]]; then
+    herdr workspace focus $ws >/dev/null
+    return
+  fi
+
+  res=$(herdr workspace create --cwd $repo --label $label --focus)
+  _herdr_panes $res $repo 'agent=herdr:claude'
+}
+
+herdr:claude() {
   case ${PWD:A} in
-    $HOME|/) print -u2 "sbx:claude: refusing to mount ${PWD:A}; cd into a project first"; return 1 ;;
+    $HOME|/) print -u2 "herdr:claude: refusing to mount ${PWD:A}; cd into a project first"; return 1 ;;
   esac
 
-  sbx:skills >/dev/null
+  if [[ -z $HERDR_PANE_ID ]]; then
+    local label=${PWD:t} ws res
+    ws=$(herdr workspace list | jq -r --arg l $label \
+      '.result.workspaces[] | select(.label == $l) | .workspace_id' | head -1)
+
+    if [[ -n $ws ]]; then
+      herdr workspace focus $ws >/dev/null
+    else
+      res=$(herdr workspace create --cwd $PWD --label $label --focus)
+      ws=$(jq -r '.result.workspace.workspace_id' <<<$res)
+    fi
+
+    herdr pane run $(herdr tab create --workspace $ws --cwd $PWD --label agent${1:+-$1} --no-focus \
+      | jq -r '.result.root_pane.pane_id') "herdr:claude${1:+ $1}" >/dev/null
+    return
+  fi
+
+  sbx:skills >/dev/null 2>&1
 
   HERDR_AGENT=claude sbx run claude --name "claude-${PWD:t}${1:+-$1}" \
     --kit ~/.config/sbx/kits/network \
@@ -130,7 +161,7 @@ sbx:claude() {
 }
 
 herdr:setup() {
-  local -A default=(shared main app develop client develop)
+  local -A default=(shared main app develop client develop client-repo 1)
   local -A want
   local t
 
@@ -139,14 +170,17 @@ herdr:setup() {
     [[ $1 == --* && -n ${default[$t]} ]] || { print -u2 "herdr:setup: unknown option $1"; return 1 }
     if [[ -n $2 && $2 != --* ]]; then want[$t]=$2; shift 2; else want[$t]=${default[$t]}; shift; fi
   done
-  (( $#want )) || want=(${(kv)default})
 
-  for t in shared app client; do
-    [[ -n ${want[$t]} ]] || continue
+  for t in shared app client client-repo; do
+    [[ -n ${want[$t]} ]] || want[$t]=${default[$t]}
+  done
+
+  for t in shared app client client-repo; do
     case $t in
-      shared) _herdr_checkout medicore-shared-services ~/medicore-shared-services ${want[$t]} 'make start' ;;
-      app)    _herdr_checkout mcepd-app ~/shared-repos/mcepd-app ${want[$t]} 'setup:app && make tool-vecozo-mock-start' ;;
-      client) _herdr_client ${want[$t]} ;;
+      shared)       _herdr_checkout medicore-shared-services {{ .shared_services_path }} ${want[$t]} 'make start' ;;
+      app)          _herdr_checkout mcepd-app {{ .app_repo_path }} ${want[$t]} 'setup:app && make tool-vecozo-mock-start' ;;
+      client)       _herdr_client ${want[$t]} ;;
+      client-repo)  _herdr_repo mcepd-client-repo {{ .client_repo_path }} ;;
     esac
   done
 }

@@ -71,7 +71,7 @@ Disable Spotlight hotkey and assign it to Raycast using the [Raycast hotkey inst
 ```bash
 sbx login
 sbx policy init deny-all
-sbx:claude [name-suffix]
+herdr:claude [name-suffix]
 ```
 
 ### Herdr _(work)_
@@ -79,6 +79,6 @@ sbx:claude [name-suffix]
 ```bash
 herdr:setup
 herdr:setup --client
-herdr:setup --client ABC-12345
-herdr:setup --app 1.404 --client
+herdr:setup --client [branch]
+herdr:setup --app [branch] --client
 ```
