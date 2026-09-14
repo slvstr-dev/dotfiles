@@ -1,3 +1,6 @@
 [data]
 setup_type = {{ promptStringOnce . "setup_type" "Setup type (work/personal)" | quote }}
-mcp_url = {{ promptStringOnce . "mcp_url" "MCP url (optional)" "" | quote }}
+mcp_url = {{ promptStringOnce . "mcp_url" "MCP url (optional)" | quote }}
+shared_services_path = {{ promptStringOnce . "shared_services_path" "Shared services repo path" | quote }}
+app_repo_path = {{ promptStringOnce . "app_repo_path" "App repo path" | quote }}
+client_repo_path = {{ promptStringOnce . "client_repo_path" "Client repo path" | quote }}
