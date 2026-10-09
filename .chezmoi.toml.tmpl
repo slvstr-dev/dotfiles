@@ -1,3 +1,19 @@
+{{- $profile := promptChoiceOnce . "profile" "Profile" (list "work" "personal") -}}
+
+{{- $work := dict
+      "mcp_url"      "MCP url"
+      "setup_app"    "setup:app alias"
+      "setup_client" "setup:client alias"
+      "wiki_path"    "LLM wiki vault path (absolute)"
+-}}
+
 [data]
-setup_type = {{ promptStringOnce . "setup_type" "Setup type (work/personal)" | quote }}
-mcp_url = {{ promptStringOnce . "mcp_url" "MCP url (optional)" "" | quote }}
+profile = {{ $profile | quote }}
+
+{{- if eq $profile "work" }}
+{{-   range $key, $question := $work }}
+{{-     $value := or (dig $key "" $) (promptString $question) }}
+{{-     if not $value }}{{ fail (print $question " is required") }}{{ end }}
+{{ $key }} = {{ $value | quote }}
+{{-   end }}
+{{- end }}

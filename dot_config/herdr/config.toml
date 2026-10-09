@@ -3,6 +3,10 @@ onboarding = false
 [keys]
 navigate_workspace_down = "j"
 navigate_workspace_up = "k"
+next_agent = "prefix+alt+n"
+next_tab = "prefix+n"
+previous_agent = "prefix+alt+p"
+previous_tab = "prefix+p"
 prefix = "ctrl+a"
 rename_tab = "prefix+,"
 split_vertical = "prefix+%"

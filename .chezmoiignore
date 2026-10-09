@@ -1,8 +1,7 @@
-{{ if ne .setup_type "work" }}
+{{ if ne .profile "work" }}
 .claude/
 .config/herdr/
-.config/sbx/
+.zsh/work.zsh
 {{ end }}
 .github/
-LICENSE
 README.md
