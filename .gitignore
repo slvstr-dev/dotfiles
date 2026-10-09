@@ -11,6 +11,9 @@ AGENTS.md
 CLAUDE.md
 skills-lock.json
 
+# Dependencies
+node_modules/
+
 # Mise
 .mise.local.toml
 

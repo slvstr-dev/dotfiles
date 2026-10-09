@@ -1,0 +1,9 @@
+{
+  "name": "context-bar",
+  "version": "0.1.0",
+  "description": "Your context window as a stacked bar above the prompt, /context-bar shows or hides it.",
+  "author": {
+    "name": "Sylvester Hofstra"
+  },
+  "types": "./types/index.d.ts"
+}

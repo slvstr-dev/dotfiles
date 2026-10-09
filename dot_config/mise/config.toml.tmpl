@@ -2,7 +2,7 @@
 minimum_release_age = "7d"
 
 [tools]
-{{- if eq .setup_type "work" }}
+{{- if eq .profile "work" }}
 bun = "latest"
 node = "24.14.1"
 {{- else }}

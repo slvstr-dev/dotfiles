@@ -1,5 +1,5 @@
 #!/bin/bash
-# Brewfile hash: {{ include "Brewfile.tmpl" | sha256sum }}
+# Brewfile hash: {{ includeTemplate "Brewfile.tmpl" . | sha256sum }}
 
 if ! command -v brew &> /dev/null; then
   echo "🍺 Homebrew not found. Installing..."

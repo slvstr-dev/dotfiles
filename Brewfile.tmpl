@@ -1,47 +1,45 @@
 # Shared
-# Formulae
+## Formulae
 brew "chezmoi"
 brew "eza"
+brew "fd"
 brew "gh"
 brew "gmp"
 brew "lazygit"
 brew "mise"
+brew "neovim"
 brew "ni"
 brew "openssl"
+brew "ripgrep"
 brew "starship"
+brew "tree-sitter-cli"
 brew "unison"
 brew "watchman"
 brew "wget"
 brew "zoxide"
 
 ## Casks
+cask "firefox"
 cask "font-fira-code-nerd-font"
 cask "ghostty"
 cask "raycast"
 cask "spotify"
-cask "zed"
-cask "zen"
+cask "zwift"
 
-## Personal
-{{- if eq .setup_type "personal" }}
-
+{{- if eq .profile "personal" }}
+# Personal
 ## Casks
 cask "proton-drive"
 cask "proton-mail"
 cask "protonvpn"
-cask "zwift"
-
 {{- end }}
 
+{{- if eq .profile "work" }}
 # Work
-{{- if eq .setup_type "work" }}
-
 ## Taps
-tap "docker/tap", trusted: { casks: ["sbx", "sbx@nightly"] }
 tap "mutagen-io/mutagen", trusted: { formulae: ["mutagen", "mutagen-beta", "mutagen-edge"] }
 
 ## Formulae
-brew "azure-cli"
 brew "docker-compose"
 brew "herdr"
 brew "hunk"
@@ -53,10 +51,9 @@ brew "python-setuptools"
 brew "yarn"
 
 ## Casks
-cask "claude-code"
-cask "docker/tap/sbx"
+cask "azure-cli"
+cask "claude-code@latest"
 cask "figma"
-cask "firefox"
 cask "google-chrome"
 cask "microsoft-edge"
 cask "mockoon"
@@ -64,5 +61,4 @@ cask "obsidian"
 cask "orbstack"
 cask "postman"
 cask "sequel-ace"
-
 {{- end }}

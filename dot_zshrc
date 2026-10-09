@@ -1,6 +1,1 @@
-source ~/.zsh/environment.zsh
-source ~/.zsh/history.zsh
-source ~/.zsh/aliases.zsh
-source ~/.zsh/completion.zsh
-source ~/.zsh/ssh.zsh
-source ~/.zsh/tools.zsh
+for file (~/.zsh/{environment,history,aliases,completion,ssh,tools,work}.zsh(N)) source $file

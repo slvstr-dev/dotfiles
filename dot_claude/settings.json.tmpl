@@ -1,19 +1,196 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  {{- with dig "mcp_url" "" . }}
-  "allowedMcpServers": [{ "serverUrl": {{ . | quote }} }],
-  {{- end }}
-  "autoMemoryEnabled": {{ .base.autoMemoryEnabled }},
-  "effortLevel": {{ .base.effortLevel | quote }},
-  "env": {{ .base.env | toPrettyJson | indent 2 | trim }},
-  "outputStyle": {{ .base.outputStyle | quote }},
-  "permissions": {
-    "allow": {{ .host.permissions.allow | toPrettyJson | indent 4 | trim }},
-    "ask": {{ .host.permissions.ask | toPrettyJson | indent 4 | trim }},
-    "defaultMode": {{ .host.permissions.defaultMode | quote }},
-    "deny": {{ concat .base.permissions.deny .host.permissions.deny | toPrettyJson | indent 4 | trim }}
+  "allowedMcpServers": [
+    { "serverUrl": "https://mcp.figma.com/mcp" },
+    { "serverUrl": {{ .mcp_url | quote }} }
+  ],
+  "autoMemoryEnabled": false,
+  "enabledPlugins": {
+    "medicore-frontend@synced": true,
+    "medicore-misc@synced": true,
+    "medicore-productivity@synced": true
   },
-  "sandbox": {{ .host.sandbox | toPrettyJson | indent 2 | trim }},
-  "statusLine": {{ .base.statusLine | toPrettyJson | indent 2 | trim }},
-  "tui": {{ .base.tui | quote }}
+  "env": {
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_FEEDBACK_COMMAND": "1"
+  },
+  "outputStyle": "Concise",
+  "permissions": {
+    "additionalDirectories": [{{ .wiki_path | quote }}],
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:bun.sh)",
+      "WebFetch(domain:code.claude.com)",
+      "WebFetch(domain:developer.mozilla.org)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:docs.claude.com)",
+      "WebFetch(domain:mui.com)",
+      "WebFetch(domain:nodejs.org)",
+      "WebFetch(domain:npmjs.com)",
+      "WebFetch(domain:react.dev)",
+      "WebFetch(domain:www.npmjs.com)",
+      "WebFetch(domain:yarnpkg.com)"
+    ],
+    "ask": [
+      "Bash(docker *)",
+      "Bash(docker-compose *)",
+      "Bash(*nx build*)",
+      "Bash(*nx run*)",
+      "Bash(bun add *)",
+      "Bash(bun i*)",
+      "Bash(bun install*)",
+      "Bash(corepack *)",
+      "Bash(ni *)",
+      "Bash(ni)",
+      "Bash(npm add *)",
+      "Bash(npm ci*)",
+      "Bash(npm i*)",
+      "Bash(npm install*)",
+      "Bash(pnpm add *)",
+      "Bash(pnpm i*)",
+      "Bash(pnpm install*)",
+      "Bash(yarn add *)",
+      "Bash(yarn install*)",
+      "Bash(yarn)"
+    ],
+    "deny": [
+      "Bash(crontab *)",
+      "Bash(git branch -D*)",
+      "Bash(git checkout --force*)",
+      "Bash(git checkout -f*)",
+      "Bash(git clean *)",
+      "Bash(git rebase *)",
+      "Bash(git rebase)",
+      "Bash(git reset --hard *)",
+      "Bash(git reset --hard)",
+      "Bash(git restore *)",
+      "Bash(git worktree prune*)",
+      "Bash(git worktree remove*)",
+      "Bash(launchctl *)",
+      "Bash(rm -- *)",
+      "Bash(rm -f*)",
+      "Bash(rm -r*)",
+      "Bash(su *)",
+      "Bash(sudo *)",
+      "Edit(//**/*.key)",
+      "Edit(//**/*.p12)",
+      "Edit(//**/*.pem)",
+      "Edit(//**/.claude.json)",
+      "Edit(//**/.claude/agents/**)",
+      "Edit(//**/.claude/commands/**)",
+      "Edit(//**/.claude/hooks/**)",
+      "Edit(//**/.claude/plugins/**)",
+      "Edit(//**/.claude/settings.json)",
+      "Edit(//**/.claude/settings.local.json)",
+      "Edit(//**/.claude/skills/**)",
+      "Edit(//**/.env*)",
+      "Edit(//**/.mcp.json)",
+      "Edit(//**/id_ed25519*)",
+      "Edit(//**/id_rsa*)",
+      "Edit(//**/secrets/**)",
+      "Edit(~/.aws/**)",
+      "Edit(~/.azure/**)",
+      "Edit(~/.bash_profile)",
+      "Edit(~/.bashrc)",
+      "Edit(~/.claude/.config.json)",
+      "Edit(~/.claude/.credentials.json)",
+      "Edit(~/.config/gh/hosts.yml)",
+      "Edit(~/.docker/**)",
+      "Edit(~/.git-credentials)",
+      "Edit(~/.gnupg/**)",
+      "Edit(~/.kube/**)",
+      "Edit(~/.netrc)",
+      "Edit(~/.npmrc)",
+      "Edit(~/.profile)",
+      "Edit(~/.ssh/**)",
+      "Edit(~/.zprofile)",
+      "Edit(~/.zshrc)",
+      "Read(//**/*.key)",
+      "Read(//**/*.p12)",
+      "Read(//**/*.pem)",
+      "Read(//**/.env*)",
+      "Read(//**/id_ed25519*)",
+      "Read(//**/id_rsa*)",
+      "Read(//**/secrets/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.azure/**)",
+      "Read(~/.bash_profile)",
+      "Read(~/.bashrc)",
+      "Read(~/.claude/.config.json)",
+      "Read(~/.claude/.credentials.json)",
+      "Read(~/.config/gh/hosts.yml)",
+      "Read(~/.docker/**)",
+      "Read(~/.git-credentials)",
+      "Read(~/.gnupg/**)",
+      "Read(~/.kube/**)",
+      "Read(~/.netrc)",
+      "Read(~/.npmrc)",
+      "Read(~/.profile)",
+      "Read(~/.ssh/**)",
+      "Read(~/.zprofile)",
+      "Read(~/.zshrc)"
+    ],
+    "disableBypassPermissionsMode": "disable"
+  },
+  "sandbox": {
+    "allowUnsandboxedCommands": false,
+    "credentials": {
+      "envVars": [
+        {
+          "mode": "deny",
+          "name": "ANTHROPIC_API_KEY"
+        },
+        {
+          "mode": "deny",
+          "name": "AWS_ACCESS_KEY_ID"
+        },
+        {
+          "mode": "deny",
+          "name": "AWS_SECRET_ACCESS_KEY"
+        },
+        {
+          "mode": "deny",
+          "name": "AWS_SESSION_TOKEN"
+        },
+        {
+          "mode": "deny",
+          "name": "GH_TOKEN"
+        },
+        {
+          "mode": "deny",
+          "name": "GITHUB_TOKEN"
+        },
+        {
+          "mode": "deny",
+          "name": "NPM_TOKEN"
+        },
+        {
+          "mode": "deny",
+          "name": "OPENAI_API_KEY"
+        }
+      ]
+    },
+    "enabled": true,
+    "excludedCommands": [
+      "docker *",
+      "docker-compose *"
+    ],
+    "failIfUnavailable": true,
+    "filesystem": {
+      "allowWrite": [
+        "~/.bun/install/cache",
+        "~/.cache",
+        "~/.npm"
+      ]
+    },
+    "network": {
+      "allowLocalBinding": true,
+      "allowedDomains": [
+        "registry.npmjs.org",
+        "registry.yarnpkg.com"
+      ],
+      "strictAllowlist": true
+    }
+  },
+  "theme": "auto"
 }

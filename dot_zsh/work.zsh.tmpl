@@ -1,0 +1,47 @@
+# Aliases
+alias setup:app={{ .setup_app | squote }}
+alias setup:client={{ .setup_client | squote }}
+
+# Herdr
+_herdr_tab() {
+  local ws=$1 dir=$2 label=$3 cmd=$4
+  local pane=$(herdr tab create --workspace $ws --cwd $dir --label $label --no-focus | jq -r .result.root_pane.pane_id)
+  [[ -z $cmd ]] || herdr pane run $pane $cmd >/dev/null
+}
+
+_herdr_tabs() {
+  local res=$1 dir=$2 cmd=$3
+  local ws=$(jq -r .result.workspace.workspace_id <<<$res)
+
+  herdr tab rename $(jq -r .result.tab.tab_id <<<$res) lazygit >/dev/null
+  herdr pane run $(jq -r .result.root_pane.pane_id <<<$res) lg >/dev/null
+  _herdr_tab $ws $dir scripts $cmd
+  _herdr_tab $ws $dir claude claude
+}
+
+herdr:open() {
+  local label=${PWD:t}
+  local ws=$(herdr workspace list | jq -r --arg l $label '.result.workspaces[] | select(.label == $l) | .workspace_id' | head -1)
+
+  if [[ -n $ws ]]; then
+    herdr workspace focus $ws >/dev/null
+  else
+    _herdr_tabs "$(herdr workspace create --cwd $PWD --label $label --focus)" $PWD $1
+  fi
+}
+
+herdr:worktree() {
+  local branch=$1 cmd=$2 res
+  local -a base
+  [[ -n $branch ]] || { print -u2 "usage: herdr:worktree <branch> [cmd]"; return 1 }
+
+  git fetch --quiet origin $branch 2>/dev/null
+  git show-ref --quiet --verify refs/heads/$branch || base=(--base origin/$branch)
+
+  res=$(herdr worktree open --cwd $PWD --branch $branch --label $branch --focus 2>/dev/null) ||
+    res=$(herdr worktree create --cwd $PWD --branch $branch $base --path $PWD/$branch --label $branch --focus) ||
+    return 1
+
+  [[ $(jq -r '.result.already_open // false' <<<$res) == true ]] ||
+    _herdr_tabs $res $(jq -r .result.worktree.path <<<$res) $cmd
+}

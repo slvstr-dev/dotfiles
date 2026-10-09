@@ -2,21 +2,6 @@
 
 My macOS dotfiles, managed with chezmoi.
 
-## Stack
-
-- **Shell** — Zsh + Starship
-- **Terminal** — Ghostty + Fira Code Nerd Font
-- **Editor** — Zed
-- **Launcher** — Raycast
-- **Runtime manager** — mise (Node, Bun)
-- **Package manager** — Homebrew
-- **Package shortcuts** — ni
-- **Directory tools** — zoxide + eza
-- **Git** — lazygit + hunk
-- **AI agent** — Claude Code _(work)_
-- **Agent sandboxing** — Docker Sandboxes _(work)_
-- **Agent workspaces** — Herdr _(work)_
-
 ## Setup
 
 ### Prerequisites
@@ -29,17 +14,14 @@ My macOS dotfiles, managed with chezmoi.
 
 1. Install chezmoi: `brew install chezmoi` (or `sh -c "$(curl -fsLS get.chezmoi.io)"`)
 2. `chezmoi init git@github.com:slvstr-dev/dotfiles.git --apply`
-   - You'll be prompted for setup type (work/personal) and an optional MCP url
-3. Restart shell
+3. Answer the setup prompts
+4. Restart shell
 
 ### Day-to-day
 
-- Edit configs: `chezmoi edit ~/.config/ghostty/config`
-- Apply changes: `chezmoi apply`
-- See pending changes: `chezmoi diff`
-- Pull & apply updates: `chezmoi update`
-- Check out of sync: `chezmoi status`
-- Sync live changes back: `chezmoi re-add`
+Dotfiles should only be edited in this repo (`df`) and applied by running `chezmoi apply`.
+
+## Shared
 
 ### Homebrew
 
@@ -49,12 +31,6 @@ brew:update
 brew:cleanup
 brew:uninstall
 ```
-
-### Zed
-
-Install manually via the Zed extensions panel:
-
-- Catppuccin
 
 ### GitHub
 
@@ -66,19 +42,11 @@ gh auth login
 
 Disable Spotlight hotkey and assign it to Raycast using the [Raycast hotkey instructions](https://manual.raycast.com/hotkey).
 
-### Docker Sandboxes _(work)_
+## Work
+
+### Herdr
 
 ```bash
-sbx login
-sbx policy init deny-all
-```
-
-### Herdr _(work)_
-
-```bash
-herdr:setup
-herdr:setup --client
-herdr:setup --client [branch]
-herdr:setup --app [branch] --client
-herdr:claude [name-suffix]
+herdr:open [cmd]               # workspace from cwd + optional cmd
+herdr:worktree <branch> [cmd]  # worktree from repo root for a branch + optional cmd
 ```
