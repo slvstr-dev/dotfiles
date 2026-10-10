@@ -16,8 +16,9 @@
   },
   "outputStyle": "Concise",
   "permissions": {
-    "additionalDirectories": [{{ .wiki_path | quote }}],
+    "additionalDirectories": [{{ .bundle_path | quote }}],
     "allow": [
+      {{ printf "Edit(/%s/**)" .bundle_path | quote }},
       "WebSearch",
       "WebFetch(domain:bun.sh)",
       "WebFetch(domain:code.claude.com)",
@@ -125,7 +126,6 @@
       "Bash(git push* --mirror*)",
       "Bash(git push* -d *)",
       "Bash(git push* -f*)",
-      "Bash(git push* :*)",
       "Bash(git rebase *)",
       "Bash(git reset* --hard*)",
       "Bash(git restore *)",
