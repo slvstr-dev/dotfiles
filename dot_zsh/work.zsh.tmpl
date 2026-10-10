@@ -13,10 +13,10 @@ _herdr_tabs() {
   local res=$1 dir=$2 cmd=$3
   local ws=$(jq -r .result.workspace.workspace_id <<<$res)
 
-  herdr tab rename $(jq -r .result.tab.tab_id <<<$res) lazygit >/dev/null
-  herdr pane run $(jq -r .result.root_pane.pane_id <<<$res) lg >/dev/null
+  herdr tab rename $(jq -r .result.tab.tab_id <<<$res) claude >/dev/null
+  herdr pane run $(jq -r .result.root_pane.pane_id <<<$res) claude >/dev/null
+  _herdr_tab $ws $dir nvim nvim
   _herdr_tab $ws $dir scripts $cmd
-  _herdr_tab $ws $dir claude claude
 }
 
 herdr:open() {
