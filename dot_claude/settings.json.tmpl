@@ -18,6 +18,7 @@
   "permissions": {
     "additionalDirectories": [{{ .bundle_path | quote }}],
     "allow": [
+      {{ printf "Edit(/%s/**)" .bundle_path | quote }},
       "WebSearch",
       "WebFetch(domain:bun.sh)",
       "WebFetch(domain:code.claude.com)",
