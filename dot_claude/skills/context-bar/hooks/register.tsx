@@ -1,5 +1,5 @@
 import { atom, read, update } from "claude-code";
-import type { EngineInterface, Register, SessionContextBreakdown, Timer } from "claude-code";
+import type { EngineInterface, Register, SessionContextBreakdown } from "claude-code";
 
 import type { Reading, Slice } from "../types";
 
@@ -21,28 +21,22 @@ const PALETTE = [
 const KINDS = ["used", "free", "buffer"];
 const BAR = { used: "█", free: "─", buffer: "░" };
 const MARKER = { ...BAR, used: "■" };
-const FRAMES = 15;
-const FRAME_MS = 40;
 
 const reading = atom({ plugin: "context-bar", key: "reading" } as const, null as Reading | null);
-const isHidden = atom({ plugin: "context-bar", key: "isHidden" } as const, false);
 
 const ignore = () => {};
-
-let animation: Timer | undefined;
 
 export const register: Register = (on) => {
   on("session.start", async ($, e, next) => {
     const result = await next(e);
-    await $.command
-      .register({
-        name: "context-bar",
-        description: "Show or hide the context window bar above the prompt",
-      })
-      .catch(ignore);
-    const hidden = (await $.store.get("isHidden").catch(ignore)) === true;
-    await update($, isHidden, () => hidden);
-    void refresh($).catch(ignore);
+    let tries = 0;
+    const retry = $.clock.every(500, () => {
+      void refresh($)
+        .then((ok) => {
+          if (ok || ++tries >= 20) retry.cancel();
+        })
+        .catch(ignore);
+    });
     return result;
   });
 
@@ -64,18 +58,11 @@ export const register: Register = (on) => {
     return result;
   });
 
-  on("command.run", { command: "context-bar" }, async ($) => {
-    const hidden = await update($, isHidden, (h) => !h);
-    await $.store.set("isHidden", hidden).catch(ignore);
-    if (!hidden) await refresh($).catch(ignore);
-    return { text: hidden ? "Context bar hidden. /context-bar shows it again" : "Context bar on" };
-  });
-
   on("ui.render", { component: "AbovePrompt" }, async ($, e, next) => {
     const rest = await next(e);
     const r = await read($, reading);
     const width = e.props.bodyColumns - 4;
-    if (!r || e.props.hasSurvey || width < MIN_WIDTH || (await read($, isHidden))) return rest;
+    if (!r || e.props.hasSurvey || width < MIN_WIDTH) return rest;
 
     const { Box, Text } = $.ui.resolve(e);
     const fill = r.total / (r.compactsAt || r.window);
@@ -123,34 +110,10 @@ export const register: Register = (on) => {
 };
 
 async function refresh($: EngineInterface) {
-  if (await read($, isHidden)) return;
   const { breakdown } = (await $.session.usage({ breakdown: "summary" })).context;
-  if (!breakdown || !(breakdown.rawMaxTokens > 0)) return;
-  const from = await read($, reading);
-  const to = toReading(breakdown);
-  animation?.cancel();
-  if (!from || from.total === to.total) {
-    await update($, reading, () => to);
-    return;
-  }
-  let frame = 0;
-  animation = $.clock.every(FRAME_MS, () => {
-    if (++frame === FRAMES) animation?.cancel();
-    void update($, reading, () => tween(from, to, frame / FRAMES)).catch(ignore);
-  });
-}
-
-function tween(from: Reading, to: Reading, progress: number): Reading {
-  const eased = 1 - (1 - progress) ** 3;
-  const at = (start: number, end: number) => Math.round(start + (end - start) * eased);
-  const before = new Map(from.slices.map((s) => [s.name, s.tokens] as const));
-  return {
-    ...to,
-    total: at(from.total, to.total),
-    percent: at(from.percent, to.percent),
-    slices: to.slices.map((s) => ({ ...s, tokens: at(before.get(s.name) ?? 0, s.tokens) })),
-    target: to,
-  };
+  if (!breakdown || !(breakdown.rawMaxTokens > 0)) return false;
+  await update($, reading, () => toReading(breakdown));
+  return true;
 }
 
 function toReading(b: SessionContextBreakdown): Reading {
@@ -194,10 +157,9 @@ function bar(r: Reading, width: number) {
 
 function legend(r: Reading, width: number) {
   const lines: Slice[][] = [];
-  const measured = r.target ?? r;
   let used = 0;
-  for (const [i, s] of r.slices.entries()) {
-    const size = label(measured.slices[i]!, r.window).length;
+  for (const s of r.slices) {
+    const size = label(s, r.window).length;
     const line = lines.at(-1);
     if (line && used + SPLIT.length + size <= width) {
       line.push(s);
