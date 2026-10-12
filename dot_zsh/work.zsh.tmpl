@@ -1,4 +1,5 @@
 # Aliases
+alias setup:shared={{ .setup_shared | squote }}
 alias setup:app={{ .setup_app | squote }}
 alias setup:client={{ .setup_client | squote }}
 
@@ -7,26 +8,46 @@ _herdr_tab() {
   local ws=$1 dir=$2 label=$3 cmd=$4
   local pane=$(herdr tab create --workspace $ws --cwd $dir --label $label --no-focus | jq -r .result.root_pane.pane_id)
   [[ -z $cmd ]] || herdr pane run $pane $cmd >/dev/null
+  print $pane
+}
+
+_herdr_root() {
+  local res=$1
+  local pane=$(jq -r '.result.root_pane.pane_id // empty' <<<$res)
+  [[ -n $pane ]] || pane=$(herdr pane list --workspace $(jq -r .result.workspace.workspace_id <<<$res) | jq -r '.result.panes[0].pane_id')
+  print $pane
+}
+
+_herdr_scripts() {
+  local pane=$1 dir=$2 cmd=$3
+  herdr pane run $pane lg >/dev/null
+  local top=$(herdr pane split $pane --direction right --cwd $dir --no-focus | jq -r .result.pane.pane_id)
+  [[ -z $cmd ]] || herdr pane run $top $cmd >/dev/null
+  herdr pane split $top --direction down --cwd $dir --no-focus >/dev/null
 }
 
 _herdr_tabs() {
   local res=$1 dir=$2 cmd=$3
   local ws=$(jq -r .result.workspace.workspace_id <<<$res)
+  local pane=$(_herdr_root $res)
 
   herdr tab rename $(jq -r .result.tab.tab_id <<<$res) claude >/dev/null
-  herdr pane run $(jq -r .result.root_pane.pane_id <<<$res) claude >/dev/null
-  _herdr_tab $ws $dir nvim nvim
-  _herdr_tab $ws $dir scripts $cmd
+  herdr pane rename $pane claude >/dev/null
+  herdr pane run $pane claude >/dev/null
+  _herdr_tab $ws $dir nvim nvim >/dev/null
+  _herdr_scripts $(_herdr_tab $ws $dir scripts) $dir $cmd
 }
 
 herdr:open() {
-  local label=${PWD:t}
+  local label=${PWD:t} res
   local ws=$(herdr workspace list | jq -r --arg l $label '.result.workspaces[] | select(.label == $l) | .workspace_id' | head -1)
 
   if [[ -n $ws ]]; then
     herdr workspace focus $ws >/dev/null
   else
-    _herdr_tabs "$(herdr workspace create --cwd $PWD --label $label --focus)" $PWD $1
+    res=$(herdr workspace create --cwd $PWD --label $label --focus)
+    herdr tab rename $(jq -r .result.tab.tab_id <<<$res) scripts >/dev/null
+    _herdr_scripts $(_herdr_root $res) $PWD $1
   fi
 }
 
