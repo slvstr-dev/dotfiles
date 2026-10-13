@@ -29,13 +29,11 @@ _herdr_scripts() {
 _herdr_tabs() {
   local res=$1 dir=$2 cmd=$3
   local ws=$(jq -r .result.workspace.workspace_id <<<$res)
-  local pane=$(_herdr_root $res)
 
-  herdr tab rename $(jq -r .result.tab.tab_id <<<$res) claude >/dev/null
-  herdr pane rename $pane claude >/dev/null
-  herdr pane run $pane claude >/dev/null
+  herdr tab rename $(jq -r .result.tab.tab_id <<<$res) scripts >/dev/null
+  _herdr_scripts $(_herdr_root $res) $dir $cmd
+  herdr pane rename $(_herdr_tab $ws $dir claude claude) claude >/dev/null
   _herdr_tab $ws $dir nvim nvim >/dev/null
-  _herdr_scripts $(_herdr_tab $ws $dir scripts) $dir $cmd
 }
 
 herdr:open() {
