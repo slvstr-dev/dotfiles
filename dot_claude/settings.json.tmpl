@@ -239,7 +239,8 @@
     "enabled": true,
     "excludedCommands": [
       "docker *",
-      "docker-compose *"
+      "docker-compose *",
+      {{ printf "node %s/orchestrator/watch.mjs *" .bundle_path | quote }}
     ],
     "failIfUnavailable": true,
     "filesystem": {
