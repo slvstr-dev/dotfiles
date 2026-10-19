@@ -8,6 +8,7 @@ _herdr_tab() {
   local ws=$1 dir=$2 label=$3 cmd=$4
   local pane=$(herdr tab create --workspace $ws --cwd $dir --label $label --no-focus | jq -r .result.root_pane.pane_id)
   [[ -z $cmd ]] || herdr pane run $pane $cmd >/dev/null
+  herdr pane rename $pane $label >/dev/null
   print $pane
 }
 
@@ -32,13 +33,14 @@ _herdr_tabs() {
 
   herdr tab rename $(jq -r .result.tab.tab_id <<<$res) scripts >/dev/null
   _herdr_scripts $(_herdr_root $res) $dir $cmd
-  herdr pane rename $(_herdr_tab $ws $dir claude claude) claude >/dev/null
+  _herdr_tab $ws $dir claude claude >/dev/null
   _herdr_tab $ws $dir nvim nvim >/dev/null
 }
 
 herdr:open() {
   local label=${PWD:t} res
   local ws=$(herdr workspace list | jq -r --arg l $label '.result.workspaces[] | select(.label == $l) | .workspace_id' | head -1)
+  REPLY=
 
   if [[ -n $ws ]]; then
     herdr workspace focus $ws >/dev/null
@@ -46,7 +48,14 @@ herdr:open() {
     res=$(herdr workspace create --cwd $PWD --label $label --focus)
     herdr tab rename $(jq -r .result.tab.tab_id <<<$res) scripts >/dev/null
     _herdr_scripts $(_herdr_root $res) $PWD $1
+    REPLY=$(jq -r .result.workspace.workspace_id <<<$res)
   fi
+}
+
+herdr:agent() {
+  local -a cmd=(claude $@)
+  herdr:open
+  [[ -z $REPLY ]] || _herdr_tab $REPLY $PWD claude "${(j: :)${(@q)cmd}}" >/dev/null
 }
 
 herdr:worktree() {

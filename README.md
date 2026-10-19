@@ -48,5 +48,6 @@ Disable Spotlight hotkey and assign it to Raycast using the [Raycast hotkey inst
 
 ```bash
 herdr:open [cmd]               # workspace from cwd + optional cmd
+herdr:agent [flags]            # herdr:open + claude tab with optional claude flags
 herdr:worktree <branch> [cmd]  # worktree from repo root for a branch + optional cmd
 ```
