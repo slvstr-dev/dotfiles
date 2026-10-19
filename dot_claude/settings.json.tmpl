@@ -257,6 +257,9 @@
     },
     "network": {
       "allowLocalBinding": true,
+      "allowUnixSockets": [
+        {{ printf "%s/.config/herdr/herdr.sock" .chezmoi.homeDir | quote }}
+      ],
       "allowedDomains": [
         "registry.npmjs.org",
         "registry.yarnpkg.com"
